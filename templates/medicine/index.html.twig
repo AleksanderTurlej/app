@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medicine index{% endblock %}
+
+{% block body %}
+    <h1>Medicine index</h1>
+
+    <div>
+
+        <form method="GET">
+
+            <input type="text" name="name">
+            <button>
+                {{ 'search' | trans }}
+            </button>
+
+        </form>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Weight</th>
+                <th>IsRecipeRequired</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.id }}</td>
+                <td>{{ medicine.name }}</td>
+                <td>{{ medicine.price }}</td>
+                <td>{{ medicine.weight }}</td>
+                <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">show</a>
+                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('medicine_new') }}">Create new</a>
+{% endblock %}
