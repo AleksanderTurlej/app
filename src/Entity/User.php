@@ -20,13 +20,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Asserts\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Asserts\Email()
      */
     private $username;
 

@@ -31,13 +31,10 @@ class MedicineRepository extends ServiceEntityRepository
 
 
         if ($name) {
-            $builder->andWhere('m.name LIKE :val')
-            ->setParameter('val', '%'.$name.'%');
+            $builder->andWhere('m.name LIKE :string')
+            ->setParameter('string', '%'.$name.'%');
         }
 
-//        $builder->join('m.substances', 's');
-//        $builder->andWhere('s.name = :sub')
-//            ->setParameter('sub', $name);
         return $builder
             ->getQuery()
             ->getResult()

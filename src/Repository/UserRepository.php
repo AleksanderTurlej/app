@@ -14,10 +14,39 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UserRepository extends ServiceEntityRepository
 {
+    /**
+     * UserRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
+
+
+    /**
+     * @param string|null $userName
+     * @return User[] Returns an array of User objects
+     */
+    public function searchUser(?string $userName)
+    {
+        $builder = $this->createQueryBuilder('u');
+
+
+//dd($userName);
+        if ($userName) {
+
+            $builder->andWhere('u.username = :value')
+                ->setParameter('value', $userName, \PDO::PARAM_STR);
+        }
+
+        return $builder
+            ->getQuery()
+            ->getResult()
+            ;
+
+    }
+
 
     // /**
     //  * @return User[] Returns an array of User objects
