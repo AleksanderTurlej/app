@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Medicine;
 use App\Form\MedicineType;
 use App\Repository\MedicineRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,12 +25,18 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function index(Request $request, MedicineRepository $medicineRepository): Response
+    public function index(Request $request, MedicineRepository $medicineRepository, PaginatorInterface $paginator): Response
     {
-        $medicineName = $request->get('name');
+        $medicines = $paginator->paginate(
+            $medicineRepository->search($request),
+            $request->query->getInt('page', 1),
+            Medicine::LIMIT,
+            [PaginatorInterface::FILTER_FIELD_WHITELIST => ['price']]
+        );
+
 
         return $this->render('medicine/index.html.twig', [
-            'medicines' => $medicineRepository->search($medicineName),
+            'medicines' => $medicines,
         ]);
     }
 

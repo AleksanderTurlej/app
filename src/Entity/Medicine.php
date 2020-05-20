@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Medicine
 {
+    public const LIMIT=10;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

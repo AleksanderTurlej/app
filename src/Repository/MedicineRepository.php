@@ -6,6 +6,7 @@ use App\Entity\Medicine;
 use App\Entity\Substance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method Medicine|null find($id, $lockMode = null, $lockVersion = null)
@@ -25,42 +26,21 @@ class MedicineRepository extends ServiceEntityRepository
      *
      * @return Medicine[] Returns an array of Medicine objects
      */
-    public function search(?string $name)
+    public function search(Request $request)
     {
+        $name = $request->get('name');
         $builder = $this->createQueryBuilder('m');
 
 
-        if ($name) {
+        if (null !==$name) {
             $builder->andWhere('m.name LIKE :string')
-            ->setParameter('string', '%'.$name.'%');
+            ->setParameter('string', '%'.$name.'%', \PDO::PARAM_STR);
         }
 
         return $builder
-            ->getQuery()
-            ->getResult()
-        ;
+            ->getQuery();
 
-
-
-
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.name = :val')
-//            ->setParameter('val', $name)
-//            ->getQuery()
-//            ->getResult()
-//        ;
     }
 
 
-    /*
-    public function findOneBySomeField($value): ?Medicine
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

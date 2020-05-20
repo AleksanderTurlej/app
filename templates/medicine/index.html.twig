@@ -50,5 +50,11 @@
         </tbody>
     </table>
 
+    {{ knp_pagination_sortable(medicines, 'Price', 'm.price') }}
+
+    <div class="navigation">
+        {{ knp_pagination_render(medicines) }}
+    </div>
+
     <a href="{{ path('medicine_new') }}">Create new</a>
 {% endblock %}
