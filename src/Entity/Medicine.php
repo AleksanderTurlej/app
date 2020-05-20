@@ -47,9 +47,15 @@ class Medicine
      */
     private $substances;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Disease", inversedBy="medicines")
+     */
+    private $diseases;
+
     public function __construct()
     {
         $this->substances = new ArrayCollection();
+        $this->diseases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,6 +136,32 @@ class Medicine
     {
         if ($this->substances->contains($substance)) {
             $this->substances->removeElement($substance);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Disease[]
+     */
+    public function getDiseases(): Collection
+    {
+        return $this->diseases;
+    }
+
+    public function addDisease(Disease $disease): self
+    {
+        if (!$this->diseases->contains($disease)) {
+            $this->diseases[] = $disease;
+        }
+
+        return $this;
+    }
+
+    public function removeDisease(Disease $disease): self
+    {
+        if ($this->diseases->contains($disease)) {
+            $this->diseases->removeElement($disease);
         }
 
         return $this;

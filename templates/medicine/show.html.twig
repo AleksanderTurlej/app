@@ -27,6 +27,14 @@
                 <th>IsRecipeRequired</th>
                 <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Disease</th>
+                <td>
+                    {% for user in medicine.diseases %}
+                        <li>{{ user.name }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Disease;
 use App\Entity\Medicine;
 
 use App\Entity\Substance;
@@ -23,6 +24,7 @@ class MedicineType extends AbstractType
             ->add('price', NumberType::class)
             ->add('weight', NumberType::class)
             ->add('isRecipeRequired', CheckboxType::class)
+            ->add('diseases', EntityType::class, ['class'=> Disease::class, 'choice_label' => 'name', 'multiple' => true,])
             ->add(
                 'substances',
                 EntityType::class,
