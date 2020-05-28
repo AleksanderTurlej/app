@@ -27,11 +27,11 @@ class MedicineController extends AbstractController
      */
     public function index(Request $request, MedicineRepository $medicineRepository, PaginatorInterface $paginator): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $medicines = $paginator->paginate(
             $medicineRepository->search($request),
             $request->query->getInt('page', 1),
             Medicine::LIMIT,
-            [PaginatorInterface::FILTER_FIELD_WHITELIST => ['price']]
         );
 
 

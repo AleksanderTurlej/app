@@ -23,7 +23,7 @@ class MedicineType extends AbstractType
             ->add('name', TextType::class)
             ->add('price', NumberType::class)
             ->add('weight', NumberType::class)
-            ->add('isRecipeRequired', CheckboxType::class)
+            ->add('isRecipeRequired', CheckboxType::class, ['required'=> false])
             ->add('diseases', EntityType::class, ['class'=> Disease::class, 'choice_label' => 'name', 'multiple' => true,])
             ->add(
                 'substances',

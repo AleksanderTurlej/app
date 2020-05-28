@@ -37,10 +37,12 @@
             </tr>
         </tbody>
     </table>
+    {% if app.user %}
 
     <a href="{{ path('medicine_index') }}">back to list</a>
 
     <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
-
     {{ include('medicine/_delete_form.html.twig') }}
+    {% endif %}
+
 {% endblock %}

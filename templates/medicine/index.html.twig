@@ -3,7 +3,7 @@
 {% block title %}Medicine index{% endblock %}
 
 {% block body %}
-    <h1>Medicine index</h1>
+    <h1>Medicines</h1>
 
     <div>
 
@@ -14,6 +14,15 @@
                 {{ 'search' | trans }}
             </button>
 
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                <label class="btn btn-secondary">
+                    <input type="radio" name="searchBy" value="1"> Diesase
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="searchBy" value="2"> Medicine
+                </label>
+            </div>
         </form>
 
     </div>
@@ -21,25 +30,41 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Weight</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Id', 'm.id') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Name', 'm.name') }}</th>
+                <th>Disease</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Price', 'm.price') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Weight', 'm.weight') }}</th>
                 <th>IsRecipeRequired</th>
+                {% if app.user %}
                 <th>actions</th>
+                {% endif %}
+
             </tr>
         </thead>
         <tbody>
         {% for medicine in medicines %}
             <tr>
                 <td>{{ medicine.id }}</td>
-                <td>{{ medicine.name }}</td>
+                <td>
+                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
+                </td>
+                <td>
+                {% for med in medicine.diseases %}
+                    <li>{{ med.name }}</li>
+                {% endfor %}
+                </td>
                 <td>{{ medicine.price }}</td>
                 <td>{{ medicine.weight }}</td>
                 <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
                 <td>
+                    {% if app.user %}
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">show</a>
+
+
                     <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
+                    {% endif %}
+
                 </td>
             </tr>
         {% else %}
@@ -50,11 +75,14 @@
         </tbody>
     </table>
 
-    {{ knp_pagination_sortable(medicines, 'Price', 'm.price') }}
+
 
     <div class="navigation">
         {{ knp_pagination_render(medicines) }}
     </div>
-
+    {% if app.user %}
     <a href="{{ path('medicine_new') }}">Create new</a>
+
+    {% endif %}
+
 {% endblock %}
