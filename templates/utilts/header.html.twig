@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
 
-            {% if app.user %}
+            {% if app.user is defined and is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('user_index') }}">Users <span class="sr-only">(current)</span></a>
             </li>

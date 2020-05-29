@@ -22,9 +22,18 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
+
+//        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $granted = $this->isGranted('ROLE_ADMIN');
+        if (!$granted) {
+            return $this->render('utilts/example.html.twig');
+        }
+        else {
+            return $this->render('user/index.html.twig', [
+                'users' => $userRepository->findAll(),
+            ]);
+        }
     }
 
     /**

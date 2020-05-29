@@ -36,7 +36,7 @@
                 <th>{{ knp_pagination_sortable(medicines, 'Price', 'm.price') }}</th>
                 <th>{{ knp_pagination_sortable(medicines, 'Weight', 'm.weight') }}</th>
                 <th>IsRecipeRequired</th>
-                {% if app.user %}
+                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <th>actions</th>
                 {% endif %}
 
@@ -58,10 +58,8 @@
                 <td>{{ medicine.weight }}</td>
                 <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
                 <td>
-                    {% if app.user %}
+                    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">show</a>
-
-
                     <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
                     {% endif %}
 
@@ -80,7 +78,7 @@
     <div class="navigation">
         {{ knp_pagination_render(medicines) }}
     </div>
-    {% if app.user %}
+    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
     <a href="{{ path('medicine_new') }}">Create new</a>
 
     {% endif %}
