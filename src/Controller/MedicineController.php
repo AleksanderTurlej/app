@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MedicineController extends AbstractController
 {
     /**
-     * @Route("/", name="medicine_index", methods={"GET"})
+     * @Route("/public", name="medicine_index", methods={"GET"})
      *
      * @param Request            $request
      * @param MedicineRepository $medicineRepository
@@ -67,7 +67,7 @@ class MedicineController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="medicine_show", methods={"GET"})
+     * @Route("/public/{id}", name="medicine_show", methods={"GET"})
      *
      * @param Medicine $medicine
      *

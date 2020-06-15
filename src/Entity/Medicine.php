@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MedicineRepository")
@@ -24,6 +25,10 @@ class Medicine
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     *     )
      */
     private $name;
 
@@ -52,10 +57,22 @@ class Medicine
      */
     private $diseases;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine")
+     */
+    private $opinions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine")
+     */
+    private $favourites;
+
     public function __construct()
     {
         $this->substances = new ArrayCollection();
         $this->diseases = new ArrayCollection();
+        $this->opinions = new ArrayCollection();
+        $this->favourites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,6 +179,68 @@ class Medicine
     {
         if ($this->diseases->contains($disease)) {
             $this->diseases->removeElement($disease);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Opinion[]
+     */
+    public function getOpinions(): Collection
+    {
+        return $this->opinions;
+    }
+
+    public function addOpinion(Opinion $opinion): self
+    {
+        if (!$this->opinions->contains($opinion)) {
+            $this->opinions[] = $opinion;
+            $opinion->setMedicine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpinion(Opinion $opinion): self
+    {
+        if ($this->opinions->contains($opinion)) {
+            $this->opinions->removeElement($opinion);
+            // set the owning side to null (unless already changed)
+            if ($opinion->getMedicine() === $this) {
+                $opinion->setMedicine(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Favourites[]
+     */
+    public function getFavourites(): Collection
+    {
+        return $this->favourites;
+    }
+
+    public function addFavourite(Favourites $favourite): self
+    {
+        if (!$this->favourites->contains($favourite)) {
+            $this->favourites[] = $favourite;
+            $favourite->setMedicine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavourite(Favourites $favourite): self
+    {
+        if ($this->favourites->contains($favourite)) {
+            $this->favourites->removeElement($favourite);
+            // set the owning side to null (unless already changed)
+            if ($favourite->getMedicine() === $this) {
+                $favourite->setMedicine(null);
+            }
         }
 
         return $this;

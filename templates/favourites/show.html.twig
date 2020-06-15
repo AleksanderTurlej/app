@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favourites{% endblock %}
+
+{% block body %}
+    <h1>Favourites</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ favourite.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('favourites_index') }}">back to list</a>
+
+    <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">edit</a>
+
+    {{ include('favourites/_delete_form.html.twig') }}
+{% endblock %}

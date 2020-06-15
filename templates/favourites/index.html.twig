@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favourites index{% endblock %}
+
+{% block body %}
+    <h1>Favourites index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for favourite in favourites %}
+            <tr>
+                <td>{{ favourite.id }}</td>
+                <td>{{ favourite.medicine.name }}</td>
+                <td>
+                    <a href="{{ path('favourites_show', {'id': favourite.id}) }}">show</a>
+                    <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

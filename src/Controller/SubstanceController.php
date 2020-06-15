@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SubstanceController extends AbstractController
 {
     /**
-     * @Route("/", name="substance_index", methods={"GET"})
+     * @Route("/public", name="substance_index", methods={"GET"})
      *
      * @param SubstanceRepository $substanceRepository
      *
@@ -57,7 +57,7 @@ class SubstanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="substance_show", methods={"GET"})
+     * @Route("/public/{id}", name="substance_show", methods={"GET"})
      *
      * @param Substance $substance
      *

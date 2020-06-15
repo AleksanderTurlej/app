@@ -5,6 +5,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -24,6 +26,7 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
  *
  * @UniqueEntity(fields={"email"})
  */
+
 class User implements UserInterface
 {
     /**
@@ -98,6 +101,27 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var string
+     */
+    private $confirmPassword = '';
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="user")
+     */
+    private $opinions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="user")
+     */
+    private $favourites;
+
+    public function __construct()
+    {
+        $this->opinions = new ArrayCollection();
+        $this->favourites = new ArrayCollection();
+    }
+
+    /**
      * Getter for the Id.
      *
      * @return int|null Result
@@ -132,6 +156,7 @@ class User implements UserInterface
     {
         return $this->email;
     }
+
 
     /**
      * Setter for the E-mail.
@@ -220,4 +245,84 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return string
+     */
+    public function getConfirmPassword(): string
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+     * @param string $confirmPassword
+     */
+    public function setConfirmPassword(string $confirmPassword): void
+    {
+        $this->confirmPassword = $confirmPassword;
+    }
+
+    /**
+     * @return Collection|Opinion[]
+     */
+    public function getOpinions(): Collection
+    {
+        return $this->opinions;
+    }
+
+    public function addOpinion(Opinion $opinion): self
+    {
+        if (!$this->opinions->contains($opinion)) {
+            $this->opinions[] = $opinion;
+            $opinion->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpinion(Opinion $opinion): self
+    {
+        if ($this->opinions->contains($opinion)) {
+            $this->opinions->removeElement($opinion);
+            // set the owning side to null (unless already changed)
+            if ($opinion->getUser() === $this) {
+                $opinion->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Favourites[]
+     */
+    public function getFavourites(): Collection
+    {
+        return $this->favourites;
+    }
+
+    public function addFavourite(Favourites $favourite): self
+    {
+        if (!$this->favourites->contains($favourite)) {
+            $this->favourites[] = $favourite;
+            $favourite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavourite(Favourites $favourite): self
+    {
+        if ($this->favourites->contains($favourite)) {
+            $this->favourites->removeElement($favourite);
+            // set the owning side to null (unless already changed)
+            if ($favourite->getUser() === $this) {
+                $favourite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

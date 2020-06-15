@@ -45,4 +45,22 @@
     {{ include('medicine/_delete_form.html.twig') }}
     {% endif %}
 
+    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">add to favourites</a>
+
+
+    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">add comment</a>
+
+
+    <div class="opinion">
+        {% for opinion in medicine.opinions %}
+            <hr>
+            <div>{{ opinion.user.nick }}</div>
+            <div>{{ opinion.content }}</div>
+            <div>{{ opinion.rating }}</div>
+        {% endfor %}
+    </div>
+
+
+
+
 {% endblock %}
