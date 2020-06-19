@@ -10,18 +10,25 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+
+                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <th>actions</th>
+                {% endif %}
+
             </tr>
         </thead>
         <tbody>
         {% for substance in substances %}
             <tr>
                 <td>{{ substance.id }}</td>
-                <td>{{ substance.name }}</td>
+                <td><a href="{{ path('substance_show', {'id': substance.id}) }}">{{ substance.name }}</td>
+
+                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <td>
                     <a href="{{ path('substance_show', {'id': substance.id}) }}">show</a>
                     <a href="{{ path('substance_edit', {'id': substance.id}) }}">edit</a>
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -31,5 +38,7 @@
         </tbody>
     </table>
 
+    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
     <a href="{{ path('substance_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

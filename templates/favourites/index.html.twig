@@ -8,18 +8,30 @@
     <table class="table">
         <thead>
             <tr>
+                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <th>Id</th>
-                <th>actions</th>
+                {% endif %}
+
+                <th>Favourites</th>
             </tr>
         </thead>
         <tbody>
         {% for favourite in favourites %}
             <tr>
+                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <td>{{ favourite.id }}</td>
-                <td>{{ favourite.medicine.name }}</td>
+                {% endif %}
+
+
+
+                <td> <a href="{{ path('medicine_show', {'id': favourite.medicine.id}) }}">{{ favourite.medicine.name }}</a></td>
                 <td>
+                    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('favourites_show', {'id': favourite.id}) }}">show</a>
                     <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">edit</a>
+                    {% endif %}
+                    {{ include('favourites/_delete_form.html.twig') }}
+
                 </td>
             </tr>
         {% else %}

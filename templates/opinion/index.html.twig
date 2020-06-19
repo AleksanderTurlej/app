@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Content</th>
                 <th>Rating</th>
+                <th>Medicine</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ opinion.id }}</td>
                 <td>{{ opinion.content }}</td>
                 <td>{{ opinion.rating }}</td>
+                <td>{{ opinion.medicine.name }}</td>
                 <td>
                     <a href="{{ path('opinion_show', {'id': opinion.id}) }}">show</a>
                     <a href="{{ path('opinion_edit', {'id': opinion.id}) }}">edit</a>

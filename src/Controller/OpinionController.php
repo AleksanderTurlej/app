@@ -31,16 +31,17 @@ class OpinionController extends AbstractController
     /**
      * @Route("/new/{id}", name="opinion_new", methods={"GET","POST"})
      */
-    public function new(Request $request, Medicine $medicine, Security $security): Response
+    public function new(Request $request, Medicine $medicine, Security $security, OpinionRepository $opinionRepository): Response
     {
-        $opinion = new Opinion();
-        $form = $this->createForm(OpinionType::class, $opinion);
-        $form->handleRequest($request);
         $user = $security->getUser();
-
         if(!$user instanceof User){
             $this->addFlash('danger', 'log_in_to_add_comment');
         }
+        $this->denyAccessUnlessGranted(User::ROLE_USER);
+
+        $opinion = $opinionRepository->findOneBy(['userId'=>$user->getId(), 'medicineId'=>$medicine->getId()]) ?? new Opinion();
+        $form = $this->createForm(OpinionType::class, $opinion);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() && $user instanceof User) {
             $opinion->setMedicine($medicine);
@@ -48,6 +49,7 @@ class OpinionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($opinion);
             $entityManager->flush();
+            $this->addFlash('success', 'comment_added');
 
             return $this->redirectToRoute('opinion_index');
         }
@@ -78,6 +80,7 @@ class OpinionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'comment_successfully_edited');
 
             return $this->redirectToRoute('opinion_index');
         }
@@ -97,6 +100,8 @@ class OpinionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($opinion);
             $entityManager->flush();
+            $this->addFlash('danger', 'comment_deleted');
+
         }
 
         return $this->redirectToRoute('opinion_index');

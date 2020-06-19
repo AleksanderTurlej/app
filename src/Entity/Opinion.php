@@ -26,11 +26,22 @@ class Opinion
      */
     private $rating;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $userId;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="opinions")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $medicineId;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Medicine", inversedBy="opinions")
@@ -88,6 +99,38 @@ class Opinion
         $this->medicine = $medicine;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMedicineId(): int
+    {
+        return $this->medicineId;
+    }
+
+    /**
+     * @param int $medicineId
+     */
+    public function setMedicineId(int $medicineId): void
+    {
+        $this->medicineId = $medicineId;
     }
 
 

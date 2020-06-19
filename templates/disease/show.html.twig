@@ -29,7 +29,8 @@
 
     <a href="{{ path('disease_index') }}">back to list</a>
 
+    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
     <a href="{{ path('disease_edit', {'id': disease.id}) }}">edit</a>
-
     {{ include('disease/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}

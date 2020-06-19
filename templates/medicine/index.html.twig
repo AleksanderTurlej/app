@@ -39,6 +39,9 @@
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <th>actions</th>
                 {% endif %}
+                <th>Favourites</th>
+                <th>Opinions</th>
+
 
             </tr>
         </thead>
@@ -58,12 +61,21 @@
                 <td>{{ medicine.weight }}</td>
                 <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
                 <td>
+                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">add to favourites</a>
+
+                </td>
+                <td>
+                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">add opinion</a>
+
+                </td>
+                <td>
                     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">show</a>
                     <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
                     {% endif %}
 
                 </td>
+
             </tr>
         {% else %}
             <tr>

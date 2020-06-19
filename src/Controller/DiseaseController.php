@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Disease;
 use App\Form\DiseaseType;
 use App\Repository\DiseaseRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,16 @@ class DiseaseController extends AbstractController
     /**
      * @Route("/public", name="disease_index", methods={"GET"})
      */
-    public function index(DiseaseRepository $diseaseRepository): Response
+    public function index(Request $request, DiseaseRepository $diseaseRepository, PaginatorInterface $paginator): Response
     {
+        $diseases = $paginator->paginate(
+            $diseaseRepository->findAll(),
+            $request->query->getInt('page', 1),
+            Disease::LIMIT,
+        );
+
         return $this->render('disease/index.html.twig', [
-            'diseases' => $diseaseRepository->findAll(),
+            'diseases' => $diseases,
         ]);
     }
 
