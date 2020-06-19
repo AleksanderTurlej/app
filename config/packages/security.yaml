@@ -37,7 +37,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/(login|logout), roles: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/(medicine|substance|disease)/public/*, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/(medicine|substance|disease|user)/public/*, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/(favourites|opinion), roles: ROLE_USER}
         - { path: ^/, roles: ROLE_ADMIN}
 
