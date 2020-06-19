@@ -35,7 +35,7 @@ class FavouritesController extends AbstractController
      */
     public function new(Request $request, Medicine $medicine, Security $security, FavouritesRepository $repository): Response
     {
-//        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+//      $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = $security->getUser();
         if(!$this->isLoggedUser($user)){
             $this->addFlash('danger', 'log_in_to_add_favourite');
@@ -53,6 +53,8 @@ class FavouritesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($favourite);
             $entityManager->flush();
+            $this->addFlash('success', 'added_as_favourite');
+
 
             return $this->redirectToRoute('favourites_index');
         }
@@ -102,6 +104,8 @@ class FavouritesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($favourite);
             $entityManager->flush();
+            $this->addFlash('danger', 'removed_from_favourites');
+
         }
 
         return $this->redirectToRoute('favourites_index');

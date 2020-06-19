@@ -25,10 +25,7 @@ class Medicine
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     *     )
+     *
      */
     private $name;
 

@@ -53,6 +53,8 @@ class UserController extends AbstractController
             $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash('success', 'user_added_successfully');
+
 
             return $this->redirectToRoute('user_index');
         }
@@ -101,6 +103,8 @@ class UserController extends AbstractController
             $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $menager->persist($user);
             $menager->flush();
+            $this->addFlash('success', 'user_edited_successfully');
+
 
             $this->addFlash('success', 'password_changed');
             return $this->redirectToRoute('user_index');
@@ -122,6 +126,7 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
             $this->addFlash('danger', 'user_deleted');
+
 
         }
 

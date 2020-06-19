@@ -46,6 +46,8 @@ class SubstanceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($substance);
             $entityManager->flush();
+            $this->addFlash('success', 'substance_added_successfully');
+
 
             return $this->redirectToRoute('substance_index');
         }
@@ -85,6 +87,8 @@ class SubstanceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'substance_edited_successfully');
+
 
             return $this->redirectToRoute('substance_index');
         }
@@ -109,6 +113,8 @@ class SubstanceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($substance);
             $entityManager->flush();
+            $this->addFlash('success', 'substance_removed');
+
         }
 
         return $this->redirectToRoute('substance_index');

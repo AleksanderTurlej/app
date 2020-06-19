@@ -45,6 +45,8 @@ class DiseaseController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($disease);
             $entityManager->flush();
+            $this->addFlash('success', 'disease_added');
+
 
             return $this->redirectToRoute('disease_index');
         }
@@ -75,6 +77,7 @@ class DiseaseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'disease_edited');
 
             return $this->redirectToRoute('disease_index');
         }
@@ -94,6 +97,8 @@ class DiseaseController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($disease);
             $entityManager->flush();
+            $this->addFlash('danger', 'disease_deleted');
+
         }
 
         return $this->redirectToRoute('disease_index');
