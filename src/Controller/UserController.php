@@ -56,7 +56,7 @@ class UserController extends AbstractController
             $this->addFlash('success', 'user_added_successfully');
 
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('medicine_index');
         }
 
         return $this->render('user/new.html.twig', [
@@ -76,12 +76,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/public/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $encoder, Security $security): Response
     {
         $editedUser = new User();
         $editedUser->setNick($user->getNick());
+        $editedUser->setRoles($user->getRoles());
 
 
         $form = $this->createForm(UserType::class, $editedUser,
@@ -93,21 +94,31 @@ class UserController extends AbstractController
             $user->setConfirmPassword($editedUser->getConfirmPassword());
             $passwordConfirmed = $encoder->isPasswordValid($security->getUser(), $user->getConfirmPassword());
 
-            if(!$passwordConfirmed && !$this->isGranted(User::ROLE_ADMIN)){
-                return $this->redirectToRoute('user_index');
+            if(!$passwordConfirmed){
+                $this->addFlash('danger', 'invalid_confirmed_password');
+                return $this->redirectToRoute('medicine_index');
+            }
+
+            $password = $editedUser->getPassword();
+            if($password) {
+                $user->setPassword($password);
+                $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
+            }
+
+            $user->setNick($editedUser->getNick());
+            $user->setRoles($editedUser->getRoles());
+
+            if($user->isAdmin() && !$this->isGranted(User::ROLE_ADMIN)){
+                $this->addFlash('danger', 'you_are_not_allowed_to_change_role');
+                return $this->redirectToRoute('medicine_index');
             }
 
             $menager = $this->getDoctrine()->getManager();
-            $user->setPassword($editedUser->getPassword());
-            $user->setNick($editedUser->getNick());
-            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $menager->persist($user);
             $menager->flush();
             $this->addFlash('success', 'user_edited_successfully');
 
-
-            $this->addFlash('success', 'password_changed');
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('medicine_index');
         }
 
         return $this->render('user/edit.html.twig', [

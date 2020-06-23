@@ -94,7 +94,7 @@ class User implements UserInterface
     /**
      * The hashed password.
      *
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string")
      */
@@ -213,7 +213,7 @@ class User implements UserInterface
      *
      * @return string|null Password
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return (string) $this->password;
     }
@@ -223,7 +223,7 @@ class User implements UserInterface
      *
      * @param string $password Password
      */
-    public function setPassword(string $password): void
+    public function setPassword(?string $password): void
     {
         $this->password = $password;
     }
@@ -322,6 +322,11 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function isAdmin(): bool
+    {
+        return in_array(self::ROLE_ADMIN, $this->getRoles());
     }
 
 

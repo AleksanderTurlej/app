@@ -42,7 +42,6 @@ class MedicineRepository extends ServiceEntityRepository
 
         }
         if (self::SEARCH_BY_DISEASES == $searchBy) {
-//            dd($searchBy);
             $builder
                 ->join('m.diseases', 'd')
                 ->andWhere('d.name LIKE :string')
