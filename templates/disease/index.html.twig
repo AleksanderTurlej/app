@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Disease index{% endblock %}
+{% block title %}{{'Disease index'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>Disease index</h1>
+    <h1>{{'Disease index'|trans}}</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,7 @@
                 <th>{{ knp_pagination_sortable(diseases, 'Name', 'name') }}</th>
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>actions</th>
+                <th>{{'actions'|trans}}</th>
                 {% endif %}
 
             </tr>
@@ -25,21 +25,21 @@
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <td>
-                    <a href="{{ path('disease_show', {'id': disease.id}) }}">show</a>
-                    <a href="{{ path('disease_edit', {'id': disease.id}) }}">edit</a>
+                    <a href="{{ path('disease_show', {'id': disease.id}) }}">{{'show'|trans}}</a>
+                    <a href="{{ path('disease_edit', {'id': disease.id}) }}">{{'edit'|trans}}</a>
                 </td>
                 {% endif %}
 
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('disease_new') }}">Create new</a>
+    <a href="{{ path('disease_new') }}">{{'Create new'|trans}}</a>
     {% endif %}
 {% endblock %}

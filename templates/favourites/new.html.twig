@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Favourites{% endblock %}
+{% block title %}{{'New Favourites'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>Create new Favourites</h1>
+    <h1>{{'Create new Favourites'|trans}}</h1>
 
     {{ include('favourites/_form.html.twig') }}
 
-    <a href="{{ path('favourites_index') }}">back to list</a>
+    <a href="{{ path('favourites_index') }}">{{'back to list'|trans}}</a>
 {% endblock %}

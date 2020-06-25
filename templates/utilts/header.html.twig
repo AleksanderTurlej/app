@@ -12,26 +12,26 @@
 
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('user_index') }}">Users <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('user_index') }}">{{'Users'|trans}} <span class="sr-only">(current)</span></a>
             </li>
             {% endif %}
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('substance_index') }}">Substances <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('substance_index') }}">{{'Substances'|trans}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('disease_index') }}">Diseases <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('disease_index') }}">{{'Diseases'|trans}} <span class="sr-only">(current)</span></a>
             </li>
 
             {% if app.user is defined and is_granted('ROLE_USER') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('favourites_index') }}">Favourites <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('favourites_index') }}">{{'Favourites'|trans}} <span class="sr-only">(current)</span></a>
             </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('opinion_index') }}">Opinions <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('opinion_index') }}">{{'Opinions'|trans}} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_edit', {'id':app.user.id}) }}">Edit_account <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('user_edit', {'id':app.user.id}) }}">{{'Edit Account'|trans}} <span class="sr-only">(current)</span></a>
                 </li>
 
             {% endif %}

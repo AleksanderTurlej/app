@@ -1,25 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+  <file source-language="pl" target-language="pl" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="JBkykGe" resname="search">
         <source>search</source>
-        <target>__search</target>
+        <target>Szukaj</target>
       </trans-unit>
       <trans-unit id="ACcM9j_" resname="logout">
         <source>logout</source>
-        <target>__logout</target>
+        <target>Wyloguj</target>
       </trans-unit>
       <trans-unit id="QoghNQ6" resname="login">
         <source>login</source>
-        <target>__login</target>
+        <target>Zaloguj</target>
       </trans-unit>
       <trans-unit id="EhVukhv" resname="Id">
         <source>Id</source>
-        <target>__Id</target>
+        <target>Numer</target>
+      </trans-unit>
+      <trans-unit id="EjhDGRs" resname="Medicine index">
+        <source>Medicine index</source>
+        <target>Indeks lekow</target>
+      </trans-unit>
+      <trans-unit id="Qtzihx5" resname="Medicines">
+        <source>Medicines</source>
+        <target>Leki</target>
+      </trans-unit>
+      <trans-unit id="1aKATRy" resname="Diesase">
+        <source>Diesase</source>
+        <target>Choroba</target>
+      </trans-unit>
+      <trans-unit id="xNPULtO" resname="Medicine">
+        <source>Medicine</source>
+        <target>Leki</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nazwa</target>
+      </trans-unit>
+      <trans-unit id="e85blJU" resname="Disease">
+        <source>Disease</source>
+        <target>Choroba</target>
+      </trans-unit>
+      <trans-unit id="k8kchR5" resname="Price">
+        <source>Price</source>
+        <target>Cena</target>
+      </trans-unit>
+      <trans-unit id="gdJ_9tU" resname="Weight">
+        <source>Weight</source>
+        <target>Waga</target>
+      </trans-unit>
+      <trans-unit id="POmlCVb" resname="IsRecipeRequired">
+        <source>IsRecipeRequired</source>
+        <target>Czy recepta jest wymagana</target>
+      </trans-unit>
+      <trans-unit id="Kw3N1AA" resname="actions">
+        <source>actions</source>
+        <target>akcje</target>
+      </trans-unit>
+      <trans-unit id="2X1R03C" resname="Favourites">
+        <source>Favourites</source>
+        <target>Ulubione</target>
+      </trans-unit>
+      <trans-unit id="3K3og8k" resname="Opinions">
+        <source>Opinions</source>
+        <target>Opinie</target>
+      </trans-unit>
+      <trans-unit id="haOas0X" resname="Yes">
+        <source>Yes</source>
+        <target>Tak</target>
+      </trans-unit>
+      <trans-unit id="HqRCoTS" resname="No">
+        <source>No</source>
+        <target>Nie</target>
+      </trans-unit>
+      <trans-unit id="gpkbHfl" resname="add to favourites">
+        <source>add to favourites</source>
+        <target>Dodaj do ulubionych</target>
+      </trans-unit>
+      <trans-unit id="eSTbQvm" resname="add opinion">
+        <source>add opinion</source>
+        <target>Dodaj opinie</target>
+      </trans-unit>
+      <trans-unit id="HGMzUJ3" resname="show">
+        <source>show</source>
+        <target>Pokaz</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="D5lam8." resname="no records found">
+        <source>no records found</source>
+        <target>Brak rekordow</target>
+      </trans-unit>
+      <trans-unit id="nz33U6Q" resname="Create new">
+        <source>Create new</source>
+        <target>Stworz nowy</target>
+      </trans-unit>
+      <trans-unit id="i7I9s7n" resname="Edit Medicine">
+        <source>Edit Medicine</source>
+        <target>Edytuj Lek</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>wroc do listy</target>
+      </trans-unit>
+      <trans-unit id="sapOvWp" resname="New Medicine">
+        <source>New Medicine</source>
+        <target>Nowy lek</target>
+      </trans-unit>
+      <trans-unit id="p0onDE9" resname="Create new Medicine">
+        <source>Create new Medicine</source>
+        <target>Stworz nowy lek</target>
+      </trans-unit>
+      <trans-unit id="2rR3kHU" resname="Opinion index">
+        <source>Opinion index</source>
+        <target>Index opinii</target>
+      </trans-unit>
+      <trans-unit id="R70pB1_" resname="Content">
+        <source>Content</source>
+        <target>Kontent</target>
+      </trans-unit>
+      <trans-unit id="nylTBGT" resname="Rating">
+        <source>Rating</source>
+        <target>Ocena</target>
+      </trans-unit>
+      <trans-unit id="9RzN4Uc" resname="Edit Opinion">
+        <source>Edit Opinion</source>
+        <target>Edytuj Opinie</target>
+      </trans-unit>
+      <trans-unit id=".foawbL" resname="New Opinion">
+        <source>New Opinion</source>
+        <target>Nowa opinia</target>
+      </trans-unit>
+      <trans-unit id="ThsJeT." resname="Create new Opinion">
+        <source>Create new Opinion</source>
+        <target>Stworz opinie</target>
+      </trans-unit>
+      <trans-unit id="nCgoQLa" resname="Opinion">
+        <source>Opinion</source>
+        <target>Opinie</target>
+      </trans-unit>
+      <trans-unit id="6QE2PN1" resname="Disease index">
+        <source>Disease index</source>
+        <target>Indeks chorob</target>
+      </trans-unit>
+      <trans-unit id="XIbbHVr" resname="New Disease">
+        <source>New Disease</source>
+        <target>Nowa choroba</target>
+      </trans-unit>
+      <trans-unit id=".6f1nTu" resname="Create new Disease">
+        <source>Create new Disease</source>
+        <target>Stworz nowa chorobe</target>
+      </trans-unit>
+      <trans-unit id="ORkKAhM" resname="Favourites index">
+        <source>Favourites index</source>
+        <target>Indeks ulubionych</target>
+      </trans-unit>
+      <trans-unit id="6hcto2c" resname="Edit Favourites">
+        <source>Edit Favourites</source>
+        <target>Edytuj ulubione</target>
+      </trans-unit>
+      <trans-unit id="u1tYmev" resname="New Favourites">
+        <source>New Favourites</source>
+        <target>Nowe ulubione</target>
+      </trans-unit>
+      <trans-unit id="4SD4vHY" resname="Create new Favourites">
+        <source>Create new Favourites</source>
+        <target>Stworz nowe ulubione</target>
+      </trans-unit>
+      <trans-unit id="MR.FAVG" resname="Substance index">
+        <source>Substance index</source>
+        <target>Indeks substancji</target>
+      </trans-unit>
+      <trans-unit id="qWhsXsZ" resname="Edit Substance">
+        <source>Edit Substance</source>
+        <target>Edytuj substancje</target>
+      </trans-unit>
+      <trans-unit id="hwUFxA5" resname="New Substance">
+        <source>New Substance</source>
+        <target>Nowa substancja</target>
+      </trans-unit>
+      <trans-unit id="YGsrWd0" resname="Create new Substance">
+        <source>Create new Substance</source>
+        <target>Stworz nowa substancje</target>
+      </trans-unit>
+      <trans-unit id="5_Wlcjy" resname="Substance">
+        <source>Substance</source>
+        <target>Substancje</target>
+      </trans-unit>
+      <trans-unit id="FPe7r1b" resname="Place sticky footer content here.">
+        <source>Place sticky footer content here.</source>
+        <target>__Place sticky footer content here.</target>
+      </trans-unit>
+      <trans-unit id="awzJBNC" resname="Users">
+        <source>Users</source>
+        <target>Użytkownicy</target>
+      </trans-unit>
+      <trans-unit id="0rEgIU_" resname="Substances">
+        <source>Substances</source>
+        <target>Substance</target>
+      </trans-unit>
+      <trans-unit id="uFHMq6L" resname="Diseases">
+        <source>Diseases</source>
+        <target>Choroba</target>
+      </trans-unit>
+      <trans-unit id="GRWZXUs" resname="Edit Account">
+        <source>Edit Account</source>
+        <target>Edytuj konto</target>
+      </trans-unit>
+      <trans-unit id="h3gPpd5" resname="register">
+        <source>register</source>
+        <target>zarejestruj sie</target>
+      </trans-unit>
+      <trans-unit id="ezuwN7u" resname="User index">
+        <source>User index</source>
+        <target>Indeks użytkownikow</target>
+      </trans-unit>
+      <trans-unit id="10OcTTm" resname="Nick">
+        <source>Nick</source>
+        <target>Nick</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="wlM3BVR" resname="Roles">
+        <source>Roles</source>
+        <target>Role</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Haslo</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Akcje</target>
+      </trans-unit>
+      <trans-unit id="6KiDUxl" resname="Edit User">
+        <source>Edit User</source>
+        <target>Edytuj użytkownikow</target>
+      </trans-unit>
+      <trans-unit id="MVJ_u5A" resname="New User">
+        <source>New User</source>
+        <target>Nowy użytkownik</target>
+      </trans-unit>
+      <trans-unit id="g36VwXo" resname="Create new User">
+        <source>Create new User</source>
+        <target>Stworz nowego użytkownika</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>użytkownik</target>
+      </trans-unit>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Usun</target>
       </trans-unit>
     </body>
   </file>

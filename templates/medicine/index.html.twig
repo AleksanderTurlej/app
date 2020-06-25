@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Medicine index{% endblock %}
+{% block title %}{{'Medicine index'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>Medicines</h1>
+    <h1>{{'Medicines'|trans}}</h1>
 
     <div>
 
@@ -17,10 +17,10 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="1"> Diesase
+                    <input type="radio" name="searchBy" value="1"> {{ 'Diesase' |trans}}
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="2"> Medicine
+                    <input type="radio" name="searchBy" value="2"> {{ 'Medicine' |trans}}
                 </label>
             </div>
         </form>
@@ -30,17 +30,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(medicines, 'Id', 'm.id') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Name', 'm.name') }}</th>
-                <th>Disease</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Price', 'm.price') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Weight', 'm.weight') }}</th>
-                <th>IsRecipeRequired</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Id'|trans, 'm.id') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Name'|trans, 'm.name') }}</th>
+                <th>{{'Disease'|trans}}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Price'|trans, 'm.price') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'Weight'|trans, 'm.weight') }}</th>
+                <th>{{'IsRecipeRequired'|trans}}</th>
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>actions</th>
+                <th>{{'actions'|trans}}</th>
                 {% endif %}
-                <th>Favourites</th>
-                <th>Opinions</th>
+                <th>{{'Favourites'|trans}}</th>
+                <th>{{'Opinions'|trans}}</th>
 
 
             </tr>
@@ -59,19 +59,19 @@
                 </td>
                 <td>{{ medicine.price }}</td>
                 <td>{{ medicine.weight }}</td>
-                <td>{{ medicine.isRecipeRequired ? 'Yes' : 'No' }}</td>
+                <td>{{ medicine.isRecipeRequired ? 'Yes'|trans : 'No'|trans }}</td>
                 <td>
-                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">add to favourites</a>
+                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'add to favourites'|trans}}</a>
 
                 </td>
                 <td>
-                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">add opinion</a>
+                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'add opinion'|trans}}</a>
 
                 </td>
                 <td>
                     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">show</a>
-                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">edit</a>
+                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{'show'|trans}}</a>
+                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'edit'|trans}}</a>
                     {% endif %}
 
                 </td>
@@ -79,7 +79,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">{{'no records found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -91,7 +91,7 @@
         {{ knp_pagination_render(medicines) }}
     </div>
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('medicine_new') }}">Create new</a>
+    <a href="{{ path('medicine_new') }}">{{'Create new'|trans}}</a>
 
     {% endif %}
 

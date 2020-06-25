@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Substance index{% endblock %}
+{% block title %}{{'Substance index'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>Substance index</h1>
+    <h1>{{'Substance index'|trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>{{'Name'|trans}}</th>
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>actions</th>
+                <th>{{'actions'|trans}}</th>
                 {% endif %}
 
             </tr>
@@ -25,20 +25,20 @@
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <td>
-                    <a href="{{ path('substance_show', {'id': substance.id}) }}">show</a>
-                    <a href="{{ path('substance_edit', {'id': substance.id}) }}">edit</a>
+                    <a href="{{ path('substance_show', {'id': substance.id}) }}">{{'show'|trans}}</a>
+                    <a href="{{ path('substance_edit', {'id': substance.id}) }}">{{'edit'|trans}}</a>
                 </td>
                 {% endif %}
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">{{'no records found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('substance_new') }}">Create new</a>
+    <a href="{{ path('substance_new') }}">{{'Create new'|trans}}</a>
     {% endif %}
 {% endblock %}

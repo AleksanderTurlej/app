@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Favourites{% endblock %}
+{% block title %}{{'Favourites'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>Favourites</h1>
+    <h1>{{'Favourites'|trans}}</h1>
 
     <table class="table">
         <tbody>
@@ -14,7 +14,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('favourites_index') }}">back to list</a>
+    <a href="{{ path('favourites_index') }}">{{'back to list'|trans}}</a>
 
     <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">edit</a>
 
