@@ -95,11 +95,11 @@
       </trans-unit>
       <trans-unit id="D5lam8." resname="no records found">
         <source>no records found</source>
-        <target>Brak rekordow</target>
+        <target>Brak rekordów</target>
       </trans-unit>
       <trans-unit id="nz33U6Q" resname="Create new">
         <source>Create new</source>
-        <target>Stworz nowy</target>
+        <target>Stwórz nowy</target>
       </trans-unit>
       <trans-unit id="i7I9s7n" resname="Edit Medicine">
         <source>Edit Medicine</source>
@@ -107,7 +107,7 @@
       </trans-unit>
       <trans-unit id="U0M9PNE" resname="back to list">
         <source>back to list</source>
-        <target>wroc do listy</target>
+        <target>Wróc do listy</target>
       </trans-unit>
       <trans-unit id="sapOvWp" resname="New Medicine">
         <source>New Medicine</source>
@@ -115,7 +115,7 @@
       </trans-unit>
       <trans-unit id="p0onDE9" resname="Create new Medicine">
         <source>Create new Medicine</source>
-        <target>Stworz nowy lek</target>
+        <target>Stwórz nowy lek</target>
       </trans-unit>
       <trans-unit id="2rR3kHU" resname="Opinion index">
         <source>Opinion index</source>
@@ -131,7 +131,7 @@
       </trans-unit>
       <trans-unit id="9RzN4Uc" resname="Edit Opinion">
         <source>Edit Opinion</source>
-        <target>Edytuj Opinie</target>
+        <target>Edytuj Opinię</target>
       </trans-unit>
       <trans-unit id=".foawbL" resname="New Opinion">
         <source>New Opinion</source>
@@ -139,7 +139,7 @@
       </trans-unit>
       <trans-unit id="ThsJeT." resname="Create new Opinion">
         <source>Create new Opinion</source>
-        <target>Stworz opinie</target>
+        <target>Stwórz opinie</target>
       </trans-unit>
       <trans-unit id="nCgoQLa" resname="Opinion">
         <source>Opinion</source>
@@ -147,7 +147,7 @@
       </trans-unit>
       <trans-unit id="6QE2PN1" resname="Disease index">
         <source>Disease index</source>
-        <target>Indeks chorob</target>
+        <target>Indeks chorób</target>
       </trans-unit>
       <trans-unit id="XIbbHVr" resname="New Disease">
         <source>New Disease</source>
@@ -155,7 +155,7 @@
       </trans-unit>
       <trans-unit id=".6f1nTu" resname="Create new Disease">
         <source>Create new Disease</source>
-        <target>Stworz nowa chorobe</target>
+        <target>Stwórz nową chorobę</target>
       </trans-unit>
       <trans-unit id="ORkKAhM" resname="Favourites index">
         <source>Favourites index</source>
@@ -171,7 +171,7 @@
       </trans-unit>
       <trans-unit id="4SD4vHY" resname="Create new Favourites">
         <source>Create new Favourites</source>
-        <target>Stworz nowe ulubione</target>
+        <target>Stwórz nowe ulubione</target>
       </trans-unit>
       <trans-unit id="MR.FAVG" resname="Substance index">
         <source>Substance index</source>
@@ -179,7 +179,7 @@
       </trans-unit>
       <trans-unit id="qWhsXsZ" resname="Edit Substance">
         <source>Edit Substance</source>
-        <target>Edytuj substancje</target>
+        <target>Edytuj substancję</target>
       </trans-unit>
       <trans-unit id="hwUFxA5" resname="New Substance">
         <source>New Substance</source>
@@ -187,7 +187,7 @@
       </trans-unit>
       <trans-unit id="YGsrWd0" resname="Create new Substance">
         <source>Create new Substance</source>
-        <target>Stworz nowa substancje</target>
+        <target>Stwórz nową substancję</target>
       </trans-unit>
       <trans-unit id="5_Wlcjy" resname="Substance">
         <source>Substance</source>
@@ -195,7 +195,7 @@
       </trans-unit>
       <trans-unit id="FPe7r1b" resname="Place sticky footer content here.">
         <source>Place sticky footer content here.</source>
-        <target>Stopka.</target>
+        <target>Stopka</target>
       </trans-unit>
       <trans-unit id="awzJBNC" resname="Users">
         <source>Users</source>
@@ -215,11 +215,11 @@
       </trans-unit>
       <trans-unit id="h3gPpd5" resname="register">
         <source>register</source>
-        <target>zarejestruj sie</target>
+        <target>Zarejestruj się</target>
       </trans-unit>
       <trans-unit id="ezuwN7u" resname="User index">
         <source>User index</source>
-        <target>Indeks użytkownikow</target>
+        <target>Indeks użytkowników</target>
       </trans-unit>
       <trans-unit id="10OcTTm" resname="Nick">
         <source>Nick</source>
@@ -227,7 +227,7 @@
       </trans-unit>
       <trans-unit id="lpzL089" resname="Email">
         <source>Email</source>
-        <target>Email</target>
+        <target>E-mail</target>
       </trans-unit>
       <trans-unit id="wlM3BVR" resname="Roles">
         <source>Roles</source>
@@ -235,7 +235,7 @@
       </trans-unit>
       <trans-unit id="588_9PF" resname="Password">
         <source>Password</source>
-        <target>Haslo</target>
+        <target>Hasło</target>
       </trans-unit>
       <trans-unit id=".4BZ3Gd" resname="Actions">
         <source>Actions</source>
@@ -243,7 +243,7 @@
       </trans-unit>
       <trans-unit id="6KiDUxl" resname="Edit User">
         <source>Edit User</source>
-        <target>Edytuj użytkownikow</target>
+        <target>Edytuj użytkowników</target>
       </trans-unit>
       <trans-unit id="MVJ_u5A" resname="New User">
         <source>New User</source>
@@ -251,11 +251,11 @@
       </trans-unit>
       <trans-unit id="g36VwXo" resname="Create new User">
         <source>Create new User</source>
-        <target>Stworz nowego użytkownika</target>
+        <target>Stwórz nowego użytkownika</target>
       </trans-unit>
       <trans-unit id="tRLZfny" resname="User">
         <source>User</source>
-        <target>użytkownik</target>
+        <target>Użytkownik</target>
       </trans-unit>
       <trans-unit id="FQn1YfJ" resname="Save">
         <source>Save</source>
@@ -263,7 +263,7 @@
       </trans-unit>
       <trans-unit id="4tClSWj" resname="Delete">
         <source>Delete</source>
-        <target>Usun</target>
+        <target>Usuń</target>
       </trans-unit>
       <trans-unit id="wcEAnT8" resname="Update">
         <source>Update</source>
@@ -272,7 +272,7 @@
 
       <trans-unit id="afDs3z1" resname="Confirm password">
         <source>Confirm password</source>
-        <target>Potwierdz haslo</target>
+        <target>Potwierdź hasło</target>
       </trans-unit>
       <trans-unit id="PSCDHtP" resname="is_admin">
         <source>is_admin</source>
@@ -281,87 +281,87 @@
 
     <trans-unit id="jbRPTLl" resname="added_as_favourite">
         <source>added_as_favourite</source>
-        <target>dodano do ulubionych</target>
+        <target>Dodano do ulubionych</target>
     </trans-unit>
         <trans-unit id="BQD5mwy" resname="comment_added">
         <source>comment_added</source>
-    <target>__comment_added</target>
+    <target>Komentarz pomyślnie dodano</target>
     </trans-unit>
         <trans-unit id="XlUHCqo" resname="comment_deleted">
         <source>comment_deleted</source>
-    <target>__comment_deleted</target>
+    <target>Usunięto komentarz</target>
     </trans-unit>
         <trans-unit id="IaX7suh" resname="comment_successfully_edited">
-        <source>comment_successfully_edited</source>
-    <target>__comment_successfully_edited</target>
+        <source>Komentarz pomyślnie edytowany</source>
+    <target>Komentarz </target>
     </trans-unit>
         <trans-unit id="lySM6xq" resname="disease_added">
         <source>disease_added</source>
-    <target>__disease_added</target>
+    <target>Dodano chorobę</target>
     </trans-unit>
         <trans-unit id="RPTla4i" resname="disease_deleted">
         <source>disease_deleted</source>
-    <target>__disease_deleted</target>
+    <target>Usunięto chorobę</target>
     </trans-unit>
         <trans-unit id="J0Gy4Qu" resname="disease_edited">
         <source>disease_edited</source>
-    <target>__disease_edited</target>
+    <target>Chorobę pomyślnie edytowano</target>
     </trans-unit>
         <trans-unit id="J6BFZvM" resname="invalid_confirmed_password">
         <source>invalid_confirmed_password</source>
-    <target>__invalid_confirmed_password</target>
+    <target>Niewłaściwe hasło</target>
     </trans-unit>
         <trans-unit id="7E8kzN8" resname="log_in_to_add_comment">
         <source>log_in_to_add_comment</source>
-    <target>__log_in_to_add_comment</target>
+    <target>Zaloguj się, aby dodać komentarz</target>
     </trans-unit>
         <trans-unit id="zN2krD4" resname="log_in_to_add_favourite">
         <source>log_in_to_add_favourite</source>
-    <target>__log_in_to_add_favourite</target>
+    <target>Zaloguj się, aby dodać do ulubionych</target>
     </trans-unit>
         <trans-unit id="DY586dg" resname="medicine_removed">
         <source>medicine_removed</source>
-    <target>__medicine_removed</target>
+    <target>Lek usunięto</target>
     </trans-unit>
         <trans-unit id="RDGyrhE" resname="medicine_successfully_added">
         <source>medicine_successfully_added</source>
-    <target>__medicine_successfully_added</target>
+    <target>Dodano pomyślnie lek</target>
     </trans-unit>
         <trans-unit id="bXNJ04h" resname="medicine_successfully_edited">
         <source>medicine_successfully_edited</source>
-    <target>__medicine_successfully_edited</target>
+    <target>Lek pomyślnie edytowany</target>
     </trans-unit>
         <trans-unit id="0sTewQE" resname="removed_from_favourites">
         <source>removed_from_favourites</source>
-    <target>__removed_from_favourites</target>
+    <target>Usunięto z ulubionych</target>
     </trans-unit>
         <trans-unit id="YZ4MCrd" resname="substance_added_successfully">
         <source>substance_added_successfully</source>
-    <target>__substance_added_successfully</target>
+    <target>Dodano substancję</target>
     </trans-unit>
         <trans-unit id="L5afN6k" resname="substance_edited_successfully">
         <source>substance_edited_successfully</source>
-    <target>__substance_edited_successfully</target>
+    <target>Substancja pomyślnie edytowana</target>
     </trans-unit>
         <trans-unit id="vVjsPqn" resname="substance_removed">
         <source>substance_removed</source>
-    <target>__substance_removed</target>
+    <target>Substancja usunięta</target>
     </trans-unit>
         <trans-unit id="Vq3Es9A" resname="user_added_successfully">
         <source>user_added_successfully</source>
-    <target>__user_added_successfully</target>
+    <target>Użytkownik dodany pomyślnie</target>
     </trans-unit>
         <trans-unit id="OyU94DG" resname="user_deleted">
         <source>user_deleted</source>
-    <target>__user_deleted</target>
+    <target>Usunięto użytkownika</target>
     </trans-unit>
         <trans-unit id="skFxEBy" resname="user_edited_successfully">
         <source>user_edited_successfully</source>
-    <target>__user_edited_successfully</target>
+    <target>Użytkownik pomyślnie udytowany</target>
     </trans-unit>
     <trans-unit id="8pZyAQb" resname="you_are_not_allowed_to_change_role">
         <source>you_are_not_allowed_to_change_role</source>
-        <target>__you_are_not_allowed_to_change_role</target>
+        <target>Nie jesteś upoważniony do zmiany roli</target>
     </trans-unit>
 
     </body>
