@@ -27,7 +27,8 @@
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
         "symfony/yaml": "4.4.*",
-        "symfonycasts/reset-password-bundle": "^1.1"
+        "symfonycasts/reset-password-bundle": "^1.1",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "escapestudios/symfony2-coding-standard": "^3.11",

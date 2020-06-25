@@ -3,15 +3,12 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Security;
 
 class UserType extends AbstractType
 {
@@ -27,34 +24,33 @@ class UserType extends AbstractType
 //            ->add('password')
         ;
 
-        if(true === $options[self::REGISTER_OPTION]){
+        if (true === $options[self::REGISTER_OPTION]) {
             $builder
                 ->add('email');
-
         }
 
-        if(true === $options[self::REGISTER_OPTION]){
+        if (true === $options[self::REGISTER_OPTION]) {
             $builder
                 ->add('password')
             ;
         }
-        if(true === $options[self::CONFIRM_PASSWORD_OPTION]){
+        if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
             $builder
-                ->add('password', TextType::class, ['required'=>false]);
+                ->add('password', TextType::class, ['required' => false]);
         }
 
-        if(true === $options[self::CONFIRM_PASSWORD_OPTION]) {
+        if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
             $builder
-                ->add(self::CONFIRM_PASSWORD_OPTION, TextType::class, ['required'=>true])
-                ->add('roles', CheckboxType::class, ['label'=>'is_admin', 'required'=>false]);
+                ->add(self::CONFIRM_PASSWORD_OPTION, TextType::class, ['required' => true])
+                ->add('roles', CheckboxType::class, ['label' => 'is_admin', 'required' => false]);
 
-        $builder->get('roles')
+            $builder->get('roles')
             ->addModelTransformer(
                 new CallbackTransformer(
-                    function (array $roles){
+                    function (array $roles) {
                         return in_array(User::ROLE_ADMIN, $roles);
                     },
-                    function (bool $isAdmin){
+                    function (bool $isAdmin) {
                         return $isAdmin ? [User::ROLE_ADMIN] : [User::ROLE_USER];
                     }
                 )
@@ -70,7 +66,6 @@ class UserType extends AbstractType
             self::CONFIRM_PASSWORD_OPTION => false,
             self::REGISTER_OPTION => false,
             'allow_extra_fields' => true,
-
         ]);
     }
 }

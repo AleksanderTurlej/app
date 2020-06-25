@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{'Edit Medicine'|trans}}</h1>
 
-    {{ include('medicine/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('medicine/_form.html.twig', {'button_label': 'Update'|trans}) }}
 
     <a href="{{ path('medicine_index') }}">{{'back to list'|trans}}</a>
 

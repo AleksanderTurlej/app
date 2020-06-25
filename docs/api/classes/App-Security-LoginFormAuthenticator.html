@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="icon" href="../images/favicon.ico"/>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"></script>
+    <script src="../js/search.js"></script>
+    <script defer src="../js/searchIndex.js"></script>
+    </head>
+<body>
+<header class="phpdocumentor-top-header"></header>
+<header class="phpdocumentor-header">
+    <section class="phpdocumentor-section">
+        <h1 class="phpdocumentor-title">Documentation</h1>
+    </section>
+</header>
+<main class="phpdocumentor">
+    <div class="phpdocumentor-section">
+        <aside class="three phpdocumentor-columns phpdocumentor-sidebar">
+    <section data-search-form class="phpdocumentor-search">
+        <h1 class="phpdocumentor-sidebar__category-header">Search</h1>
+        <label class="phpdocumentor-label">
+            <span class="visually-hidden">Search for</span>
+            <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+        </label>
+    </section>
+
+    
+    <h1 class="phpdocumentor-sidebar__category-header">Namespaces</h1>
+            <h2 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/default.html"><abbr title="\">Global</abbr></a></h2>
+                    <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/app.html"><abbr title="\App">App</abbr></a></h3>
+            <ul class="phpdocumentor-list">
+                                    <li><a href="../namespaces/app-controller.html"><abbr title="\App\Controller">Controller</abbr></a></li>
+                                    <li><a href="../namespaces/app-entity.html"><abbr title="\App\Entity">Entity</abbr></a></li>
+                                    <li><a href="../namespaces/app-form.html"><abbr title="\App\Form">Form</abbr></a></li>
+                                    <li><a href="../namespaces/app-repository.html"><abbr title="\App\Repository">Repository</abbr></a></li>
+                                    <li><a href="../namespaces/app-security.html"><abbr title="\App\Security">Security</abbr></a></li>
+                            </ul>
+                    <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/doctrinemigrations.html"><abbr title="\DoctrineMigrations">DoctrineMigrations</abbr></a></h3>
+            <ul class="phpdocumentor-list">
+                            </ul>
+            
+    
+    <h1 class="phpdocumentor-sidebar__category-header">Reports</h1>
+        <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/deprecated.html">Deprecated</a></h2>
+    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/errors.html">Errors</a></h2>
+    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/markers.html">Markers</a></h2>
+</aside>
+
+        <div class="nine phpdocumentor-columns phpdocumentor-content">
+            <ul class="phpdocumentor-breadcrumbs">
+    <li><a href="../index.html">Home</a></li>
+                        <li><a href="../namespaces/app.html">App</a></li>
+                    <li><a href="../namespaces/app-security.html">Security</a></li>
+            </ul>
+
+    <article class="phpdocumentor-element phpdocumentor-class">
+        <h2 class="phpdocumentor-content__title">
+            LoginFormAuthenticator
+                            <span class="phpdocumentor-class__extends">
+                    extends <abbr title="\Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator">AbstractFormLoginAuthenticator</abbr>
+                </span>
+                                                    <span class="phpdocumentor-class__implements">
+                    implements
+                                            <abbr title="\Symfony\Component\Security\Guard\PasswordAuthenticatedInterface">PasswordAuthenticatedInterface</abbr>                                    </span>
+                                        <span class="phpdocumentor-class__extends">
+                    Uses
+                                            <abbr title="\Symfony\Component\Security\Http\Util\TargetPathTrait">TargetPathTrait</abbr>                                    </span>
+                    </h2>
+        <aside class="phpdocumentor-element-found-in">
+            <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+            :
+            <span class="phpdocumentor-element-found-in__line">31</span>
+        </aside>
+
+        <p class="phpdocumentor-class__summary">Class LoginFormAuthenticator.</p>
+        <section class="phpdocumentor-class__description"></section>
+
+        <h3>Table of Contents</h3>
+        <table class="phpdocumentor-table_of_contents">
+                                        <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#property_userRepository">$userRepository</a></th>
+                    <td class="phpdocumentor-cell">User repository.</td>
+                    <td class="phpdocumentor-cell"><a href="../classes/App-Repository-UserRepository.html"><abbr title="\App\Repository\UserRepository">UserRepository</abbr></a></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#property_urlGenerator">$urlGenerator</a></th>
+                    <td class="phpdocumentor-cell">URL generator.</td>
+                    <td class="phpdocumentor-cell"><abbr title="\Symfony\Component\Routing\Generator\UrlGeneratorInterface">UrlGeneratorInterface</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#property_csrfTokenManager">$csrfTokenManager</a></th>
+                    <td class="phpdocumentor-cell">CSRF token manager.</td>
+                    <td class="phpdocumentor-cell"><abbr title="\Symfony\Component\Security\Csrf\CsrfTokenManagerInterface">CsrfTokenManagerInterface</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#property_passwordEncoder">$passwordEncoder</a></th>
+                    <td class="phpdocumentor-cell">Password encoder.</td>
+                    <td class="phpdocumentor-cell"><abbr title="\Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface">UserPasswordEncoderInterface</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#property_router">$router</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell"><abbr title="\Symfony\Component\Routing\RouterInterface">RouterInterface</abbr></td>
+                </tr>
+                                                                <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method___construct">__construct()</a></th>
+                    <td class="phpdocumentor-cell">LoginFormAuthenticator constructor.</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_supports">supports()</a></th>
+                    <td class="phpdocumentor-cell">Does the authenticator support the given Request?</td>
+                    <td class="phpdocumentor-cell">bool</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_getCredentials">getCredentials()</a></th>
+                    <td class="phpdocumentor-cell">Get the authentication credentials from the request and return them
+as any type (e.g. an associate array). If you return null, authentication
+will be skipped.</td>
+                    <td class="phpdocumentor-cell">array</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_getUser">getUser()</a></th>
+                    <td class="phpdocumentor-cell">Get user.</td>
+                    <td class="phpdocumentor-cell"><a href="../classes/App-Entity-User.html"><abbr title="\App\Entity\User">User</abbr></a>|null</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_checkCredentials">checkCredentials()</a></th>
+                    <td class="phpdocumentor-cell">Checks credentials.</td>
+                    <td class="phpdocumentor-cell">bool</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_getPassword">getPassword()</a></th>
+                    <td class="phpdocumentor-cell">Used to upgrade (rehash) the user&#039;s password automatically over time.</td>
+                    <td class="phpdocumentor-cell">string|null</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_onAuthenticationSuccess">onAuthenticationSuccess()</a></th>
+                    <td class="phpdocumentor-cell">Called when authentication executed and was successful!</td>
+                    <td class="phpdocumentor-cell"><abbr title="\Symfony\Component\HttpFoundation\RedirectResponse">RedirectResponse</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/App-Security-LoginFormAuthenticator.html#method_getLoginUrl">getLoginUrl()</a></th>
+                    <td class="phpdocumentor-cell">Return the URL to the login page.</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                                            </table>
+
+        
+                    <section>
+                <h3 class="phpdocumentor-properties__header">Properties</h3>
+                                    <a id="property_userRepository"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$userRepository</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">40</span>
+    </aside>
+            <p class="phpdocumentor-summary">User repository.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><a href="../classes/App-Repository-UserRepository.html"><abbr title="\App\Repository\UserRepository">UserRepository</abbr></a></span>
+        <span class="phpdocumentor-signature__name">$userRepository</span>
+            </code>
+    </article>
+                                    <a id="property_urlGenerator"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$urlGenerator</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">47</span>
+    </aside>
+            <p class="phpdocumentor-summary">URL generator.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Routing\Generator\UrlGeneratorInterface">UrlGeneratorInterface</abbr></span>
+        <span class="phpdocumentor-signature__name">$urlGenerator</span>
+            </code>
+    </article>
+                                    <a id="property_csrfTokenManager"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$csrfTokenManager</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">54</span>
+    </aside>
+            <p class="phpdocumentor-summary">CSRF token manager.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Security\Csrf\CsrfTokenManagerInterface">CsrfTokenManagerInterface</abbr></span>
+        <span class="phpdocumentor-signature__name">$csrfTokenManager</span>
+            </code>
+    </article>
+                                    <a id="property_passwordEncoder"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$passwordEncoder</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">61</span>
+    </aside>
+            <p class="phpdocumentor-summary">Password encoder.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface">UserPasswordEncoderInterface</abbr></span>
+        <span class="phpdocumentor-signature__name">$passwordEncoder</span>
+            </code>
+    </article>
+                                    <a id="property_router"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$router</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">66</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Routing\RouterInterface">RouterInterface</abbr></span>
+        <span class="phpdocumentor-signature__name">$router</span>
+            </code>
+    </article>
+                                                            </section>
+        
+                    <section>
+                <h3 class="phpdocumentor-methods__header">Methods</h3>
+                                    <a id="method___construct"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">__construct()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">77</span>
+    </aside>
+        <p class="phpdocumentor-summary">LoginFormAuthenticator constructor.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">__construct</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$userRepository</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><a href="../classes/App-Repository-UserRepository.html"><abbr title="\App\Repository\UserRepository">UserRepository</abbr></a></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$urlGenerator</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Routing\Generator\UrlGeneratorInterface">UrlGeneratorInterface</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$csrfTokenManager</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Csrf\CsrfTokenManagerInterface">CsrfTokenManagerInterface</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$passwordEncoder</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface">UserPasswordEncoderInterface</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$router</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Routing\RouterInterface">RouterInterface</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$userRepository</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><a href="../classes/App-Repository-UserRepository.html"><abbr title="\App\Repository\UserRepository">UserRepository</abbr></a></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>User repository</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$urlGenerator</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Routing\Generator\UrlGeneratorInterface">UrlGeneratorInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>URL generator</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$csrfTokenManager</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Csrf\CsrfTokenManagerInterface">CsrfTokenManagerInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>CSRF token manager</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$passwordEncoder</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface">UserPasswordEncoderInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Password encoder</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$router</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Routing\RouterInterface">RouterInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_supports"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">supports()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">95</span>
+    </aside>
+        <p class="phpdocumentor-summary">Does the authenticator support the given Request?</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">supports</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$request</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">bool</span>
+    </code>
+
+        <section class="phpdocumentor-description"><p>If this returns false, the authenticator will be skipped.</p></section>
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$request</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>HTTP request</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Result</p></span>
+            
+</article>
+                                    <a id="method_getCredentials"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getCredentials()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">110</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get the authentication credentials from the request and return them
+as any type (e.g. an associate array). If you return null, authentication
+will be skipped.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getCredentials</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$request</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">array</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$request</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>HTTP request</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Credential array</p></span>
+            
+</article>
+                                    <a id="method_getUser"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getUser()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">133</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get user.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getUser</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$credentials</span> :
+                <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$userProvider</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\User\UserProviderInterface">UserProviderInterface</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><a href="../classes/App-Entity-User.html"><abbr title="\App\Entity\User">User</abbr></a>|null</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$credentials</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Credentials</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$userProvider</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\User\UserProviderInterface">UserProviderInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>User provider</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="../classes/App-Entity-User.html"><abbr title="\App\Entity\User">User</abbr></a>|null</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Result</p></span>
+            
+</article>
+                                    <a id="method_checkCredentials"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">checkCredentials()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">158</span>
+    </aside>
+        <p class="phpdocumentor-summary">Checks credentials.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">checkCredentials</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$credentials</span> :
+                <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$user</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\User\UserInterface">UserInterface</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">bool</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$credentials</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Credentials</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$user</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\User\UserInterface">UserInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>User</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Result</p></span>
+            
+</article>
+                                    <a id="method_getPassword"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getPassword()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">170</span>
+    </aside>
+        <p class="phpdocumentor-summary">Used to upgrade (rehash) the user&#039;s password automatically over time.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getPassword</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$credentials</span> :
+                <span class="phpdocumentor-signature__argument__return-type">array</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">string|null</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$credentials</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">array</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>User credentials</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Hashed password</p></span>
+            
+</article>
+                                    <a id="method_onAuthenticationSuccess"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">onAuthenticationSuccess()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">186</span>
+    </aside>
+        <p class="phpdocumentor-summary">Called when authentication executed and was successful!</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">onAuthenticationSuccess</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$request</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$token</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\Authentication\Token\TokenInterface">TokenInterface</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$providerKey</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\RedirectResponse">RedirectResponse</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$request</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Request">Request</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>HTTP request</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$token</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Security\Core\Authentication\Token\TokenInterface">TokenInterface</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Authentication token</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$providerKey</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The key of the firewall</p></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">throws</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\RedirectResponse">RedirectResponse</abbr></span>
+                    &mdash; <span class="phpdocumentor-description"><p>Redirect response</p></span>
+            
+</article>
+                                    <a id="method_getLoginUrl"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--protected
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getLoginUrl()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Security/LoginFormAuthenticator.php"><a href="../files/src-security-loginformauthenticator.html"><abbr title="src/Security/LoginFormAuthenticator.php">LoginFormAuthenticator.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">200</span>
+    </aside>
+        <p class="phpdocumentor-summary">Return the URL to the login page.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+                                <span class="phpdocumentor-signature__name">getLoginUrl</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">string</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash; <span class="phpdocumentor-description"><p>Login URL</p></span>
+            
+</article>
+                                                            </section>
+            </article>
+            <div data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+
+                <h2>Search results</h2>
+                <ul class="phpdocumentor-search-results__entries">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

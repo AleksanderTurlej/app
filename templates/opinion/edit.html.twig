@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{'Edit Opinion'|trans}}</h1>
 
-    {{ include('opinion/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('opinion/_form.html.twig', {'button_label': 'Update'|trans}) }}
 
     <a href="{{ path('opinion_index') }}">{{'back to list'|trans}}</a>
 

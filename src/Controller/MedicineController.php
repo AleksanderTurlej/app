@@ -5,12 +5,10 @@ namespace App\Controller;
 use App\Entity\Medicine;
 use App\Form\MedicineType;
 use App\Repository\MedicineRepository;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/medicine")
@@ -22,6 +20,7 @@ class MedicineController extends AbstractController
      *
      * @param Request            $request
      * @param MedicineRepository $medicineRepository
+     * @param PaginatorInterface $paginator
      *
      * @return Response
      */
@@ -32,7 +31,6 @@ class MedicineController extends AbstractController
             $request->query->getInt('page', 1),
             Medicine::LIMIT,
         );
-
 
         return $this->render('medicine/index.html.twig', [
             'medicines' => $medicines,
@@ -57,7 +55,6 @@ class MedicineController extends AbstractController
             $entityManager->persist($medicine);
             $entityManager->flush();
             $this->addFlash('success', 'medicine_successfully_added');
-
 
             return $this->redirectToRoute('medicine_index');
         }
@@ -99,7 +96,6 @@ class MedicineController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'medicine_successfully_edited');
 
-
             return $this->redirectToRoute('medicine_index');
         }
 
@@ -124,7 +120,6 @@ class MedicineController extends AbstractController
             $entityManager->remove($medicine);
             $entityManager->flush();
             $this->addFlash('danger', 'medicine_removed');
-
         }
 
         return $this->redirectToRoute('medicine_index');

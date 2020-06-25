@@ -8,7 +8,6 @@ use App\Repository\SubstanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/substance")
@@ -47,7 +46,6 @@ class SubstanceController extends AbstractController
             $entityManager->persist($substance);
             $entityManager->flush();
             $this->addFlash('success', 'substance_added_successfully');
-
 
             return $this->redirectToRoute('substance_index');
         }
@@ -89,7 +87,6 @@ class SubstanceController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'substance_edited_successfully');
 
-
             return $this->redirectToRoute('substance_index');
         }
 
@@ -113,8 +110,7 @@ class SubstanceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($substance);
             $entityManager->flush();
-            $this->addFlash('success', 'substance_removed');
-
+            $this->addFlash('danger', 'substance_removed');
         }
 
         return $this->redirectToRoute('substance_index');

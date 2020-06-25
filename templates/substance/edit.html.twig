@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{'Edit Substance'|trans}}</h1>
 
-    {{ include('substance/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('substance/_form.html.twig', {'button_label': 'Update'|trans}) }}
 
     <a href="{{ path('substance_index') }}">{{'back to list'|trans}}</a>
 

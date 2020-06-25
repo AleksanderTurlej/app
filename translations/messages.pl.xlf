@@ -59,7 +59,7 @@
       </trans-unit>
       <trans-unit id="Kw3N1AA" resname="actions">
         <source>actions</source>
-        <target>akcje</target>
+        <target>Akcje</target>
       </trans-unit>
       <trans-unit id="2X1R03C" resname="Favourites">
         <source>Favourites</source>
@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="HGMzUJ3" resname="show">
         <source>show</source>
-        <target>Pokaz</target>
+        <target>Pokaż</target>
       </trans-unit>
       <trans-unit id="JiEhxTc" resname="edit">
         <source>edit</source>
@@ -195,7 +195,7 @@
       </trans-unit>
       <trans-unit id="FPe7r1b" resname="Place sticky footer content here.">
         <source>Place sticky footer content here.</source>
-        <target>__Place sticky footer content here.</target>
+        <target>Stopka.</target>
       </trans-unit>
       <trans-unit id="awzJBNC" resname="Users">
         <source>Users</source>
@@ -265,6 +265,105 @@
         <source>Delete</source>
         <target>Usun</target>
       </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Aktualizuj</target>
+      </trans-unit>
+
+      <trans-unit id="afDs3z1" resname="Confirm password">
+        <source>Confirm password</source>
+        <target>Potwierdz haslo</target>
+      </trans-unit>
+      <trans-unit id="PSCDHtP" resname="is_admin">
+        <source>is_admin</source>
+        <target>Admin</target>
+      </trans-unit>
+
+    <trans-unit id="jbRPTLl" resname="added_as_favourite">
+        <source>added_as_favourite</source>
+        <target>dodano do ulubionych</target>
+    </trans-unit>
+        <trans-unit id="BQD5mwy" resname="comment_added">
+        <source>comment_added</source>
+    <target>__comment_added</target>
+    </trans-unit>
+        <trans-unit id="XlUHCqo" resname="comment_deleted">
+        <source>comment_deleted</source>
+    <target>__comment_deleted</target>
+    </trans-unit>
+        <trans-unit id="IaX7suh" resname="comment_successfully_edited">
+        <source>comment_successfully_edited</source>
+    <target>__comment_successfully_edited</target>
+    </trans-unit>
+        <trans-unit id="lySM6xq" resname="disease_added">
+        <source>disease_added</source>
+    <target>__disease_added</target>
+    </trans-unit>
+        <trans-unit id="RPTla4i" resname="disease_deleted">
+        <source>disease_deleted</source>
+    <target>__disease_deleted</target>
+    </trans-unit>
+        <trans-unit id="J0Gy4Qu" resname="disease_edited">
+        <source>disease_edited</source>
+    <target>__disease_edited</target>
+    </trans-unit>
+        <trans-unit id="J6BFZvM" resname="invalid_confirmed_password">
+        <source>invalid_confirmed_password</source>
+    <target>__invalid_confirmed_password</target>
+    </trans-unit>
+        <trans-unit id="7E8kzN8" resname="log_in_to_add_comment">
+        <source>log_in_to_add_comment</source>
+    <target>__log_in_to_add_comment</target>
+    </trans-unit>
+        <trans-unit id="zN2krD4" resname="log_in_to_add_favourite">
+        <source>log_in_to_add_favourite</source>
+    <target>__log_in_to_add_favourite</target>
+    </trans-unit>
+        <trans-unit id="DY586dg" resname="medicine_removed">
+        <source>medicine_removed</source>
+    <target>__medicine_removed</target>
+    </trans-unit>
+        <trans-unit id="RDGyrhE" resname="medicine_successfully_added">
+        <source>medicine_successfully_added</source>
+    <target>__medicine_successfully_added</target>
+    </trans-unit>
+        <trans-unit id="bXNJ04h" resname="medicine_successfully_edited">
+        <source>medicine_successfully_edited</source>
+    <target>__medicine_successfully_edited</target>
+    </trans-unit>
+        <trans-unit id="0sTewQE" resname="removed_from_favourites">
+        <source>removed_from_favourites</source>
+    <target>__removed_from_favourites</target>
+    </trans-unit>
+        <trans-unit id="YZ4MCrd" resname="substance_added_successfully">
+        <source>substance_added_successfully</source>
+    <target>__substance_added_successfully</target>
+    </trans-unit>
+        <trans-unit id="L5afN6k" resname="substance_edited_successfully">
+        <source>substance_edited_successfully</source>
+    <target>__substance_edited_successfully</target>
+    </trans-unit>
+        <trans-unit id="vVjsPqn" resname="substance_removed">
+        <source>substance_removed</source>
+    <target>__substance_removed</target>
+    </trans-unit>
+        <trans-unit id="Vq3Es9A" resname="user_added_successfully">
+        <source>user_added_successfully</source>
+    <target>__user_added_successfully</target>
+    </trans-unit>
+        <trans-unit id="OyU94DG" resname="user_deleted">
+        <source>user_deleted</source>
+    <target>__user_deleted</target>
+    </trans-unit>
+        <trans-unit id="skFxEBy" resname="user_edited_successfully">
+        <source>user_edited_successfully</source>
+    <target>__user_edited_successfully</target>
+    </trans-unit>
+    <trans-unit id="8pZyAQb" resname="you_are_not_allowed_to_change_role">
+        <source>you_are_not_allowed_to_change_role</source>
+        <target>__you_are_not_allowed_to_change_role</target>
+    </trans-unit>
+
     </body>
   </file>
 </xliff>

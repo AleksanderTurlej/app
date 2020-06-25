@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{'Edit Favourites'|trans}}</h1>
 
-    {{ include('favourites/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('favourites/_form.html.twig', {'button_label': 'Update'|trans}) }}
 
     <a href="{{ path('favourites_index') }}">{{'back to list'|trans}}</a>
 

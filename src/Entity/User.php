@@ -7,10 +7,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -26,7 +23,6 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
  *
  * @UniqueEntity(fields={"email"})
  */
-
 class User implements UserInterface
 {
     /**
@@ -60,7 +56,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * Nick
+     * Nick.
      *
      * @var string|null
      *
@@ -131,17 +127,11 @@ class User implements UserInterface
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNick(): ?string
     {
         return $this->nick;
     }
 
-    /**
-     * @param string|null $nick
-     */
     public function setNick(?string $nick): void
     {
         $this->nick = $nick;
@@ -156,7 +146,6 @@ class User implements UserInterface
     {
         return $this->email;
     }
-
 
     /**
      * Setter for the E-mail.
@@ -246,17 +235,11 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return string
-     */
     public function getConfirmPassword(): string
     {
         return $this->confirmPassword;
     }
 
-    /**
-     * @param string $confirmPassword
-     */
     public function setConfirmPassword(string $confirmPassword): void
     {
         $this->confirmPassword = $confirmPassword;
@@ -328,6 +311,4 @@ class User implements UserInterface
     {
         return in_array(self::ROLE_ADMIN, $this->getRoles());
     }
-
-
 }

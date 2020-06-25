@@ -3,9 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Medicine;
-use App\Entity\Substance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use PDO;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -25,42 +26,35 @@ class MedicineRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string|null $name
+     * @param Request $request
      *
-     * @return Medicine[] Returns an array of Medicine objects
+     * @return Query
      */
-    public function search(Request $request)
+    public function search(Request $request): Query
     {
         $searchBy = $request->get('searchBy');
         $name = $request->get('name');
         $builder = $this->createQueryBuilder('m');
 
-        if(null === $name){
-
+        if (null === $name) {
             return $builder
                 ->getQuery();
-
         }
         if (self::SEARCH_BY_DISEASES == $searchBy) {
             $builder
                 ->join('m.diseases', 'd')
                 ->andWhere('d.name LIKE :string')
 
-            ->setParameter('string', '%'.$name.'%', \PDO::PARAM_STR);
+            ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
 
-        return $builder
+            return $builder
             ->getQuery();
-        }
-        else {
-//            dd($searchBy);
-
+        } else {
             $builder->andWhere('m.name LIKE :string')
-                ->setParameter('string', '%' . $name . '%', \PDO::PARAM_STR);
+                ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
 
             return $builder
                 ->getQuery();
         }
     }
-
-
 }

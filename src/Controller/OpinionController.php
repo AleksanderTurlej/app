@@ -7,11 +7,10 @@ use App\Entity\Opinion;
 use App\Entity\User;
 use App\Form\OpinionType;
 use App\Repository\OpinionRepository;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/opinion")
@@ -20,6 +19,10 @@ class OpinionController extends AbstractController
 {
     /**
      * @Route("/", name="opinion_index", methods={"GET"})
+     *
+     * @param OpinionRepository $opinionRepository
+     *
+     * @return Response
      */
     public function index(OpinionRepository $opinionRepository): Response
     {
@@ -30,16 +33,23 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/new/{id}", name="opinion_new", methods={"GET","POST"})
+     *
+     * @param Request           $request
+     * @param Medicine          $medicine
+     * @param Security          $security
+     * @param OpinionRepository $opinionRepository
+     *
+     * @return Response
      */
     public function new(Request $request, Medicine $medicine, Security $security, OpinionRepository $opinionRepository): Response
     {
         $user = $security->getUser();
-        if(!$user instanceof User){
+        if (!$user instanceof User) {
             $this->addFlash('danger', 'log_in_to_add_comment');
         }
         $this->denyAccessUnlessGranted(User::ROLE_USER);
 
-        $opinion = $opinionRepository->findOneBy(['userId'=>$user->getId(), 'medicineId'=>$medicine->getId()]) ?? new Opinion();
+        $opinion = $opinionRepository->findOneBy(['userId' => $user->getId(), 'medicineId' => $medicine->getId()]) ?? new Opinion();
         $form = $this->createForm(OpinionType::class, $opinion);
         $form->handleRequest($request);
 
@@ -62,6 +72,10 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}", name="opinion_show", methods={"GET"})
+     *
+     * @param Opinion $opinion
+     *
+     * @return Response
      */
     public function show(Opinion $opinion): Response
     {
@@ -72,6 +86,11 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="opinion_edit", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param Opinion $opinion
+     *
+     * @return Response
      */
     public function edit(Request $request, Opinion $opinion): Response
     {
@@ -93,6 +112,11 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}", name="opinion_delete", methods={"DELETE"})
+     *
+     * @param Request $request
+     * @param Opinion $opinion
+     *
+     * @return Response
      */
     public function delete(Request $request, Opinion $opinion): Response
     {
@@ -101,7 +125,6 @@ class OpinionController extends AbstractController
             $entityManager->remove($opinion);
             $entityManager->flush();
             $this->addFlash('danger', 'comment_deleted');
-
         }
 
         return $this->redirectToRoute('opinion_index');

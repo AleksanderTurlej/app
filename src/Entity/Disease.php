@@ -4,16 +4,13 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DiseaseRepository")
  */
 class Disease
 {
-
-    public const LIMIT=10;
-
+    public const LIMIT = 10;
 
     /**
      * @ORM\Id()

@@ -9,7 +9,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/disease")
@@ -18,6 +17,12 @@ class DiseaseController extends AbstractController
 {
     /**
      * @Route("/public", name="disease_index", methods={"GET"})
+     *
+     * @param Request            $request
+     * @param DiseaseRepository  $diseaseRepository
+     * @param PaginatorInterface $paginator
+     *
+     * @return Response
      */
     public function index(Request $request, DiseaseRepository $diseaseRepository, PaginatorInterface $paginator): Response
     {
@@ -34,6 +39,10 @@ class DiseaseController extends AbstractController
 
     /**
      * @Route("/new", name="disease_new", methods={"GET","POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -47,7 +56,6 @@ class DiseaseController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'disease_added');
 
-
             return $this->redirectToRoute('disease_index');
         }
 
@@ -59,6 +67,10 @@ class DiseaseController extends AbstractController
 
     /**
      * @Route("/public/{id}", name="disease_show", methods={"GET"})
+     *
+     * @param Disease $disease
+     *
+     * @return Response
      */
     public function show(Disease $disease): Response
     {
@@ -69,6 +81,11 @@ class DiseaseController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="disease_edit", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param Disease $disease
+     *
+     * @return Response
      */
     public function edit(Request $request, Disease $disease): Response
     {
@@ -90,6 +107,11 @@ class DiseaseController extends AbstractController
 
     /**
      * @Route("/{id}", name="disease_delete", methods={"DELETE"})
+     *
+     * @param Request $request
+     * @param Disease $disease
+     *
+     * @return Response
      */
     public function delete(Request $request, Disease $disease): Response
     {
@@ -98,7 +120,6 @@ class DiseaseController extends AbstractController
             $entityManager->remove($disease);
             $entityManager->flush();
             $this->addFlash('danger', 'disease_deleted');
-
         }
 
         return $this->redirectToRoute('disease_index');

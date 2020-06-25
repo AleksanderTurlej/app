@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OpinionRepository")
  */
@@ -28,6 +26,7 @@ class Opinion
 
     /**
      * @ORM\Column(type="integer")
+     *
      * @var int
      */
     private $userId;
@@ -39,6 +38,7 @@ class Opinion
 
     /**
      * @ORM\Column(type="integer")
+     *
      * @var int
      */
     private $medicineId;
@@ -101,37 +101,23 @@ class Opinion
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getUserId(): int
     {
         return $this->userId;
     }
 
-    /**
-     * @param int $userId
-     */
     public function setUserId(int $userId): void
     {
         $this->userId = $userId;
     }
 
-    /**
-     * @return int
-     */
     public function getMedicineId(): int
     {
         return $this->medicineId;
     }
 
-    /**
-     * @param int $medicineId
-     */
     public function setMedicineId(int $medicineId): void
     {
         $this->medicineId = $medicineId;
     }
-
-
 }
