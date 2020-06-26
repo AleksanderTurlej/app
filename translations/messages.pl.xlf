@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="QoghNQ6" resname="login">
         <source>login</source>
-        <target>Zaloguj</target>
+        <target>Zaloguj się</target>
       </trans-unit>
       <trans-unit id="EhVukhv" resname="Id">
         <source>Id</source>
@@ -203,7 +203,7 @@
       </trans-unit>
       <trans-unit id="0rEgIU_" resname="Substances">
         <source>Substances</source>
-        <target>Substance</target>
+        <target>Substancje</target>
       </trans-unit>
       <trans-unit id="uFHMq6L" resname="Diseases">
         <source>Diseases</source>
