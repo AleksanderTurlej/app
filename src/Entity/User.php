@@ -26,7 +26,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity(fields={"email"})
  */
-class User implements UserInterface
+class User extends AbstractEntity implements UserInterface
 {
     /**
      * Role user.
@@ -75,6 +75,8 @@ class User implements UserInterface
      *
      * @var string
      *
+     * @Assert\Email()
+     *
      * @ORM\Column(
      *     type="string",
      *     length=180,
@@ -87,6 +89,8 @@ class User implements UserInterface
      * Roles.
      *
      * @ORM\Column(type="json")
+     *
+     * @var array
      */
     private $roles = [];
 
@@ -101,19 +105,34 @@ class User implements UserInterface
 
     /**
      * @var string
+     *
+     * confirmPassword
      */
     private $confirmPassword = '';
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="user")
+     *
+     * opinions
+     *
+     * @var mixed
      */
     private $opinions;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="user")
+     *
+     * favourites
+     *
+     * @var mixed
      */
     private $favourites;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->opinions = new ArrayCollection();
@@ -129,12 +148,23 @@ class User implements UserInterface
     {
         return $this->id;
     }
-
+    
+    /**
+     * getNick
+     *
+     * @return string
+     */
     public function getNick(): ?string
     {
         return $this->nick;
     }
-
+    
+    /**
+     * setNick
+     *
+     * @param  mixed $nick
+     * @return void
+     */
     public function setNick(?string $nick): void
     {
         $this->nick = $nick;
@@ -237,12 +267,23 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
+    
+    /**
+     * getConfirmPassword
+     *
+     * @return string
+     */
     public function getConfirmPassword(): string
     {
         return $this->confirmPassword;
     }
-
+    
+    /**
+     * setConfirmPassword
+     *
+     * @param  mixed $confirmPassword
+     * @return void
+     */
     public function setConfirmPassword(string $confirmPassword): void
     {
         $this->confirmPassword = $confirmPassword;
@@ -255,7 +296,13 @@ class User implements UserInterface
     {
         return $this->opinions;
     }
-
+    
+    /**
+     * addOpinion
+     *
+     * @param  mixed $opinion
+     * @return self
+     */
     public function addOpinion(Opinion $opinion): self
     {
         if (!$this->opinions->contains($opinion)) {
@@ -265,7 +312,13 @@ class User implements UserInterface
 
         return $this;
     }
-
+    
+    /**
+     * removeOpinion
+     *
+     * @param  mixed $opinion
+     * @return self
+     */
     public function removeOpinion(Opinion $opinion): self
     {
         if ($this->opinions->contains($opinion)) {
@@ -286,7 +339,13 @@ class User implements UserInterface
     {
         return $this->favourites;
     }
-
+    
+    /**
+     * addFavourite
+     *
+     * @param  mixed $favourite
+     * @return self
+     */
     public function addFavourite(Favourites $favourite): self
     {
         if (!$this->favourites->contains($favourite)) {
@@ -296,7 +355,13 @@ class User implements UserInterface
 
         return $this;
     }
-
+    
+    /**
+     * removeFavourite
+     *
+     * @param  mixed $favourite
+     * @return self
+     */
     public function removeFavourite(Favourites $favourite): self
     {
         if ($this->favourites->contains($favourite)) {
@@ -309,7 +374,12 @@ class User implements UserInterface
 
         return $this;
     }
-
+    
+    /**
+     * isAdmin
+     *
+     * @return bool
+     */
     public function isAdmin(): bool
     {
         return in_array(self::ROLE_ADMIN, $this->getRoles());

@@ -15,26 +15,41 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MedicineType extends AbstractType
 {
+    
+    /**
+     * buildForm
+     *
+     * @param  mixed $builder
+     * @param  mixed $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['attr' => ['placeholder' => 'enter medicine',
-            ], ])
-            ->add('price', NumberType::class)
-            ->add('weight', NumberType::class)
-            ->add('isRecipeRequired', CheckboxType::class, ['required' => false])
-            ->add('diseases', EntityType::class, ['class' => Disease::class, 'choice_label' => 'name', 'multiple' => true])
+            ->add('name', TextType::class, ['label'=>'name', 'attr' => ['placeholder' => 'enter medicine',
+            ], ], )
+            ->add('price', NumberType::class, ['label'=>'price'])
+            ->add('weight', NumberType::class, ['label'=>'weight'])
+            ->add('isRecipeRequired', CheckboxType::class, ['label'=>'isRecipeRequired', 'required' => false])
+            ->add('diseases', EntityType::class, ['label'=>'disease', 'class' => Disease::class, 'choice_label' => 'name', 'multiple' => true])
             ->add(
                 'substances',
                 EntityType::class,
                 [
+                    'label'=>'substances',
                     'class' => Substance::class,
                     'choice_label' => 'name',
                     'multiple' => true,
                 ]
             );
     }
-
+    
+    /**
+     * configureOptions
+     *
+     * @param  mixed $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

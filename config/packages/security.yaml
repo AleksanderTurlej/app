@@ -39,6 +39,7 @@ security:
         - { path: ^/(login|logout), roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/(medicine|substance|disease|user)/public/*, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/(favourites|opinion), roles: ROLE_USER}
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/, roles: ROLE_ADMIN}
 
         #        - { path: ^/medicine/\d+, roles: IS_AUTHENTICATED_ANONYMOUSLY}

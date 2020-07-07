@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MedicineRepository")
  */
-class Medicine
+class Medicine extends AbstractEntity
 {
     public const LIMIT = 10;
 
@@ -19,49 +19,90 @@ class Medicine
      * @ORM\Column(type="integer")
      *
      * @var int
+     *
+     * id
+     *
+     * @var mixed
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * name
+     *
+     * @var mixed
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * price
+     *
+     * @var mixed
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * weight
+     *
+     * @var mixed
      */
     private $weight;
 
     /**
      * @ORM\Column(type="boolean")
+     *
+     * isRecipeRequired
+     *
+     * @var mixed
      */
     private $isRecipeRequired;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Substance", inversedBy="medicines")
+     *
+     * substances
+     *
+     * @var mixed
      */
     private $substances;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Disease", inversedBy="medicines")
+     *
+     * diseases
+     *
+     * @var mixed
      */
     private $diseases;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine")
+     *
+     * opinions
+     *
+     * @var mixed
      */
     private $opinions;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine")
+     *
+     * favourites
+     *
+     * @var mixed
      */
     private $favourites;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->substances = new ArrayCollection();
@@ -69,41 +110,79 @@ class Medicine
         $this->opinions = new ArrayCollection();
         $this->favourites = new ArrayCollection();
     }
-
+    
+    /**
+     * getId
+     *
+     * @return int
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    
+    /**
+     * getName
+     *
+     * @return string
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
-
+    
+    /**
+     * setName
+     *
+     * @param  mixed $name
+     * @return self
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
-
+    
+    /**
+     * getPrice
+     *
+     * @return int
+     */
     public function getPrice(): ?int
     {
         return $this->price;
     }
-
+    
+    /**
+     * setPrice
+     *
+     * @param  mixed $price
+     * @return self
+     */
     public function setPrice(int $price): self
     {
         $this->price = $price;
 
         return $this;
     }
-
+    
+    /**
+     * getWeight
+     *
+     * @return int
+     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
-
+    
+    /**
+     * setWeight
+     *
+     * @param  mixed $weight
+     * @return self
+     */
     public function setWeight(int $weight): self
     {
         $this->weight = $weight;
@@ -111,30 +190,45 @@ class Medicine
         return $this;
     }
 
+    
     /**
-     * @return mixed
+     * getIsRecipeRequired
+     *
+     * @return void
      */
     public function getIsRecipeRequired()
     {
         return $this->isRecipeRequired;
     }
-
+    
     /**
-     * @param mixed $isRecipeRequired
+     * setIsRecipeRequired
+     *
+     * @param  mixed $isRecipeRequired
+     * @return void
      */
     public function setIsRecipeRequired($isRecipeRequired): void
     {
         $this->isRecipeRequired = $isRecipeRequired;
     }
 
+    
     /**
-     * @return Collection|Substance[]
+     * getSubstances
+     *
+     * @return Collection
      */
     public function getSubstances(): Collection
     {
         return $this->substances;
     }
-
+    
+    /**
+     * addSubstance
+     *
+     * @param  mixed $substance
+     * @return self
+     */
     public function addSubstance(Substance $substance): self
     {
         if (!$this->substances->contains($substance)) {
@@ -143,7 +237,13 @@ class Medicine
 
         return $this;
     }
-
+    
+    /**
+     * removeSubstance
+     *
+     * @param  mixed $substance
+     * @return self
+     */
     public function removeSubstance(Substance $substance): self
     {
         if ($this->substances->contains($substance)) {
@@ -152,15 +252,23 @@ class Medicine
 
         return $this;
     }
-
+    
     /**
-     * @return Collection|Disease[]
+     * getDiseases
+     *
+     * @return Collection
      */
     public function getDiseases(): Collection
     {
         return $this->diseases;
     }
-
+    
+    /**
+     * addDisease
+     *
+     * @param  mixed $disease
+     * @return self
+     */
     public function addDisease(Disease $disease): self
     {
         if (!$this->diseases->contains($disease)) {
@@ -169,7 +277,13 @@ class Medicine
 
         return $this;
     }
-
+    
+    /**
+     * removeDisease
+     *
+     * @param  mixed $disease
+     * @return self
+     */
     public function removeDisease(Disease $disease): self
     {
         if ($this->diseases->contains($disease)) {
@@ -178,15 +292,23 @@ class Medicine
 
         return $this;
     }
-
+    
     /**
-     * @return Collection|Opinion[]
+     * getOpinions
+     *
+     * @return Collection
      */
     public function getOpinions(): Collection
     {
         return $this->opinions;
     }
-
+    
+    /**
+     * addOpinion
+     *
+     * @param  mixed $opinion
+     * @return self
+     */
     public function addOpinion(Opinion $opinion): self
     {
         if (!$this->opinions->contains($opinion)) {
@@ -196,7 +318,13 @@ class Medicine
 
         return $this;
     }
-
+    
+    /**
+     * removeOpinion
+     *
+     * @param  mixed $opinion
+     * @return self
+     */
     public function removeOpinion(Opinion $opinion): self
     {
         if ($this->opinions->contains($opinion)) {
@@ -209,15 +337,23 @@ class Medicine
 
         return $this;
     }
-
+    
     /**
-     * @return Collection|Favourites[]
+     * getFavourites
+     *
+     * @return Collection
      */
     public function getFavourites(): Collection
     {
         return $this->favourites;
     }
-
+    
+    /**
+     * addFavourite
+     *
+     * @param  mixed $favourite
+     * @return self
+     */
     public function addFavourite(Favourites $favourite): self
     {
         if (!$this->favourites->contains($favourite)) {
@@ -227,7 +363,13 @@ class Medicine
 
         return $this;
     }
-
+    
+    /**
+     * removeFavourite
+     *
+     * @param  mixed $favourite
+     * @return self
+     */
     public function removeFavourite(Favourites $favourite): self
     {
         if ($this->favourites->contains($favourite)) {

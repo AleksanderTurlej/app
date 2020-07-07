@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Medicine;
 use App\Form\MedicineType;
 use App\Repository\MedicineRepository;
+use App\Service\PersisterService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,16 +46,14 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, PersisterService $persisterService): Response
     {
         $medicine = new Medicine();
         $form = $this->createForm(MedicineType::class, $medicine);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($medicine);
-            $entityManager->flush();
+            $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_added');
 
             return $this->redirectToRoute('medicine_index');
@@ -88,13 +87,13 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function edit(Request $request, Medicine $medicine): Response
+    public function edit(Request $request, Medicine $medicine, PersisterService $persisterService): Response
     {
         $form = $this->createForm(MedicineType::class, $medicine);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_edited');
 
             return $this->redirectToRoute('medicine_index');
@@ -114,12 +113,10 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, Medicine $medicine): Response
+    public function delete(Request $request, Medicine $medicine, PersisterService $persisterService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$medicine->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($medicine);
-            $entityManager->flush();
+            $persisterService->remove($medicine);
             $this->addFlash('danger', 'medicine_removed');
         }
 

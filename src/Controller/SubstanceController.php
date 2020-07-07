@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Substance;
 use App\Form\SubstanceType;
 use App\Repository\SubstanceRepository;
+use App\Service\PersisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,16 +37,14 @@ class SubstanceController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, PersisterService $persisterService): Response
     {
         $substance = new Substance();
         $form = $this->createForm(SubstanceType::class, $substance);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($substance);
-            $entityManager->flush();
+            $persisterService->save($substance);
             $this->addFlash('success', 'substance_added_successfully');
 
             return $this->redirectToRoute('substance_index');
@@ -79,13 +78,13 @@ class SubstanceController extends AbstractController
      *
      * @return Response
      */
-    public function edit(Request $request, Substance $substance): Response
+    public function edit(Request $request, Substance $substance, PersisterService $persisterService): Response
     {
         $form = $this->createForm(SubstanceType::class, $substance);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $persisterService->save($substance);
             $this->addFlash('success', 'substance_edited_successfully');
 
             return $this->redirectToRoute('substance_index');
@@ -105,12 +104,10 @@ class SubstanceController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, Substance $substance): Response
+    public function delete(Request $request, Substance $substance, PersisterService $persisterService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$substance->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($substance);
-            $entityManager->flush();
+            $persisterService->remove($substance);
             $this->addFlash('danger', 'substance_removed');
         }
 

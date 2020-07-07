@@ -7,6 +7,7 @@ use App\Entity\Opinion;
 use App\Entity\User;
 use App\Form\OpinionType;
 use App\Repository\OpinionRepository;
+use App\Service\PersisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,7 @@ class OpinionController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request, Medicine $medicine, Security $security, OpinionRepository $opinionRepository): Response
+    public function new(Request $request, Medicine $medicine, Security $security, OpinionRepository $opinionRepository, PersisterService $persisterService): Response
     {
         $user = $security->getUser();
         if (!$user instanceof User) {
@@ -57,9 +58,7 @@ class OpinionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid() && $user instanceof User) {
             $opinion->setMedicine($medicine);
             $opinion->setUser($user);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($opinion);
-            $entityManager->flush();
+            $persisterService->save($opinion);
             $this->addFlash('success', 'comment_added');
 
             return $this->redirectToRoute('opinion_index');
@@ -93,13 +92,13 @@ class OpinionController extends AbstractController
      *
      * @return Response
      */
-    public function edit(Request $request, Opinion $opinion): Response
+    public function edit(Request $request, Opinion $opinion, PersisterService $persisterService): Response
     {
         $form = $this->createForm(OpinionType::class, $opinion);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $persisterService->save($opinion);
             $this->addFlash('success', 'comment_successfully_edited');
 
             return $this->redirectToRoute('opinion_index');
@@ -119,12 +118,10 @@ class OpinionController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, Opinion $opinion): Response
+    public function delete(Request $request, Opinion $opinion, PersisterService $persisterService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$opinion->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($opinion);
-            $entityManager->flush();
+            $persisterService->remove($opinion);
             $this->addFlash('danger', 'comment_deleted');
         }
 

@@ -5,12 +5,12 @@ namespace App\Controller;
 use App\Entity\Disease;
 use App\Form\DiseaseType;
 use App\Repository\DiseaseRepository;
+use App\Service\PersisterService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 /**
  * @Route("/disease")
@@ -46,16 +46,14 @@ class DiseaseController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, PersisterService $persisterService): Response
     {
         $disease = new Disease();
         $form = $this->createForm(DiseaseType::class, $disease);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($disease);
-            $entityManager->flush();
+            $persisterService->save($disease);
             $this->addFlash('success', 'disease_added');
 
             return $this->redirectToRoute('disease_index');
@@ -89,13 +87,13 @@ class DiseaseController extends AbstractController
      *
      * @return Response
      */
-    public function edit(Request $request, Disease $disease): Response
+    public function edit(Request $request, Disease $disease, DiseaseRepository $diseaseRepository): Response
     {
         $form = $this->createForm(DiseaseType::class, $disease);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $diseaseRepository->save($disease);
             $this->addFlash('success', 'disease_edited');
 
             return $this->redirectToRoute('disease_index');
@@ -115,12 +113,10 @@ class DiseaseController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, Disease $disease): Response
+    public function delete(Request $request, Disease $disease, DiseaseRepository $diseaseRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$disease->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($disease);
-            $entityManager->flush();
+            $diseaseRepository->remove($disease);
             $this->addFlash('danger', 'disease_deleted');
         }
 

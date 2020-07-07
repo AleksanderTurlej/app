@@ -9,7 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FavouritesType extends AbstractType
 {
-
+    
+    /**
+     * configureOptions
+     *
+     * @param  mixed $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

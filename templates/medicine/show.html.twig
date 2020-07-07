@@ -41,7 +41,7 @@
     <a href="{{ path('medicine_index') }}">{{'back to list'|trans}}</a><br />
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'edit'|edit}}</a>
+    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'edit'|trans}}</a>
     {{ include('medicine/_delete_form.html.twig') }}
     {% endif %}
 
