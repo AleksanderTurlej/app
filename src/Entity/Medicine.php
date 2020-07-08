@@ -79,8 +79,6 @@ class Medicine extends AbstractEntity
      *
      * substances
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
-     *
      * @var ArrayCollection
      */
     private $substances;
@@ -89,8 +87,6 @@ class Medicine extends AbstractEntity
      * @ORM\ManyToMany(targetEntity="App\Entity\Disease", inversedBy="medicines", fetch="EXTRA_LAZY")
      *
      * diseases
-     *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
      *
      * @var ArrayCollection
      */
@@ -101,8 +97,6 @@ class Medicine extends AbstractEntity
      *
      * opinions
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
-     *
      * @var ArrayCollection
      */
     private $opinions;
@@ -111,8 +105,6 @@ class Medicine extends AbstractEntity
      * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine", fetch="EXTRA_LAZY")
      *
      * favourites
-     *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
      *
      * @var ArrayCollection
      */

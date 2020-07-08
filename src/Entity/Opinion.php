@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OpinionRepository")
  */
@@ -26,7 +25,7 @@ class Opinion extends AbstractEntity
      * @ORM\Column(type="string", length=255)
      *
      * content
-     * 
+     *
      * @Assert\Type(type="string")
      * @Assert\NotBlank
      * @Assert\Length(min="20",max="255")
@@ -39,7 +38,7 @@ class Opinion extends AbstractEntity
      * @ORM\Column(type="integer")
      *
      * rating
-     * 
+     *
      * @Assert\Type(type="int")
      * @Assert\NotBlank
      *

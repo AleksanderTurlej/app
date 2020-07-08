@@ -45,8 +45,6 @@ class Disease extends AbstractEntity
      *
      * medicines
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
-     *
      * @var ArrayCollection
      */
     private $medicines;
