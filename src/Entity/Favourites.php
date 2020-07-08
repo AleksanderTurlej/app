@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FavouritesRepository")
@@ -18,7 +18,7 @@ class Favourites extends AbstractEntity
      *
      * id
      *
-     * @var mixed
+     * @var int
      */
     private $id;
 
@@ -39,9 +39,9 @@ class Favourites extends AbstractEntity
      * @var mixed
      */
     private $user;
-    
+
     /**
-     * getId
+     * getId.
      *
      * @return int
      */
@@ -49,9 +49,9 @@ class Favourites extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
-     * getMedicine
+     * getMedicine.
      *
      * @return Medicine
      */
@@ -59,11 +59,12 @@ class Favourites extends AbstractEntity
     {
         return $this->medicine;
     }
-    
+
     /**
-     * setMedicine
+     * setMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function setMedicine(?Medicine $medicine): self
@@ -72,9 +73,9 @@ class Favourites extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getUser
+     * getUser.
      *
      * @return User
      */
@@ -82,11 +83,12 @@ class Favourites extends AbstractEntity
     {
         return $this->user;
     }
-    
+
     /**
-     * setUser
+     * setUser.
      *
-     * @param  mixed $user
+     * @param mixed $user
+     *
      * @return self
      */
     public function setUser(?User $user): self

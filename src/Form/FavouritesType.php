@@ -13,7 +13,7 @@ class FavouritesType extends AbstractType
     /**
      * configureOptions
      *
-     * @param  mixed $resolver
+     * @param  OptionsResolver $resolver
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver)

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 
-    <a class="navbar-brand" href="{{ path('medicine_index') }}">Home</a>
+    <a class="navbar-brand" href="{{ path('medicine_index') }}">{{'label_home'|trans}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,26 +12,26 @@
 
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('user_index') }}">{{'Users'|trans}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('user_index') }}">{{'label_users'|trans}} <span class="sr-only">(current)</span></a>
             </li>
             {% endif %}
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('substance_index') }}">{{'Substances'|trans}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('substance_index') }}">{{'label_substances'|trans}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('disease_index') }}">{{'Diseases'|trans}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('disease_index') }}">{{'label_diseases'|trans}} <span class="sr-only">(current)</span></a>
             </li>
 
             {% if app.user is defined and is_granted('ROLE_USER') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('favourites_index') }}">{{'Favourites'|trans}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('favourites_index') }}">{{'label_favourites'|trans}} <span class="sr-only">(current)</span></a>
             </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('opinion_index') }}">{{'Opinions'|trans}} <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('opinion_index') }}">{{'label_opinions'|trans}} <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_edit', {'id':app.user.id}) }}">{{'Edit Account'|trans}} <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('user_edit', {'id':app.user.id}) }}">{{'label_edit_account'|trans}} <span class="sr-only">(current)</span></a>
                 </li>
 
             {% endif %}
@@ -41,16 +41,16 @@
                 <span>{{ app.user.nick|default('') }}</span>
                 <span>
                     <a href="{{ path('app_logout') }}">
-                        {{ 'logout'|trans }}
+                        {{ 'action_logout'|trans }}
                     </a>
                 </span>
             {% else %}
                 <span>
                     <a href="{{ path('app_login') }}">
-                        {{ 'login'|trans }}
+                        {{ 'action_login'|trans }}
                     </a>
                     <a href="{{ path('user_new') }}">
-                        {{ 'register'|trans }}
+                        {{ 'action_register'|trans }}
                     </a>
                 </span>
             {% endif %}

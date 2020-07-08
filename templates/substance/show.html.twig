@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Substance'|trans}}{% endblock %}
+{% block title %}{{'title_substane_show'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Substance'|trans}}</h1>
+    <h1>{{'title_substane_show'|trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'label_id'|trans}}</th>
                 <td>{{ substance.id }}</td>
             </tr>
             <tr>
-                <th>{{'Name'|trans}}</th>
+                <th>{{'label_name'|trans}}</th>
                 <td>{{ substance.name }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('substance_index') }}">{{'back to list'|trans}}</a>
+    <a href="{{ path('substance_index') }}">{{'action_back_to_list'|trans}}</a>
 
-    <a href="{{ path('substance_edit', {'id': substance.id}) }}">{{'edit'|trans}}</a>
+    <a href="{{ path('substance_edit', {'id': substance.id}) }}">{{'action_edit'|trans}}</a>
 
     {{ include('substance/_delete_form.html.twig') }}
 {% endblock %}

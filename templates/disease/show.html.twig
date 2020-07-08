@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Disease'|trans}}{% endblock %}
+{% block title %}{{'title_disease_show'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Disease'|trans}}</h1>
+    <h1>{{'title_disease_show'|trans}}</h1>
 
     <table class="table">
         <tbody>
@@ -13,11 +13,11 @@
             </tr>
 
             <tr>
-                <th>{{'Name'|trans}}</th>
+                <th>{{'label_name'|trans}}</th>
                 <td>{{ disease.name }}</td>
             </tr>
             <tr>
-                <th>{{'Medicine'|trans}}</th>
+                <th>{{'label_medicine'|trans}}</th>
                 <td>
                     {% for user in disease.medicines %}
                         <li>{{ user.name }}</li>
@@ -27,7 +27,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('disease_index') }}">{{'back to list'|trans}}</a>
+    <a href="{{ path('disease_index') }}">{{'action_back_to_list'|trans}}</a>
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
     <a href="{{ path('disease_edit', {'id': disease.id}) }}">edit</a>

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubstanceRepository")
@@ -18,7 +19,7 @@ class Substance extends AbstractEntity
      *
      * id
      *
-     * @var mixed
+     * @var int
      */
     private $id;
 
@@ -27,7 +28,11 @@ class Substance extends AbstractEntity
      *
      * name
      *
-     * @var mixed
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min="3",max="25")
+     *
+     * @var string
      */
     private $name;
 
@@ -36,22 +41,22 @@ class Substance extends AbstractEntity
      *
      * medicines
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $medicines;
-    
+
     /**
-     * __construct
-     *
-     * @return void
+     * __construct.
      */
     public function __construct()
     {
         $this->medicines = new ArrayCollection();
     }
-    
+
     /**
-     * getId
+     * getId.
      *
      * @return int
      */
@@ -59,9 +64,9 @@ class Substance extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
-     * getName
+     * getName.
      *
      * @return string
      */
@@ -69,11 +74,12 @@ class Substance extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
-     * setName
+     * setName.
      *
-     * @param  mixed $name
+     * @param string $name
+     *
      * @return self
      */
     public function setName(string $name): self
@@ -87,18 +93,18 @@ class Substance extends AbstractEntity
      * @return Collection|Medicine[]
      *
      * getMedicines
-     *
      * @return Collection
      */
     public function getMedicines(): Collection
     {
         return $this->medicines;
     }
-    
+
     /**
-     * addMedicine
+     * addMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function addMedicine(Medicine $medicine): self
@@ -110,11 +116,12 @@ class Substance extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeMedicine
+     * removeMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function removeMedicine(Medicine $medicine): self

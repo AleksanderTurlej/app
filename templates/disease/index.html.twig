@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Disease index'|trans}}{% endblock %}
+{% block title %}{{'title_disease_list'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Disease index'|trans}}</h1>
+    <h1>{{'title_disease_list'|trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(diseases, 'Id', 'id') }}</th>
-                <th>{{ knp_pagination_sortable(diseases, 'Name', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(diseases, 'label_id', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(diseases, 'label_name', 'name') }}</th>
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>{{'actions'|trans}}</th>
+                <th>{{'label_actions'|trans}}</th>
                 {% endif %}
 
             </tr>
@@ -25,21 +25,21 @@
 
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <td>
-                    <a href="{{ path('disease_show', {'id': disease.id}) }}">{{'show'|trans}}</a>
-                    <a href="{{ path('disease_edit', {'id': disease.id}) }}">{{'edit'|trans}}</a>
+                    <a href="{{ path('disease_show', {'id': disease.id}) }}">{{'action_show'|trans}}</a>
+                    <a href="{{ path('disease_edit', {'id': disease.id}) }}">{{'action_edit'|trans}}</a>
                 </td>
                 {% endif %}
 
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">{{'no records found'|trans}}</td>
+                <td colspan="3">{{'label_no_records_found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('disease_new') }}">{{'Create new'|trans}}</a>
+    <a href="{{ path('disease_new') }}">{{'action_create_new'|trans}}</a>
     {% endif %}
 {% endblock %}

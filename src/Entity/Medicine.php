@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MedicineRepository")
@@ -21,8 +22,6 @@ class Medicine extends AbstractEntity
      * @var int
      *
      * id
-     *
-     * @var mixed
      */
     private $id;
 
@@ -31,7 +30,11 @@ class Medicine extends AbstractEntity
      *
      * name
      *
-     * @var mixed
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min="3",max="45")
+     *
+     * @var string
      */
     private $name;
 
@@ -40,7 +43,10 @@ class Medicine extends AbstractEntity
      *
      * price
      *
-     * @var mixed
+     * @Assert\Type(type="int")
+     * @Assert\NotBlank
+     *
+     * @var int
      */
     private $price;
 
@@ -49,7 +55,10 @@ class Medicine extends AbstractEntity
      *
      * weight
      *
-     * @var mixed
+     * @Assert\Type(type="int")
+     * @Assert\NotBlank
+     *
+     * @var int
      */
     private $weight;
 
@@ -58,50 +67,59 @@ class Medicine extends AbstractEntity
      *
      * isRecipeRequired
      *
-     * @var mixed
+     * @Assert\Type(type="bool")
+     * @Assert\NotBlank
+     *
+     * @var bool
      */
     private $isRecipeRequired;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Substance", inversedBy="medicines")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Substance", inversedBy="medicines", fetch="EXTRA_LAZY")
      *
      * substances
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $substances;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Disease", inversedBy="medicines")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Disease", inversedBy="medicines", fetch="EXTRA_LAZY")
      *
      * diseases
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $diseases;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine")
+     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine", fetch="EXTRA_LAZY")
      *
      * opinions
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $opinions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine")
+     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine", fetch="EXTRA_LAZY")
      *
      * favourites
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $favourites;
-    
+
     /**
-     * __construct
-     *
-     * @return void
+     * __construct.
      */
     public function __construct()
     {
@@ -110,9 +128,9 @@ class Medicine extends AbstractEntity
         $this->opinions = new ArrayCollection();
         $this->favourites = new ArrayCollection();
     }
-    
+
     /**
-     * getId
+     * getId.
      *
      * @return int
      */
@@ -120,9 +138,9 @@ class Medicine extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
-     * getName
+     * getName.
      *
      * @return string
      */
@@ -130,11 +148,12 @@ class Medicine extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
-     * setName
+     * setName.
      *
-     * @param  mixed $name
+     * @param string $name
+     *
      * @return self
      */
     public function setName(string $name): self
@@ -143,9 +162,9 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getPrice
+     * getPrice.
      *
      * @return int
      */
@@ -153,11 +172,12 @@ class Medicine extends AbstractEntity
     {
         return $this->price;
     }
-    
+
     /**
-     * setPrice
+     * setPrice.
      *
-     * @param  mixed $price
+     * @param int $price
+     *
      * @return self
      */
     public function setPrice(int $price): self
@@ -166,9 +186,9 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getWeight
+     * getWeight.
      *
      * @return int
      */
@@ -176,11 +196,12 @@ class Medicine extends AbstractEntity
     {
         return $this->weight;
     }
-    
+
     /**
-     * setWeight
+     * setWeight.
      *
-     * @param  mixed $weight
+     * @param int $weight
+     *
      * @return self
      */
     public function setWeight(int $weight): self
@@ -190,31 +211,26 @@ class Medicine extends AbstractEntity
         return $this;
     }
 
-    
     /**
-     * getIsRecipeRequired
-     *
-     * @return void
+     * getIsRecipeRequired.
      */
     public function getIsRecipeRequired()
     {
         return $this->isRecipeRequired;
     }
-    
+
     /**
-     * setIsRecipeRequired
+     * setIsRecipeRequired.
      *
-     * @param  mixed $isRecipeRequired
-     * @return void
+     * @param void $isRecipeRequired
      */
     public function setIsRecipeRequired($isRecipeRequired): void
     {
         $this->isRecipeRequired = $isRecipeRequired;
     }
 
-    
     /**
-     * getSubstances
+     * getSubstances.
      *
      * @return Collection
      */
@@ -222,11 +238,12 @@ class Medicine extends AbstractEntity
     {
         return $this->substances;
     }
-    
+
     /**
-     * addSubstance
+     * addSubstance.
      *
-     * @param  mixed $substance
+     * @param Substance $substance
+     *
      * @return self
      */
     public function addSubstance(Substance $substance): self
@@ -237,11 +254,12 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeSubstance
+     * removeSubstance.
      *
-     * @param  mixed $substance
+     * @param Substance $substance
+     *
      * @return self
      */
     public function removeSubstance(Substance $substance): self
@@ -252,9 +270,9 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getDiseases
+     * getDiseases.
      *
      * @return Collection
      */
@@ -262,11 +280,12 @@ class Medicine extends AbstractEntity
     {
         return $this->diseases;
     }
-    
+
     /**
-     * addDisease
+     * addDisease.
      *
-     * @param  mixed $disease
+     * @param Disease $disease
+     *
      * @return self
      */
     public function addDisease(Disease $disease): self
@@ -277,11 +296,12 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeDisease
+     * removeDisease.
      *
-     * @param  mixed $disease
+     * @param Disease $disease
+     *
      * @return self
      */
     public function removeDisease(Disease $disease): self
@@ -292,9 +312,9 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getOpinions
+     * getOpinions.
      *
      * @return Collection
      */
@@ -302,11 +322,12 @@ class Medicine extends AbstractEntity
     {
         return $this->opinions;
     }
-    
+
     /**
-     * addOpinion
+     * addOpinion.
      *
-     * @param  mixed $opinion
+     * @param Opinion $opinion
+     *
      * @return self
      */
     public function addOpinion(Opinion $opinion): self
@@ -318,11 +339,12 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeOpinion
+     * removeOpinion.
      *
-     * @param  mixed $opinion
+     * @param Opinion $opinion
+     *
      * @return self
      */
     public function removeOpinion(Opinion $opinion): self
@@ -337,9 +359,9 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getFavourites
+     * getFavourites.
      *
      * @return Collection
      */
@@ -347,11 +369,12 @@ class Medicine extends AbstractEntity
     {
         return $this->favourites;
     }
-    
+
     /**
-     * addFavourite
+     * addFavourite.
      *
-     * @param  mixed $favourite
+     * @param Favourites $favourite
+     *
      * @return self
      */
     public function addFavourite(Favourites $favourite): self
@@ -363,11 +386,12 @@ class Medicine extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeFavourite
+     * removeFavourite.
      *
-     * @param  mixed $favourite
+     * @param Favourites $favourite
+     *
      * @return self
      */
     public function removeFavourite(Favourites $favourite): self

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Medicine index'|trans}}{% endblock %}
+{% block title %}{{'title_medicine_list'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Medicines'|trans}}</h1>
+    <h1 class='text-center'>{{'title_medicine_list'|trans}}</h1>
 
     <div>
 
@@ -11,16 +11,16 @@
 
             <input type="text" name="name">
             <button>
-                {{ 'search' | trans }}
+                {{ 'action_search' | trans }}
             </button>
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="1"> {{ 'Diesase' |trans}}
+                    <input type="radio" name="searchBy" value="1"> {{ 'action_search_disease' |trans}}
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="2"> {{ 'Medicine' |trans}}
+                    <input type="radio" name="searchBy" value="2"> {{ 'action_search_medicine' |trans}}
                 </label>
             </div>
         </form>
@@ -30,17 +30,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(medicines, 'Id'|trans, 'm.id') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Name'|trans, 'm.name') }}</th>
-                <th>{{'Disease'|trans}}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Price'|trans, 'm.price') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'Weight'|trans, 'm.weight') }}</th>
-                <th>{{'IsRecipeRequired'|trans}}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'label_id'|trans, 'm.id') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'label_name'|trans, 'm.name') }}</th>
+                <th>{{'label_disease'|trans}}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'label_price'|trans, 'm.price') }}</th>
+                <th>{{ knp_pagination_sortable(medicines, 'label_weight'|trans, 'm.weight') }}</th>
+                <th>{{'label_isRecipeRequired'|trans}}</th>
                 {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>{{'actions'|trans}}</th>
+                <th>{{'label_actions'|trans}}</th>
                 {% endif %}
-                <th>{{'Favourites'|trans}}</th>
-                <th>{{'Opinions'|trans}}</th>
+                <th>{{'label_favourites'|trans}}</th>
+                <th>{{'label_opinions'|trans}}</th>
 
 
             </tr>
@@ -53,25 +53,26 @@
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
                 </td>
                 <td>
+                {# {{ dump(medicine.diseases)}} #}
                 {% for med in medicine.diseases %}
                     <li>{{ med.name }}</li>
                 {% endfor %}
                 </td>
                 <td>{{ medicine.price }}</td>
                 <td>{{ medicine.weight }}</td>
-                <td>{{ medicine.isRecipeRequired ? 'Yes'|trans : 'No'|trans }}</td>
+                <td>{{ medicine.isRecipeRequired ? 'label_yes'|trans : 'label_no'|trans }}</td>
                 <td>
-                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'add to favourites'|trans}}</a>
+                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'action_add_to_favourites'|trans}}</a>
 
                 </td>
                 <td>
-                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'add opinion'|trans}}</a>
+                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
 
                 </td>
                 <td>
                     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{'show'|trans}}</a>
-                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'edit'|trans}}</a>
+                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{'action_show'|trans}}</a>
+                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'action_edit'|trans}}</a>
                     {% endif %}
 
                 </td>
@@ -79,7 +80,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">{{'no records found'|trans}}</td>
+                <td colspan="6">{{'label_no_records_found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -91,7 +92,7 @@
         {{ knp_pagination_render(medicines) }}
     </div>
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('medicine_new') }}">{{'Create new'|trans}}</a>
+    <a href="{{ path('medicine_new') }}">{{'action_create_new'|trans}}</a>
 
     {% endif %}
 

@@ -19,35 +19,77 @@ class MedicineType extends AbstractType
     /**
      * buildForm
      *
-     * @param  mixed $builder
-     * @param  mixed $options
+     * @param  FormBuilderInterface $builder
+     * @param  array $options
      * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['label'=>'name', 'attr' => ['placeholder' => 'enter medicine',
-            ], ], )
-            ->add('price', NumberType::class, ['label'=>'price'])
-            ->add('weight', NumberType::class, ['label'=>'weight'])
-            ->add('isRecipeRequired', CheckboxType::class, ['label'=>'isRecipeRequired', 'required' => false])
-            ->add('diseases', EntityType::class, ['label'=>'disease', 'class' => Disease::class, 'choice_label' => 'name', 'multiple' => true])
+            ->add(
+                'name', 
+                TextType::class, 
+                [
+                    'required' => true,
+                    'label'=>'label_medicine.name', 
+                    'attr' => 
+                    [
+                        'placeholder' => 'enter medicine',
+                    ], 
+                ], 
+                )
+            ->add(
+                'price', 
+                NumberType::class, 
+                [
+                    'required' => true,
+                    'label'=>'label_medicine.price'
+                ]
+                )
+            ->add(
+                'weight', 
+                NumberType::class, 
+                [
+                    'required' => true,
+                    'label'=>'label_medicine.weight'
+                ]
+                )
+            ->add(
+                'isRecipeRequired', 
+                CheckboxType::class, 
+                [
+                    'required' => true,
+                    'label'=>'label_medicine.isRecipeRequired', 
+                ]
+                )
+            ->add(
+                'diseases', 
+                EntityType::class, 
+                [
+                    'required' => true,
+                    'label'=>'label_medicine.disease', 
+                    'class' => Disease::class, 
+                    'choice_label' => 'name', 
+                    'multiple' => true
+                ]
+                )
             ->add(
                 'substances',
                 EntityType::class,
                 [
-                    'label'=>'substances',
+                    'required' => true,
+                    'label'=>'label_medicine.substances',
                     'class' => Substance::class,
                     'choice_label' => 'name',
                     'multiple' => true,
                 ]
-            );
+                );
     }
     
     /**
      * configureOptions
      *
-     * @param  mixed $resolver
+     * @param  OptionsResolvered $resolver
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver)

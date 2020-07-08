@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Favourites index{% endblock %}
+{% block title %}{{'title_favourites_list'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Favourites index'|trans}}</h1>
+    <h1>{{'title_favourites_list'|trans}}</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,7 @@
                 <th>Id</th>
                 {% endif %}
 
-                <th>{{'Favourites'|trans}}</th>
+                <th>{{'label_favourites'|trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">{{'no records found'|trans}}</td>
+                <td colspan="2">{{'label_no_records_found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>

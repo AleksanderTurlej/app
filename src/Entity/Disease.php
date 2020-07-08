@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DiseaseRepository")
@@ -19,17 +20,23 @@ class Disease extends AbstractEntity
      * @ORM\Column(type="integer")
      *
      * id
-     * 
-     * @var mixed
+     *
+     * @var int
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
+     * @Assert\Length
+     * (
+     *     min="3",
+     *     max="255",
+     * )
+     *
      * name
      *
-     * @var mixed
+     * @var string
      */
     private $name;
 
@@ -38,22 +45,22 @@ class Disease extends AbstractEntity
      *
      * medicines
      *
-     * @var mixed
+     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
+     * @var ArrayCollection
      */
     private $medicines;
-    
+
     /**
-     * __construct
-     *
-     * @return void
+     * __construct.
      */
     public function __construct()
     {
         $this->medicines = new ArrayCollection();
     }
-    
+
     /**
-     * getId
+     * getId.
      *
      * @return int
      */
@@ -61,9 +68,9 @@ class Disease extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
-     * getName
+     * getName.
      *
      * @return string
      */
@@ -71,11 +78,12 @@ class Disease extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
-     * setName
+     * setName.
      *
-     * @param  mixed $name
+     * @param string $name
+     *
      * @return self
      */
     public function setName(string $name): self
@@ -92,11 +100,12 @@ class Disease extends AbstractEntity
     {
         return $this->medicines;
     }
-    
+
     /**
-     * addMedicine
+     * addMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function addMedicine(Medicine $medicine): self
@@ -108,11 +117,12 @@ class Disease extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * removeMedicine
+     * removeMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function removeMedicine(Medicine $medicine): self

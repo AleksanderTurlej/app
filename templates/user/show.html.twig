@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'User'|trans}}{% endblock %}
+{% block title %}{{'title_user_show'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'User'|trans}}</h1>
+    <h1>{{'title_user_show'|trans}}</h1>
 
     <table class="table">
         <tbody>
@@ -12,23 +12,23 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>{{'Email'|trans}}</th>
+                <th>{{'label_email'|trans}}</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>{{'Roles'|trans}}</th>
+                <th>{{'label_roles'|trans}}</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>{{'Password'|trans}}</th>
+                <th>{{'label_password'|trans}}</th>
                 <td>{{ user.password }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('user_index') }}">{{'back to list'|trans}}</a>
+    <a href="{{ path('user_index') }}">{{'action_back_to_list'|trans}}</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">{{'edit'|trans}}</a>
+    <a href="{{ path('user_edit', {'id': user.id}) }}">{{'action_edit'|trans}}</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Opinion index'|trans}}{% endblock %}
+{% block title %}{{'title_opinion_list'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Opinion index'|trans}}</h1>
+    <h1>{{'title_opinion_list'|trans}}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>{{'Content'|trans}}</th>
-                <th>{{'Rating'|trans}}</th>
-                <th>{{'Medicine'|trans}}</th>
-                <th>{{'actions'|trans}}</th>
+                <th>{{'label_ontent'|trans}}</th>
+                <th>{{'label_rating'|trans}}</th>
+                <th>{{'label_medicine'|trans}}</th>
+                <th>{{'label_actions'|trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,13 +23,13 @@
                 <td>{{ opinion.rating }}</td>
                 <td>{{ opinion.medicine.name }}</td>
                 <td>
-                    <a href="{{ path('opinion_show', {'id': opinion.id}) }}">{{'show'|trans}}</a>
-                    <a href="{{ path('opinion_edit', {'id': opinion.id}) }}">{{'edit'|trans}}</a>
+                    <a href="{{ path('opinion_show', {'id': opinion.id}) }}">{{'action_show'|trans}}</a>
+                    <a href="{{ path('opinion_edit', {'id': opinion.id}) }}">{{'action_edit'|trans}}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">{{'no records found'|trans}}</td>
+                <td colspan="4">{{'label_no_records_found'|trans}}</td>
             </tr>
         {% endfor %}
         </tbody>

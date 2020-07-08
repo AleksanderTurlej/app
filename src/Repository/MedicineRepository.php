@@ -34,15 +34,18 @@ class MedicineRepository extends ServiceEntityRepository
     {
         $searchBy = $request->get('searchBy');
         $name = $request->get('name');
-        $builder = $this->createQueryBuilder('m');
+        $builder = $this->_em->createQueryBuilder()
+                        ->select('m')
+                        ->addSelect('d')
+                        ->from(Medicine::class, 'm')
+                        ->leftJoin('m.diseases', 'd')
+        ;
 
         if (null === $name) {
-            return $builder
-                ->getQuery();
+            return $builder->getQuery();
         }
         if (self::SEARCH_BY_DISEASES == $searchBy) {
             $builder
-                ->join('m.diseases', 'd')
                 ->andWhere('d.name LIKE :string')
 
             ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);

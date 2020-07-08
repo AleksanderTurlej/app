@@ -113,10 +113,10 @@ class DiseaseController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, Disease $disease, DiseaseRepository $diseaseRepository): Response
+    public function delete(Request $request, Disease $disease, DiseaseRepository $diseaseRepository, PersisterService $persisterService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$disease->getId(), $request->request->get('_token'))) {
-            $diseaseRepository->remove($disease);
+            $persisterService->remove($disease);
             $this->addFlash('danger', 'disease_deleted');
         }
 

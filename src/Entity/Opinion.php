@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OpinionRepository")
@@ -18,7 +18,7 @@ class Opinion extends AbstractEntity
      *
      * id
      *
-     * @var mixed
+     * @var int
      */
     private $id;
 
@@ -26,8 +26,12 @@ class Opinion extends AbstractEntity
      * @ORM\Column(type="string", length=255)
      *
      * content
+     * 
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min="20",max="255")
      *
-     * @var mixed
+     * @var string
      */
     private $content;
 
@@ -35,8 +39,11 @@ class Opinion extends AbstractEntity
      * @ORM\Column(type="integer")
      *
      * rating
+     * 
+     * @Assert\Type(type="int")
+     * @Assert\NotBlank
      *
-     * @var mixed
+     * @var int
      */
     private $rating;
 
@@ -44,7 +51,7 @@ class Opinion extends AbstractEntity
      * @ORM\Column(type="integer")
      *
      * userId
-     * 
+     *
      * @var int
      */
     private $userId;
@@ -54,7 +61,7 @@ class Opinion extends AbstractEntity
      *
      * user
      *
-     * @var mixed
+     * @var User
      */
     private $user;
 
@@ -64,8 +71,6 @@ class Opinion extends AbstractEntity
      * @var int
      *
      * medicineId
-     *
-     * @var mixed
      */
     private $medicineId;
 
@@ -74,12 +79,12 @@ class Opinion extends AbstractEntity
      *
      * medicine
      *
-     * @var mixed
+     * @var Medicine
      */
     private $medicine;
-    
+
     /**
-     * getId
+     * getId.
      *
      * @return int
      */
@@ -87,9 +92,9 @@ class Opinion extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
-     * getContent
+     * getContent.
      *
      * @return string
      */
@@ -97,11 +102,12 @@ class Opinion extends AbstractEntity
     {
         return $this->content;
     }
-    
+
     /**
-     * setContent
+     * setContent.
      *
-     * @param  mixed $content
+     * @param string $content
+     *
      * @return self
      */
     public function setContent(string $content): self
@@ -110,9 +116,9 @@ class Opinion extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getRating
+     * getRating.
      *
      * @return int
      */
@@ -120,11 +126,12 @@ class Opinion extends AbstractEntity
     {
         return $this->rating;
     }
-    
+
     /**
-     * setRating
+     * setRating.
      *
-     * @param  mixed $rating
+     * @param int $rating
+     *
      * @return self
      */
     public function setRating(int $rating): self
@@ -133,9 +140,9 @@ class Opinion extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getUser
+     * getUser.
      *
      * @return User
      */
@@ -143,11 +150,12 @@ class Opinion extends AbstractEntity
     {
         return $this->user;
     }
-    
+
     /**
-     * setUser
+     * setUser.
      *
-     * @param  mixed $user
+     * @param User $user
+     *
      * @return self
      */
     public function setUser(?User $user): self
@@ -156,9 +164,9 @@ class Opinion extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getMedicine
+     * getMedicine.
      *
      * @return Medicine
      */
@@ -166,11 +174,12 @@ class Opinion extends AbstractEntity
     {
         return $this->medicine;
     }
-    
+
     /**
-     * setMedicine
+     * setMedicine.
      *
-     * @param  mixed $medicine
+     * @param Medicine $medicine
+     *
      * @return self
      */
     public function setMedicine(?Medicine $medicine): self
@@ -179,9 +188,9 @@ class Opinion extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
-     * getUserId
+     * getUserId.
      *
      * @return int
      */
@@ -189,20 +198,19 @@ class Opinion extends AbstractEntity
     {
         return $this->userId;
     }
-    
+
     /**
-     * setUserId
+     * setUserId.
      *
-     * @param  mixed $userId
-     * @return void
+     * @param int $userId
      */
     public function setUserId(int $userId): void
     {
         $this->userId = $userId;
     }
-    
+
     /**
-     * getMedicineId
+     * getMedicineId.
      *
      * @return int
      */
@@ -210,12 +218,11 @@ class Opinion extends AbstractEntity
     {
         return $this->medicineId;
     }
-    
+
     /**
-     * setMedicineId
+     * setMedicineId.
      *
-     * @param  mixed $medicineId
-     * @return void
+     * @param int $medicineId
      */
     public function setMedicineId(int $medicineId): void
     {

@@ -15,33 +15,77 @@ class UserType extends AbstractType
     public const CONFIRM_PASSWORD_OPTION = 'confirm_password';
     public const REGISTER_OPTION = 'register_option';
 
+    /**
+     * buildForm.
+     *
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nick', TextType::class, ['label' => 'name'])
+            ->add(
+                'nick',
+                TextType::class,
+                [
+                    'required' => true,
+                    'label' => 'label_user.name',
+                ]
+                )
         ;
 
         if (true === $options[self::REGISTER_OPTION]) {
             $builder
-                ->add('email', TextType::class, ['label' => 'email']);
+                ->add(
+                    'email',
+                    TextType::class,
+                    [
+                        'required' => true,
+                        'label' => 'label_user.email',
+                    ]
+                    );
         }
 
         if (true === $options[self::REGISTER_OPTION]) {
             $builder
-                ->add('password', TextType::class, ['label' => 'password'])
+                ->add(
+                    'password',
+                    TextType::class,
+                    [
+                        'required' => true,
+                        'label' => 'label_user.password',
+                    ]
+                    )
             ;
         }
         if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
             $builder
-                ->add('password', TextType::class, ['label' => 'password', 'required' => false]);
+                ->add(
+                    'password',
+                    TextType::class,
+                    [
+                        'label' => 'password',
+                        'required' => false,
+                    ]
+                    );
         }
 
         if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
             $builder
                 ->add(self::CONFIRM_PASSWORD_OPTION, TextType::class, ['required' => true])
-                ->add('roles', CheckboxType::class, ['label' => 'is_admin', 'required' => false]);
+                ->add(
+                    'roles',
+                    CheckboxType::class,
+                    [
+                        'label' => 'is_admin',
+                        'required' => false,
+                    ]
+                    );
 
-            $builder->get('roles')
+            $builder
+            ->get(
+                'roles'
+                )
             ->addModelTransformer(
                 new CallbackTransformer(
                     function (array $roles) {
@@ -56,6 +100,11 @@ class UserType extends AbstractType
         }
     }
 
+    /**
+     * configureOptions.
+     *
+     * @param configureOptions $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Security\Voter\AdminVoter;
+use App\Service\PersisterService;
+use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +43,7 @@ class UserController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request, UserPasswordEncoderInterface $encoder, UserRepository $userRepository): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder, UserRepository $userRepository, PersisterService $persisterService): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user, [UserType::REGISTER_OPTION => true]);
@@ -51,10 +54,9 @@ class UserController extends AbstractController
             if (!$appHasUser) {
                 $user->setRoles([User::ROLE_ADMIN, User::ROLE_USER]);
             }
-            $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $persisterService->save($user);
+
             $this->addFlash('success', 'user_added_successfully');
 
             return $this->redirectToRoute('medicine_index');
@@ -90,7 +92,7 @@ class UserController extends AbstractController
      *
      * @return Response
      */
-    public function edit(Request $request, User $user, UserPasswordEncoderInterface $encoder, Security $security): Response
+    public function edit(Request $request, User $user, UserService $userService, PersisterService $persisterService): Response
     {
         $editedUser = new User();
         $editedUser->setNick($user->getNick());
@@ -104,33 +106,21 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setConfirmPassword($editedUser->getConfirmPassword());
-            $passwordConfirmed = $encoder->isPasswordValid($security->getUser(), $user->getConfirmPassword());
-
-            if (!$passwordConfirmed) {
+            if (!$userService->isPasswordConfirmed($user, $editedUser->getConfirmPassword())) {
                 $this->addFlash('danger', 'invalid_confirmed_password');
 
                 return $this->redirectToRoute('medicine_index');
             }
 
-            $password = $editedUser->getPassword();
-            if ($password) {
-                $user->setPassword($password);
-                $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
-            }
-
-            $user->setNick($editedUser->getNick());
-            $user->setRoles($editedUser->getRoles());
-
-            if ($user->isAdmin() && !$this->isGranted(User::ROLE_ADMIN)) {
+            if (!$this->isGranted(AdminVoter::CHANGE_ROLE, $editedUser)) {
                 $this->addFlash('danger', 'you_are_not_allowed_to_change_role');
 
                 return $this->redirectToRoute('medicine_index');
             }
 
-            $menager = $this->getDoctrine()->getManager();
-            $menager->persist($user);
-            $menager->flush();
+            $userService->appendChanges($user, $editedUser);
+            $persisterService->save($user);
+
             $this->addFlash('success', 'user_edited_successfully');
 
             return $this->redirectToRoute('medicine_index');
@@ -150,12 +140,10 @@ class UserController extends AbstractController
      *
      * @return Response
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, PersisterService $persisterService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
+            $persisterService->remove($user);
             $this->addFlash('danger', 'user_deleted');
         }
 

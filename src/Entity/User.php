@@ -63,6 +63,12 @@ class User extends AbstractEntity implements UserInterface
      *
      * @var string|null
      *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3",
+     *     max="50",
+     * )
+     *
      * @ORM\Column(
      *     type="string",
      *     nullable=false,
@@ -76,7 +82,10 @@ class User extends AbstractEntity implements UserInterface
      * @var string
      *
      * @Assert\Email()
-     *
+     * @Assert\Length(
+     *     min="3",
+     *     max="50",
+     * )
      * @ORM\Column(
      *     type="string",
      *     length=180,
@@ -115,7 +124,7 @@ class User extends AbstractEntity implements UserInterface
      *
      * opinions
      *
-     * @var mixed
+     * @var ArrayCollection
      */
     private $opinions;
 
@@ -124,14 +133,12 @@ class User extends AbstractEntity implements UserInterface
      *
      * favourites
      *
-     * @var mixed
+     * @var ArrayCollection
      */
     private $favourites;
-    
+
     /**
-     * __construct
-     *
-     * @return void
+     * __construct.
      */
     public function __construct()
     {
@@ -148,9 +155,9 @@ class User extends AbstractEntity implements UserInterface
     {
         return $this->id;
     }
-    
+
     /**
-     * getNick
+     * getNick.
      *
      * @return string
      */
@@ -158,12 +165,11 @@ class User extends AbstractEntity implements UserInterface
     {
         return $this->nick;
     }
-    
+
     /**
-     * setNick
+     * setNick.
      *
-     * @param  mixed $nick
-     * @return void
+     * @param string $nick
      */
     public function setNick(?string $nick): void
     {
@@ -267,9 +273,9 @@ class User extends AbstractEntity implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-    
+
     /**
-     * getConfirmPassword
+     * getConfirmPassword.
      *
      * @return string
      */
@@ -277,12 +283,11 @@ class User extends AbstractEntity implements UserInterface
     {
         return $this->confirmPassword;
     }
-    
+
     /**
-     * setConfirmPassword
+     * setConfirmPassword.
      *
-     * @param  mixed $confirmPassword
-     * @return void
+     * @param string $confirmPassword
      */
     public function setConfirmPassword(string $confirmPassword): void
     {
@@ -296,11 +301,12 @@ class User extends AbstractEntity implements UserInterface
     {
         return $this->opinions;
     }
-    
+
     /**
-     * addOpinion
+     * addOpinion.
      *
-     * @param  mixed $opinion
+     * @param Opinion $opinion
+     *
      * @return self
      */
     public function addOpinion(Opinion $opinion): self
@@ -312,11 +318,12 @@ class User extends AbstractEntity implements UserInterface
 
         return $this;
     }
-    
+
     /**
-     * removeOpinion
+     * removeOpinion.
      *
-     * @param  mixed $opinion
+     * @param Opinion $opinion
+     *
      * @return self
      */
     public function removeOpinion(Opinion $opinion): self
@@ -339,11 +346,12 @@ class User extends AbstractEntity implements UserInterface
     {
         return $this->favourites;
     }
-    
+
     /**
-     * addFavourite
+     * addFavourite.
      *
-     * @param  mixed $favourite
+     * @param Favourites $favourite
+     *
      * @return self
      */
     public function addFavourite(Favourites $favourite): self
@@ -355,11 +363,12 @@ class User extends AbstractEntity implements UserInterface
 
         return $this;
     }
-    
+
     /**
-     * removeFavourite
+     * removeFavourite.
      *
-     * @param  mixed $favourite
+     * @param Favourites $favourite
+     *
      * @return self
      */
     public function removeFavourite(Favourites $favourite): self
@@ -374,9 +383,9 @@ class User extends AbstractEntity implements UserInterface
 
         return $this;
     }
-    
+
     /**
-     * isAdmin
+     * isAdmin.
      *
      * @return bool
      */

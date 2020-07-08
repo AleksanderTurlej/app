@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Medicine'|trans}}{% endblock %}
+{% block title %}{{'title_medicine_show'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'Medicine'|trans}}</h1>
+    <h1>{{'title_medicine_show'|trans}}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{'label_id'|trans}}</th>
                 <td>{{ medicine.id }}</td>
             </tr>
             <tr>
-                <th>{{'Name'|trans}}</th>
+                <th>{{'label.name'|trans}}</th>
                 <td>{{ medicine.name }}</td>
             </tr>
             <tr>
-                <th>{{'Price'|trans}}</th>
+                <th>{{'label.price'|trans}}</th>
                 <td>{{ medicine.price }}</td>
             </tr>
             <tr>
-                <th>{{'Weight'|trans}}</th>
+                <th>{{'label_weight'|trans}}</th>
                 <td>{{ medicine.weight }}</td>
             </tr>
             <tr>
-                <th>{{'IsRecipeRequired'|trans}}</th>
+                <th>{{'label_isRecipeRequired'|trans}}</th>
                 <td>{{ medicine.isRecipeRequired ? 'Yes'|trans : 'No'|trans }}</td>
             </tr>
             <tr>
-                <th>{{'Disease'|trans}}</th>
+                <th>{{'label_disease'|trans}}</th>
                 <td>
                     {% for user in medicine.diseases %}
                         <li>{{ user.name }}</li>
@@ -38,23 +38,23 @@
         </tbody>
     </table>
 
-    <a href="{{ path('medicine_index') }}">{{'back to list'|trans}}</a><br />
+    <a href="{{ path('medicine_index') }}">{{'action_back_to_list'|trans}}</a><br />
 
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'edit'|trans}}</a>
+    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'action_edit'|trans}}</a>
     {{ include('medicine/_delete_form.html.twig') }}
     {% endif %}
 
-    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'add to favourites'|trans}}</a><br />
+    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'action_add_to_favourites'|trans}}</a><br />
 
-    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'add comment'|trans}}</a><br /> <br /> <br />
+    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_comment'|trans}}</a><br /> <br /> <br />
 
 
-    <div class="opinion"> {{'Opinie'|trans}}
+    <div class="opinion"> {{'label_opinie'|trans}}
         {% for opinion in medicine.opinions %}
             <hr>
-            <div>{{'User'|trans}}: {{ opinion.user.nick }}</div>
-            <div>{{'Rating'|trans}}: {{ opinion.rating }}</div>
+            <div>{{'label_user'|trans}}: {{ opinion.user.nick }}</div>
+            <div>{{'label_rating'|trans}}: {{ opinion.rating }}</div>
             <div>{{ opinion.content }}</div>
         {% endfor %}
     </div>
