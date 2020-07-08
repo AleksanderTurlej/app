@@ -393,6 +393,75 @@
         <target>You are not allowed to change role</target>
     </trans-unit>
 
+      <trans-unit id="label_user.name" resname="label_user.name">
+          <source> label_user.name </source>
+          <target>User name </target>
+      </trans-unit>
+      <trans-unit id="label_user.email" resname="label_user.email">
+          <source> label_user.email </source>
+          <target>Email</target>
+      </trans-unit>
+      <trans-unit id="label_user.password" resname="label_user.password">
+          <source> label_user.password </source>
+          <target>Password</target>
+      </trans-unit>
+      <trans-unit id="label_substance.name" resname="label_substance.name">
+          <source> label_substance.name </source>
+          <target>Substancion name</target>
+      </trans-unit>
+      <trans-unit id="label_disease.name" resname="label_disease.name">
+          <source> label_disease.name </source>
+          <target>Disease name</target>
+      </trans-unit>
+      <trans-unit id="label.opinion_content" resname="label.opinion_content">
+          <source> label.opinion_content </source>
+          <target>Content</target>
+      </trans-unit>
+      <trans-unit id="lable_opinion.rating" resname="lable_opinion.rating">
+          <source> lable_opinion.rating </source>
+          <target>Rating</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.name" resname="label_medicine.name">
+          <source> label_medicine.name </source>
+          <target>Medicine name</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.price" resname="label_medicine.price">
+          <source> label_medicine.price </source>
+          <target>Price</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.weight" resname="label_medicine.weight">
+          <source> label_medicine.weight </source>
+          <target>Weight</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.isRecipeRequired" resname="label_medicine.isRecipeRequired">
+          <source> label_medicine.isRecipeRequired </source>
+          <target>Is Recipe Required</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.disease" resname="label_medicine.disease">
+          <source> label_medicine.disease </source>
+          <target>Disease</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.substances" resname="label_medicine.substances">
+          <source> label_medicine.substances </source>
+          <target>Substances</target>
+      </trans-unit>
+      <trans-unit id="enter medicine" resname="enter medicine">
+          <source> enter medicine </source>
+          <target>Enter medicine</target>
+      </trans-unit>
+      <trans-unit id="password" resname="password">
+          <source> password </source>
+          <target>Password</target>
+      </trans-unit>
+      <trans-unit id="Confirm password" resname="Confirm password">
+          <source> Confirm password </source>
+          <target>Confirm password</target>
+      </trans-unit>
+      <trans-unit id="is_admin" resname="is_admin">
+          <source> is_admin </source>
+          <target>Is admin</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

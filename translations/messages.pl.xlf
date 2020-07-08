@@ -123,7 +123,7 @@
       </trans-unit>
       <trans-unit id="ysOvPSq" resname="label.name">
         <source>label.name</source>
-        <target>nazwa</target>
+        <target>Nazwa</target>
       </trans-unit>
       <trans-unit id="arTFX42" resname="label.price">
         <source>label.price</source>
@@ -392,6 +392,75 @@
       <trans-unit id="t_Ckjgy" resname="you_are_not_allowed_to_change_role">
         <source>you_are_not_allowed_to_change_role</source>
         <target>Nie jesteś upoważniony do zmiany roli</target>
+      </trans-unit>
+
+      <trans-unit id="label_user.name" resname="label_user.name">
+          <source> label_user.name </source>
+          <target>Nazwa użytkownika </target>
+      </trans-unit>
+      <trans-unit id="label_user.email" resname="label_user.email">
+          <source> label_user.email </source>
+          <target>Email</target>
+      </trans-unit>
+      <trans-unit id="label_user.password" resname="label_user.password">
+          <source> label_user.password </source>
+          <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="label_substance.name" resname="label_substance.name">
+          <source> label_substance.name </source>
+          <target>Nazwa substancji</target>
+      </trans-unit>
+      <trans-unit id="label_disease.name" resname="label_disease.name">
+          <source> label_disease.name </source>
+          <target>Nazwa choroby</target>
+      </trans-unit>
+      <trans-unit id="label.opinion_content" resname="label.opinion_content">
+          <source> label.opinion_content </source>
+          <target>Treść</target>
+      </trans-unit>
+      <trans-unit id="lable_opinion.rating" resname="lable_opinion.rating">
+          <source> lable_opinion.rating </source>
+          <target>Ocena</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.name" resname="label_medicine.name">
+          <source> label_medicine.name </source>
+          <target>Nazwa leku</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.price" resname="label_medicine.price">
+          <source> label_medicine.price </source>
+          <target>Cena leku</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.weight" resname="label_medicine.weight">
+          <source> label_medicine.weight </source>
+          <target>Waga leku</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.isRecipeRequired" resname="label_medicine.isRecipeRequired">
+          <source> label_medicine.isRecipeRequired </source>
+          <target>Czy recepta jest wymagana</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.disease" resname="label_medicine.disease">
+          <source> label_medicine.disease </source>
+          <target>Choroba</target>
+      </trans-unit>
+      <trans-unit id="label_medicine.substances" resname="label_medicine.substances">
+          <source> label_medicine.substances </source>
+          <target>Substancje</target>
+      </trans-unit>
+      <trans-unit id="enter medicine" resname="enter medicine">
+          <source> enter medicine </source>
+          <target>Wprowadź substancję</target>
+      </trans-unit>
+      <trans-unit id="password" resname="password">
+          <source> password </source>
+          <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="Confirm password" resname="Confirm password">
+          <source> Confirm password </source>
+          <target>Potwierdź hasło</target>
+      </trans-unit>
+      <trans-unit id="is_admin" resname="is_admin">
+          <source> is_admin </source>
+          <target>Admin</target>
       </trans-unit>
     </body>
   </file>

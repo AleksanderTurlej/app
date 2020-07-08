@@ -27,8 +27,8 @@
                 <td> <a href="{{ path('medicine_show', {'id': favourite.medicine.id}) }}">{{ favourite.medicine.name }}</a></td>
                 <td>
                     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('favourites_show', {'id': favourite.id}) }}">show</a>
-                    <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">edit</a>
+                    <a href="{{ path('favourites_show', {'id': favourite.id}) }}">{{'action_show'|trans}}</a>
+                    <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">{{'action_edit'|trans}}</a>
                     {% endif %}
                     {{ include('favourites/_delete_form.html.twig') }}
 
