@@ -462,6 +462,29 @@
           <source> is_admin </source>
           <target>Admin</target>
       </trans-unit>
+      <trans-unit id="title_log_in!" resname="title_log_in!">
+          <source> title_log_in! </source>
+          <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="label_please_sign_in" resname="label_please_sign_in">
+          <source> label_please_sign_in </source>
+          <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="label_mail" resname="label_mail">
+          <source> label_mail </source>
+          <target>Email</target>
+      </trans-unit>
+      <trans-unit id="action_remember_me" resname="action_remember_me">
+          <source> action_remember_me </source>
+          <target>Zapamiętaj mnie</target>
+      </trans-unit>
+      <trans-unit id="label_sign_in" resname="label_sign_in">
+          <source> label_sign_in </source>
+          <target>Zaloguj się</target>
+      </trans-unit>
+
+
+
     </body>
   </file>
 </xliff>
