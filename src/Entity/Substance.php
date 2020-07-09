@@ -1,4 +1,7 @@
 <?php
+/**
+ * Substance entity.
+ */
 
 namespace App\Entity;
 
@@ -8,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Substance.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\SubstanceRepository")
  */
 class Substance extends AbstractEntity
@@ -75,10 +80,6 @@ class Substance extends AbstractEntity
 
     /**
      * setName.
-     *
-     * @param string $name
-     *
-     * @return self
      */
     public function setName(string $name): self
     {
@@ -91,7 +92,6 @@ class Substance extends AbstractEntity
      * @return Collection|Medicine[]
      *
      * getMedicines
-     * @return Collection
      */
     public function getMedicines(): Collection
     {
@@ -100,10 +100,6 @@ class Substance extends AbstractEntity
 
     /**
      * addMedicine.
-     *
-     * @param Medicine $medicine
-     *
-     * @return self
      */
     public function addMedicine(Medicine $medicine): self
     {
@@ -117,10 +113,6 @@ class Substance extends AbstractEntity
 
     /**
      * removeMedicine.
-     *
-     * @param Medicine $medicine
-     *
-     * @return self
      */
     public function removeMedicine(Medicine $medicine): self
     {

@@ -17,9 +17,6 @@ class UserType extends AbstractType
 
     /**
      * buildForm.
-     *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -31,7 +28,7 @@ class UserType extends AbstractType
                     'required' => true,
                     'label' => 'label_user.name',
                 ]
-                )
+            )
         ;
 
         if (true === $options[self::REGISTER_OPTION]) {
@@ -43,7 +40,7 @@ class UserType extends AbstractType
                         'required' => true,
                         'label' => 'label_user.email',
                     ]
-                    );
+                );
         }
 
         if (true === $options[self::REGISTER_OPTION]) {
@@ -55,7 +52,7 @@ class UserType extends AbstractType
                         'required' => true,
                         'label' => 'label_user.password',
                     ]
-                    )
+                )
             ;
         }
         if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
@@ -67,7 +64,7 @@ class UserType extends AbstractType
                         'label' => 'password',
                         'required' => false,
                     ]
-                    );
+                );
         }
 
         if (true === $options[self::CONFIRM_PASSWORD_OPTION]) {
@@ -80,12 +77,12 @@ class UserType extends AbstractType
                         'label' => 'is_admin',
                         'required' => false,
                     ]
-                    );
+                );
 
             $builder
             ->get(
                 'roles'
-                )
+            )
             ->addModelTransformer(
                 new CallbackTransformer(
                     function (array $roles) {

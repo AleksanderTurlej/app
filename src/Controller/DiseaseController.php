@@ -1,4 +1,7 @@
 <?php
+/**
+ * Disease controller.
+ */
 
 namespace App\Controller;
 

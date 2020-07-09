@@ -10,6 +10,8 @@ use PDO;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * MedicineRepository.
+ *
  * @method Medicine|null find($id, $lockMode = null, $lockVersion = null)
  * @method Medicine|null findOneBy(array $criteria, array $orderBy = null)
  * @method Medicine[]    findAll()
@@ -20,12 +22,19 @@ class MedicineRepository extends ServiceEntityRepository
     public const SEARCH_BY_DISEASES = 1;
     public const SEARCH_BY_MEDICINCES = 2;
 
+    /**
+     * __construct.
+     *
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Medicine::class);
     }
 
     /**
+     * search.
+     *
      * @param Request $request
      *
      * @return Query

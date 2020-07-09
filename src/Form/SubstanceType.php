@@ -9,35 +9,34 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * SubstanceType
+ * SubstanceType.
  */
 class SubstanceType extends AbstractType
-{    
+{
     /**
-     * buildForm
+     * buildForm.
      *
-     * @param  FormBuilderInterface $builder
-     * @param  array $options
-     * @return void
+     *
+     * @param FormBuilderInterface $builder
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                'name', 
-                TextType::class, 
+                'name',
+                TextType::class,
                 [
-                    'label' => 'label_substance.name'
+                    'label' => 'label_substance.name',
                 ]
-                )
+            )
         ;
     }
-    
+
     /**
-     * configureOptions
+     * configureOptions.
      *
-     * @param  OptionsResolver $resolver
-     * @return void
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {

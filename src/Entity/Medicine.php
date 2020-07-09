@@ -1,4 +1,7 @@
 <?php
+/**
+ * Medicine entity.
+ */
 
 namespace App\Entity;
 
@@ -8,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Medicine.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\MedicineRepository")
  */
 class Medicine extends AbstractEntity
@@ -143,10 +148,6 @@ class Medicine extends AbstractEntity
 
     /**
      * setName.
-     *
-     * @param string $name
-     *
-     * @return self
      */
     public function setName(string $name): self
     {
@@ -167,10 +168,6 @@ class Medicine extends AbstractEntity
 
     /**
      * setPrice.
-     *
-     * @param int $price
-     *
-     * @return self
      */
     public function setPrice(int $price): self
     {
@@ -191,10 +188,6 @@ class Medicine extends AbstractEntity
 
     /**
      * setWeight.
-     *
-     * @param int $weight
-     *
-     * @return self
      */
     public function setWeight(int $weight): self
     {
@@ -223,8 +216,6 @@ class Medicine extends AbstractEntity
 
     /**
      * getSubstances.
-     *
-     * @return Collection
      */
     public function getSubstances(): Collection
     {
@@ -233,10 +224,6 @@ class Medicine extends AbstractEntity
 
     /**
      * addSubstance.
-     *
-     * @param Substance $substance
-     *
-     * @return self
      */
     public function addSubstance(Substance $substance): self
     {
@@ -249,10 +236,6 @@ class Medicine extends AbstractEntity
 
     /**
      * removeSubstance.
-     *
-     * @param Substance $substance
-     *
-     * @return self
      */
     public function removeSubstance(Substance $substance): self
     {
@@ -265,8 +248,6 @@ class Medicine extends AbstractEntity
 
     /**
      * getDiseases.
-     *
-     * @return Collection
      */
     public function getDiseases(): Collection
     {
@@ -275,10 +256,6 @@ class Medicine extends AbstractEntity
 
     /**
      * addDisease.
-     *
-     * @param Disease $disease
-     *
-     * @return self
      */
     public function addDisease(Disease $disease): self
     {
@@ -291,10 +268,6 @@ class Medicine extends AbstractEntity
 
     /**
      * removeDisease.
-     *
-     * @param Disease $disease
-     *
-     * @return self
      */
     public function removeDisease(Disease $disease): self
     {
@@ -307,8 +280,6 @@ class Medicine extends AbstractEntity
 
     /**
      * getOpinions.
-     *
-     * @return Collection
      */
     public function getOpinions(): Collection
     {
@@ -317,10 +288,6 @@ class Medicine extends AbstractEntity
 
     /**
      * addOpinion.
-     *
-     * @param Opinion $opinion
-     *
-     * @return self
      */
     public function addOpinion(Opinion $opinion): self
     {
@@ -334,10 +301,6 @@ class Medicine extends AbstractEntity
 
     /**
      * removeOpinion.
-     *
-     * @param Opinion $opinion
-     *
-     * @return self
      */
     public function removeOpinion(Opinion $opinion): self
     {
@@ -354,8 +317,6 @@ class Medicine extends AbstractEntity
 
     /**
      * getFavourites.
-     *
-     * @return Collection
      */
     public function getFavourites(): Collection
     {
@@ -364,10 +325,6 @@ class Medicine extends AbstractEntity
 
     /**
      * addFavourite.
-     *
-     * @param Favourites $favourite
-     *
-     * @return self
      */
     public function addFavourite(Favourites $favourite): self
     {
@@ -381,10 +338,6 @@ class Medicine extends AbstractEntity
 
     /**
      * removeFavourite.
-     *
-     * @param Favourites $favourite
-     *
-     * @return self
      */
     public function removeFavourite(Favourites $favourite): self
     {

@@ -1,4 +1,7 @@
 <?php
+/**
+ * User controller.
+ */
 
 namespace App\Controller;
 
@@ -11,9 +14,9 @@ use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/user")
@@ -22,10 +25,6 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/", name="user_index", methods={"GET"})
-     *
-     * @param UserRepository $userRepository
-     *
-     * @return Response
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -36,12 +35,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/public/new", name="user_new", methods={"GET","POST"})
-     *
-     * @param Request                      $request
-     * @param UserPasswordEncoderInterface $encoder
-     * @param UserRepository               $userRepository
-     *
-     * @return Response
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder, UserRepository $userRepository, PersisterService $persisterService): Response
     {
@@ -70,10 +63,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
-     *
-     * @param User $user
-     *
-     * @return Response
      */
     public function show(User $user): Response
     {
@@ -85,12 +74,8 @@ class UserController extends AbstractController
     /**
      * @Route("/public/{id}/edit", name="user_edit", methods={"GET","POST"})
      *
-     * @param Request                      $request
-     * @param User                         $user
      * @param UserPasswordEncoderInterface $encoder
      * @param Security                     $security
-     *
-     * @return Response
      */
     public function edit(Request $request, User $user, UserService $userService, PersisterService $persisterService): Response
     {
@@ -134,11 +119,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
-     *
-     * @param Request $request
-     * @param User    $user
-     *
-     * @return Response
      */
     public function delete(Request $request, User $user, PersisterService $persisterService): Response
     {

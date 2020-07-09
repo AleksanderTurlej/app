@@ -1,4 +1,7 @@
 <?php
+/**
+ * Disease entity.
+ */
 
 namespace App\Entity;
 
@@ -8,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Disease.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\DiseaseRepository")
  */
 class Disease extends AbstractEntity
@@ -79,10 +84,6 @@ class Disease extends AbstractEntity
 
     /**
      * setName.
-     *
-     * @param string $name
-     *
-     * @return self
      */
     public function setName(string $name): self
     {
@@ -101,10 +102,6 @@ class Disease extends AbstractEntity
 
     /**
      * addMedicine.
-     *
-     * @param Medicine $medicine
-     *
-     * @return self
      */
     public function addMedicine(Medicine $medicine): self
     {
@@ -118,10 +115,6 @@ class Disease extends AbstractEntity
 
     /**
      * removeMedicine.
-     *
-     * @param Medicine $medicine
-     *
-     * @return self
      */
     public function removeMedicine(Medicine $medicine): self
     {

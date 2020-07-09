@@ -1,4 +1,7 @@
 <?php
+/**
+ * Opinion controller.
+ */
 
 namespace App\Controller;
 
@@ -11,8 +14,8 @@ use App\Service\PersisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/opinion")
@@ -22,9 +25,7 @@ class OpinionController extends AbstractController
     /**
      * @Route("/", name="opinion_index", methods={"GET"})
      *
-     * @param OpinionRepository $opinionRepository
-     *
-     * @return Response
+     * index
      */
     public function index(OpinionRepository $opinionRepository): Response
     {
@@ -72,10 +73,6 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}", name="opinion_show", methods={"GET"})
-     *
-     * @param Opinion $opinion
-     *
-     * @return Response
      */
     public function show(Opinion $opinion): Response
     {
@@ -86,11 +83,6 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="opinion_edit", methods={"GET","POST"})
-     *
-     * @param Request $request
-     * @param Opinion $opinion
-     *
-     * @return Response
      */
     public function edit(Request $request, Opinion $opinion, PersisterService $persisterService): Response
     {
@@ -112,11 +104,6 @@ class OpinionController extends AbstractController
 
     /**
      * @Route("/{id}", name="opinion_delete", methods={"DELETE"})
-     *
-     * @param Request $request
-     * @param Opinion $opinion
-     *
-     * @return Response
      */
     public function delete(Request $request, Opinion $opinion, PersisterService $persisterService): Response
     {

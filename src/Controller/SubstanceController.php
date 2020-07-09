@@ -1,4 +1,7 @@
 <?php
+/**
+ * Substance controller.
+ */
 
 namespace App\Controller;
 
@@ -18,10 +21,6 @@ class SubstanceController extends AbstractController
 {
     /**
      * @Route("/public", name="substance_index", methods={"GET"})
-     *
-     * @param SubstanceRepository $substanceRepository
-     *
-     * @return Response
      */
     public function index(SubstanceRepository $substanceRepository): Response
     {
@@ -32,10 +31,6 @@ class SubstanceController extends AbstractController
 
     /**
      * @Route("/new", name="substance_new", methods={"GET","POST"})
-     *
-     * @param Request $request
-     *
-     * @return Response
      */
     public function new(Request $request, PersisterService $persisterService): Response
     {
@@ -58,10 +53,6 @@ class SubstanceController extends AbstractController
 
     /**
      * @Route("/public/{id}", name="substance_show", methods={"GET"})
-     *
-     * @param Substance $substance
-     *
-     * @return Response
      */
     public function show(Substance $substance): Response
     {
@@ -72,11 +63,6 @@ class SubstanceController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="substance_edit", methods={"GET","POST"})
-     *
-     * @param Request   $request
-     * @param Substance $substance
-     *
-     * @return Response
      */
     public function edit(Request $request, Substance $substance, PersisterService $persisterService): Response
     {
@@ -98,11 +84,6 @@ class SubstanceController extends AbstractController
 
     /**
      * @Route("/{id}", name="substance_delete", methods={"DELETE"})
-     *
-     * @param Request   $request
-     * @param Substance $substance
-     *
-     * @return Response
      */
     public function delete(Request $request, Substance $substance, PersisterService $persisterService): Response
     {

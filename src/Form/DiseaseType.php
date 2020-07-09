@@ -8,32 +8,37 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * DiseaseType
+ */
 class DiseaseType extends AbstractType
 {
     /**
-     * buildForm.
+     * buildForm
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param  FormBuilderInterface $builder
+     * @param  array $options
+     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                    'name',
-                    TextType::class,
-                    [
+                'name',
+                TextType::class,
+                [
                     'required' => true,
                     'label' => 'label_disease.name',
                     'attr' => ['max_length' => 45],
                     ]
-                );
+            );
     }
 
     /**
-     * configureOptions.
+     * configureOptions
      *
-     * @param OptionsResolver $resolver
+     * @param  OptionsResolver $resolver
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver)
     {

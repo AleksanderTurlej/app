@@ -7,6 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * SubstanceRepository.
+ *
  * @method Substance|null find($id, $lockMode = null, $lockVersion = null)
  * @method Substance|null findOneBy(array $criteria, array $orderBy = null)
  * @method Substance[]    findAll()
@@ -14,6 +16,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SubstanceRepository extends ServiceEntityRepository
 {
+    /**
+     * __construct.
+     *
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Substance::class);

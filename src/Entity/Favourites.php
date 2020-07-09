@@ -1,10 +1,15 @@
 <?php
+/**
+ * Favourites entity.
+ */
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Class Favourites.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\FavouritesRepository")
  */
 class Favourites extends AbstractEntity
@@ -62,8 +67,6 @@ class Favourites extends AbstractEntity
      * setMedicine.
      *
      * @param Medicine $medicine
-     *
-     * @return self
      */
     public function setMedicine(?Medicine $medicine): self
     {
@@ -86,8 +89,6 @@ class Favourites extends AbstractEntity
      * setUser.
      *
      * @param mixed $user
-     *
-     * @return self
      */
     public function setUser(?User $user): self
     {

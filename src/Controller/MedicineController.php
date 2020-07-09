@@ -1,4 +1,7 @@
 <?php
+/**
+ * Medicine controller.
+ */
 
 namespace App\Controller;
 

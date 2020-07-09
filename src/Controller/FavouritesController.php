@@ -1,4 +1,7 @@
 <?php
+/**
+ * Favourites controller.
+ */
 
 namespace App\Controller;
 
@@ -11,9 +14,9 @@ use App\Service\PersisterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/favourites")
@@ -22,11 +25,6 @@ class FavouritesController extends AbstractController
 {
     /**
      * @Route("/", name="favourites_index", methods={"GET"})
-     *
-     * @param FavouritesRepository $favouritesRepository
-     * @param Security             $security
-     *
-     * @return Response
      */
     public function index(FavouritesRepository $favouritesRepository, Security $security): Response
     {
@@ -39,13 +37,6 @@ class FavouritesController extends AbstractController
 
     /**
      * @Route("/new/{id}", name="favourites_new", methods={"GET","POST"})
-     *
-     * @param Request              $request
-     * @param Medicine             $medicine
-     * @param Security             $security
-     * @param FavouritesRepository $repository
-     *
-     * @return Response
      *
      * @noinspection PhpParamsInspection
      */
@@ -80,10 +71,6 @@ class FavouritesController extends AbstractController
 
     /**
      * @Route("/{id}", name="favourites_show", methods={"GET"})
-     *
-     * @param Favourites $favourite
-     *
-     * @return Response
      */
     public function show(Favourites $favourite): Response
     {
@@ -94,11 +81,6 @@ class FavouritesController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="favourites_edit", methods={"GET","POST"})
-     *
-     * @param Request    $request
-     * @param Favourites $favourite
-     *
-     * @return Response
      */
     public function edit(Request $request, Favourites $favourite, PersisterService $persisterService): Response
     {
@@ -106,7 +88,6 @@ class FavouritesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $persisterService->save($favourite);
 
             return $this->redirectToRoute('favourites_index');
@@ -120,11 +101,6 @@ class FavouritesController extends AbstractController
 
     /**
      * @Route("/{id}", name="favourites_delete", methods={"DELETE"})
-     *
-     * @param Request    $request
-     * @param Favourites $favourite
-     *
-     * @return Response
      */
     public function delete(Request $request, Favourites $favourite, PersisterService $persisterService): Response
     {

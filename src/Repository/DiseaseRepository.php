@@ -7,6 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * DiseaseRepository.
+ *
  * @method Disease|null find($id, $lockMode = null, $lockVersion = null)
  * @method Disease|null findOneBy(array $criteria, array $orderBy = null)
  * @method Disease[]    findAll()
@@ -14,9 +16,13 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DiseaseRepository extends ServiceEntityRepository
 {
+    /**
+     * __construct.
+     *
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Disease::class);
     }
 }
-

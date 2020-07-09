@@ -1,4 +1,7 @@
 <?php
+/**
+ * Opinion entity.
+ */
 
 namespace App\Entity;
 
@@ -6,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Opinion.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\OpinionRepository")
  */
 class Opinion extends AbstractEntity
@@ -104,10 +109,6 @@ class Opinion extends AbstractEntity
 
     /**
      * setContent.
-     *
-     * @param string $content
-     *
-     * @return self
      */
     public function setContent(string $content): self
     {
@@ -128,10 +129,6 @@ class Opinion extends AbstractEntity
 
     /**
      * setRating.
-     *
-     * @param int $rating
-     *
-     * @return self
      */
     public function setRating(int $rating): self
     {
@@ -154,8 +151,6 @@ class Opinion extends AbstractEntity
      * setUser.
      *
      * @param User $user
-     *
-     * @return self
      */
     public function setUser(?User $user): self
     {
@@ -178,8 +173,6 @@ class Opinion extends AbstractEntity
      * setMedicine.
      *
      * @param Medicine $medicine
-     *
-     * @return self
      */
     public function setMedicine(?Medicine $medicine): self
     {
@@ -190,8 +183,6 @@ class Opinion extends AbstractEntity
 
     /**
      * getUserId.
-     *
-     * @return int
      */
     public function getUserId(): int
     {
@@ -200,8 +191,6 @@ class Opinion extends AbstractEntity
 
     /**
      * setUserId.
-     *
-     * @param int $userId
      */
     public function setUserId(int $userId): void
     {
@@ -210,8 +199,6 @@ class Opinion extends AbstractEntity
 
     /**
      * getMedicineId.
-     *
-     * @return int
      */
     public function getMedicineId(): int
     {
@@ -220,8 +207,6 @@ class Opinion extends AbstractEntity
 
     /**
      * setMedicineId.
-     *
-     * @param int $medicineId
      */
     public function setMedicineId(int $medicineId): void
     {
