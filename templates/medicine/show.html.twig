@@ -3,63 +3,180 @@
 {% block title %}{{'title_medicine_show'|trans}}{% endblock %}
 
 {% block body %}
-    <h1>{{'title_medicine_show'|trans}}</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{'label_id'|trans}}</th>
-                <td>{{ medicine.id }}</td>
-            </tr>
-            <tr>
-                <th>{{'label.name'|trans}}</th>
-                <td>{{ medicine.name }}</td>
-            </tr>
-            <tr>
-                <th>{{'label.price'|trans}}</th>
-                <td>{{ medicine.price }}</td>
-            </tr>
-            <tr>
-                <th>{{'label_weight'|trans}}</th>
-                <td>{{ medicine.weight }}</td>
-            </tr>
-            <tr>
-                <th>{{'label_isRecipeRequired'|trans}}</th>
-                <td>{{ medicine.isRecipeRequired ? 'Yes'|trans : 'No'|trans }}</td>
-            </tr>
-            <tr>
-                <th>{{'label_disease'|trans}}</th>
-                <td>
-                    {% for user in medicine.diseases %}
-                        <li>{{ user.name }}</li>
-                    {% endfor %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('medicine_index') }}">{{'action_back_to_list'|trans}}</a><br />
-
-    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'action_edit'|trans}}</a>
-    {{ include('medicine/_delete_form.html.twig') }}
-    {% endif %}
-
-    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'action_add_to_favourites'|trans}}</a><br />
-
-    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_comment'|trans}}</a><br /> <br /> <br />
 
 
-    <div class="opinion"> {{'label_opinie'|trans}}
-        {% for opinion in medicine.opinions %}
-            <hr>
-            <div>{{'label_user'|trans}}: {{ opinion.user.nick }}</div>
-            <div>{{'label_rating'|trans}}: {{ opinion.rating }}</div>
-            <div>{{ opinion.content }}</div>
-        {% endfor %}
+<div class="row">
+  <div class="col-6 col-md-4">
+            <a href="{{ path('medicine_index') }}"><i class="fa fa-fw fa-arrow-left"></i> {{ 'action_back_to_list'|trans}}</a>  
+  </div>
+  <div class="col-6 col-md-4">
+  
+            <form class="d-flex justify-content-center align-items-center" method="GET">
+
+            <input class= "form-control" type="text" name="name" placeholder="Opisz, co Ci dolega lub wyszukaj lek">
+            <button id="search" class="btn btn-primary">
+                {{ 'action_search' | trans }}
+            </button>
+            <br>
+  
+  </div>
+  <div class="col-6 col-md-4">
+  
+            
+
+  </div>
+</div>
+
+
+        
+<div id="sekcja_leku" class="row">
+
+    <div id="zdj_lek" class="fixed col-6">
+  
+        <br><br>
+        {% if app.user is defined and is_granted('ROLE_ADMIN') %}
+            
+            <a href="{{ path('medicine_edit', {'id': medicine.id}) }}"><button class="btn">{{'action_edit'|trans}}</a>
+            {{ include('medicine/_delete_form.html.twig') }}
+            </button>
+
+        {% endif %}
+
+        <h1 class="d-flex justify-content-center align-items-center">{{ medicine.name }}</h1>
+        <a href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a><br />
+        <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_comment'|trans}}</a><br /> <br /> <br />
+    
+
     </div>
+  
+    <div id="wlasciwosci" class="col-6">
+    
+        <table class="table">
+            <tbody>
+                <tr>
+                    {# <th>{{'label_id'|trans}}</th>
+                    <td>{{ medicine.id }}</td> #}
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3>
+                            Opis
+                            <a class="float-right collapsed " data-toggle="collapse" type="button" href="#opis" aria-expanded="false" aria-controls="opis"><i class="fa fa-fw fa-plus"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="opis">
+                            
+                                <p>{{ medicine.description }}</p>
+                            </div>
+                        
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3>
+                        Skład
+                        <a class="float-right collapsed" data-toggle="collapse" type="button" href="#sklad" aria-expanded="false" aria-controls="sklad"><i class="fa"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="sklad">
+                            
+                                <p>
+                            {% for sub in medicine.substances %}
+                                {{ sub.name }}, 
+                            {% endfor %}
+                                </p>
+                            </div>
+                        
+                    </td>
+                </tr>                
+
+                <tr>
+                    <td>
+                        <h3>
+                        {{'label.price'|trans}}
+                        <a class="float-right collapsed" data-toggle="collapse" type="button" href="#price" aria-expanded="false" aria-controls="price"><i class="fa"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="price">
+                            
+                                <p>
+                                {{ medicine.price }}
+                                </p>
+                            </div>
+                        
+                    </td>
+                </tr>          
+               
+                <tr>
+                    <td>
+                        <h3>
+                        {{'label_weight'|trans}}
+                        <a class="float-right collapsed" data-toggle="collapse" type="button" href="#waga" aria-expanded="false" aria-controls="waga"><i class="fa"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="waga">
+                            
+                                <p>
+                                {{ medicine.weight }}
+                                </p>
+                            </div>
+                        
+                    </td>
+                </tr>
 
 
+                <tr>
+                    <td>
+                        <h3>
+                        {{'label_isRecipeRequired'|trans}}
+                        <a class="float-right collapsed" data-toggle="collapse" type="button" href="#recepta" aria-expanded="false" aria-controls="recepta"><i class="fa"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="recepta">
+                            
+                                <p>
+                                {{ medicine.isRecipeRequired ? 'Yes'|trans : 'No'|trans }}
+                                </p>
+                            </div>
+                        
+                    </td>
+                </tr>
 
+                <tr>
+                    <td>
+                        <h3>
+                        {{'label_disease'|trans}}
+                        <a class="float-right collapsed" data-toggle="collapse" type="button" href="#choroba" aria-expanded="false" aria-controls="choroba"><i class="fa"></i></a>
+                        </h3>
+                        
+                            <div class="collapse multi-collapse" id="choroba">
+                            
+                                <p>
+                        {% for user in medicine.diseases %}
+                            {{ user.name }}
+                        {% endfor %}
+                                </p>
+                            </div>
+                        
+                    </td>
+                </tr>    
+                
+                <tr>
+                    <td>
+                        <h3>{{'label_opinie'|trans}}:</h3>
+                        <p>{% for opinion in medicine.opinions %}</p>
+                        <p>{{'label_user'|trans}}: {{ opinion.user.nick }}</p>
+                        <p>{{'label_rating'|trans}}: {{ opinion.rating }}</p>
+                        <p> {{ opinion.content }}</p>
+                        <hr>
+                        {% endfor %}
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}

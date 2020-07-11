@@ -50,23 +50,32 @@ class MedicineRepository extends ServiceEntityRepository
                         ->leftJoin('m.diseases', 'd')
         ;
 
-        if (null === $name) {
-            return $builder->getQuery();
-        }
-        if (self::SEARCH_BY_DISEASES == $searchBy) {
+        if ($name) {
             $builder
-                ->andWhere('d.name LIKE :string')
-
-            ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
-
-            return $builder
-            ->getQuery();
-        } else {
-            $builder->andWhere('m.name LIKE :string')
+                ->andWhere('m.name LIKE :string')
                 ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
 
             return $builder
                 ->getQuery();
+        } else {
+            return $builder
+                ->getQuery();
         }
+        // if (self::SEARCH_BY_DISEASES == $searchBy) {
+        //     $builder
+        //         ->andWhere('d.name LIKE :string')
+        //         ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
+
+        //     return $builder
+        //     ->getQuery();
+        // } else {
+        //     $builder
+
+        //         ->andWhere('m.name LIKE :string')
+        //         ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
+
+        //     return $builder
+        //         ->getQuery();
+        // }
     }
 }

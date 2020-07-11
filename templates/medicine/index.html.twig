@@ -3,80 +3,59 @@
 {% block title %}{{'title_medicine_list'|trans}}{% endblock %}
 
 {% block body %}
-    <h1 class='text-center'>{{'title_medicine_list'|trans}}</h1>
 
-    <div>
+    <div class="form-row">
+    
+        <div class="col-sm-3">
+        {% if name is defined %}
+            
+        {% else %}
+                    <div class="d-flex justify-content-center">
+                        <p>Wyszukujesz: </p> 
+                    </div>
+        {% endif %}
+        </div>
+        <div class="col-sm-6">
 
-        <form method="GET">
+                <form class="d-flex justify-content-center align-items-center" method="GET">
 
-            <input type="text" name="name">
-            <button class="btn btn-primary">
-                {{ 'action_search' | trans }}
-            </button>
+                <input class= "form-control" type="text" name="name" placeholder="Opisz, co Ci dolega lub wyszukaj lek">
+                <button id="search" class="btn btn-primary">
+                    {{ 'action_search' | trans }}
+                </button>
+                <br>
+                </form>
 
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-                <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="1"> {{ 'action_search_disease' |trans}}
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="searchBy" value="2"> {{ 'action_search_medicine' |trans}}
-                </label>
-            </div>
-        </form>
-
+        </div>
+        <div class="col-sm-3">
+                
+        </div>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ knp_pagination_sortable(medicines, 'label_id'|trans, 'm.id') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'label_name'|trans, 'm.name') }}</th>
-                <th>{{'label_disease'|trans}}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'label_price'|trans, 'm.price') }}</th>
-                <th>{{ knp_pagination_sortable(medicines, 'label_weight'|trans, 'm.weight') }}</th>
-                <th>{{'label_isRecipeRequired'|trans}}</th>
-                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>{{'label_actions'|trans}}</th>
-                {% endif %}
-                <th>{{'label_favourites'|trans}}</th>
-                <th>{{'label_opinions'|trans}}</th>
 
 
-            </tr>
-        </thead>
+    </div>
+    <br>
+    {# <table class="table">
+
         <tbody>
         {% for medicine in medicines %}
             <tr>
-                <td>{{ medicine.id }}</td>
                 <td>
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
                 </td>
                 <td>
-                {# {{ dump(medicine.diseases)}} #}
-                {% for med in medicine.diseases %}
-                    <li>{{ med.name }}</li>
-                {% endfor %}
-                </td>
-                <td>{{ medicine.price }}</td>
-                <td>{{ medicine.weight }}</td>
-                <td>{{ medicine.isRecipeRequired ? 'label_yes'|trans : 'label_no'|trans }}</td>
-                <td>
-                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}">{{'action_add_to_favourites'|trans}}</a>
-
+                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
                 </td>
                 <td>
                     <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
-
                 </td>
                 <td>
                     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{'action_show'|trans}}</a>
                     <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'action_edit'|trans}}</a>
                     {% endif %}
-
                 </td>
-
             </tr>
         {% else %}
             <tr>
@@ -84,7 +63,29 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
+
+
+    <div id="index_lekow" class="row">
+        <table class="table">
+            <tbody>
+
+            {% for medicine in medicines %}
+                       
+                        <div class="col-sm-4 leki">
+                            <br>
+                            <a class="d-flex justify-content-center" href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
+                            <a class="d-flex justify-content-center" href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
+                            <br>
+                            <a class="d-flex justify-content-center" href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
+                            <br>
+                        </div>
+                        
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
 
 
 

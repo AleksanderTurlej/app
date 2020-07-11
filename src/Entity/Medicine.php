@@ -80,6 +80,17 @@ class Medicine extends AbstractEntity
     private $isRecipeRequired;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * description
+     *
+     * @Assert\Type(type="string")
+     *
+     * @var string
+     */
+    private $description;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Substance", inversedBy="medicines", fetch="EXTRA_LAZY")
      *
      * substances
@@ -152,6 +163,26 @@ class Medicine extends AbstractEntity
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * getDescription.
+     *
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * setName.
+     */
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
