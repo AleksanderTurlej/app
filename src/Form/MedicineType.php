@@ -88,8 +88,11 @@ class MedicineType extends AbstractType
             ->add(
                 'description',
                 TextareaType::class,
+                [
+                    'label' => 'label_substance.name',
+                ]
             )
-                ;
+        ;
     }
     
     /**

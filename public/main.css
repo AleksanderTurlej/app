@@ -40,6 +40,7 @@ tr a:hover {
 .btn {
   background-color: #49C5B6 !important;
   color: #F8FEFF;
+  border: 0px !important;
 }
 
 .btn a{
@@ -64,7 +65,7 @@ tr a:hover {
   
   /* The navigation menu links */
   .sidenav a {
-    padding: 0px 0px 50px 50px;
+    padding: 8px 8px 50px 50px;
     text-decoration: none;
     font-size: 25px;
     display: block;
