@@ -18,6 +18,7 @@ body a{
 
 body h1{
   color: #636363;
+  margin-bottom: 5%;
 }
 
 body p{
@@ -35,6 +36,7 @@ tr a:hover {
 .jumbotron {
 
     background-color: #F8FEFF;
+    margin-bottom: 0em !important;
 }
 
 .btn {
@@ -149,10 +151,23 @@ tr a:hover {
   color: #636363;
 }
 
+.leki {
+background-color: #ffffff;
+
+}
+
 #index_lekow a{
   text-align: center;
   font-size: 18px;
   color: #636363 !important;
+  
+
+}
+
+#index_lekow p{
+
+  margin-top: 5%;
+  margin-bottom: 5%;
 
 }
 

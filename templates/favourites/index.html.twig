@@ -5,41 +5,27 @@
 {% block body %}
     <h1>{{'title_favourites_list'|trans}}</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <th>Id</th>
-                {% endif %}
+     <div id="index_lekow" class="row">
+        <table class="table">
+            <tbody>
 
-                <th>{{'label_favourites'|trans}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for favourite in favourites %}
-            <tr>
-                {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                <td>{{ favourite.id }}</td>
-                {% endif %}
+            {% for favourite in favourites %}
+                       
+                        <div class="col-sm-4 leki">
+                            <p>
+                            <a class="d-flex justify-content-center" href="{{ path('medicine_show', {'id': favourite.medicine.id}) }}">{{ favourite.medicine.name }}</a>
+                            <a class="d-flex justify-content-center" href="{{ path('favourites_new', {'id': favourite.medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
+                            </p>
+                            <p>
+                            <a class="d-flex justify-content-center" href="{{ path('opinion_new', {'id': favourite.medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
+                            </p>
+                        </div>
+                        
+            {% endfor %}
 
+            </tbody>
+        </table>
+    </div>
 
-
-                <td> <a href="{{ path('medicine_show', {'id': favourite.medicine.id}) }}">{{ favourite.medicine.name }}</a></td>
-                <td>
-                    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('favourites_show', {'id': favourite.id}) }}">{{'action_show'|trans}}</a>
-                    <a href="{{ path('favourites_edit', {'id': favourite.id}) }}">{{'action_edit'|trans}}</a>
-                    {% endif %}
-                    {{ include('favourites/_delete_form.html.twig') }}
-
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">{{'label_no_records_found'|trans}}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
 {% endblock %}

@@ -178,7 +178,7 @@ class Medicine extends AbstractEntity
     }
 
     /**
-     * setName.
+     * setDescription.
      */
     public function setDescription(string $description): self
     {

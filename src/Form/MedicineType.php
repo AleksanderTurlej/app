@@ -89,7 +89,7 @@ class MedicineType extends AbstractType
                 'description',
                 TextareaType::class,
                 [
-                    'label' => 'label_substance.name',
+                    'label' => 'label_description.name',
                 ]
             )
         ;

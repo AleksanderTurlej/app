@@ -23,7 +23,6 @@
                 <button id="search" class="btn btn-primary">
                     {{ 'action_search' | trans }}
                 </button>
-                <br>
                 </form>
 
         </div>
@@ -32,39 +31,7 @@
         </div>
     </div>
 
-
-
     </div>
-    <br>
-    {# <table class="table">
-
-        <tbody>
-        {% for medicine in medicines %}
-            <tr>
-                <td>
-                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
-                </td>
-                <td>
-                    <a href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
-                </td>
-                <td>
-                    <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
-                </td>
-                <td>
-                    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('medicine_show', {'id': medicine.id}) }}">{{'action_show'|trans}}</a>
-                    <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">{{'action_edit'|trans}}</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">{{'label_no_records_found'|trans}}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> #}
-
 
     <div id="index_lekow" class="row">
         <table class="table">
@@ -73,12 +40,13 @@
             {% for medicine in medicines %}
                        
                         <div class="col-sm-4 leki">
-                            <br>
+                            <p>
                             <a class="d-flex justify-content-center" href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
                             <a class="d-flex justify-content-center" href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
-                            <br>
+                            </p>
+                            <p>
                             <a class="d-flex justify-content-center" href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>
-                            <br>
+                            </p>
                         </div>
                         
             {% endfor %}

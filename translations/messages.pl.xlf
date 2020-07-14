@@ -207,7 +207,7 @@
       </trans-unit>
       <trans-unit id="CyMdFm9" resname="title_favourites_list">
         <source>title_favourites_list</source>
-        <target>Lista ulubionych</target>
+        <target>Ulubione</target>
       </trans-unit>
       <trans-unit id="nR7PRqJ" resname="title_favourites_edit">
         <source>title_favourites_edit</source>
@@ -482,6 +482,12 @@
           <source> label_sign_in </source>
           <target>Zaloguj się</target>
       </trans-unit>
+      <trans-unit id="label_description.name" resname="label_description.name">
+          <source> label_description.name </source>
+          <target>Opis</target>
+      </trans-unit>
+
+
 
 
 
