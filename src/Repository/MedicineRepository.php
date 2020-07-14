@@ -39,7 +39,7 @@ class MedicineRepository extends ServiceEntityRepository
      *
      * @return Query
      */
-    public function search(Request $request): Query
+    public function search(Request $request): ?Query
     {
         $searchBy = $request->get('searchBy');
         $name = $request->get('name');
@@ -57,25 +57,8 @@ class MedicineRepository extends ServiceEntityRepository
 
             return $builder
                 ->getQuery();
-        } else {
-            return $builder
-                ->getQuery();
         }
-        // if (self::SEARCH_BY_DISEASES == $searchBy) {
-        //     $builder
-        //         ->andWhere('d.name LIKE :string')
-        //         ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
 
-        //     return $builder
-        //     ->getQuery();
-        // } else {
-        //     $builder
-
-        //         ->andWhere('m.name LIKE :string')
-        //         ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
-
-        //     return $builder
-        //         ->getQuery();
-        // }
+        return null;
     }
 }

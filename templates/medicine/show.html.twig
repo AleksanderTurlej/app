@@ -32,13 +32,17 @@
 <div id="sekcja_leku" class="row">
 
     <div id="zdj_lek" class="fixed col-6">
-  
+        <img src="/uploads/brochures{{ medicine.brochureFilename }}" />
         <br><br>
         {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-            
-            <a href="{{ path('medicine_edit', {'id': medicine.id}) }}"><button class="btn">{{'action_edit'|trans}}</a>
-            {{ include('medicine/_delete_form.html.twig') }}
+             <button class="btn">
+                <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">
+                {{'action_edit'|trans}} 
+                </a>
             </button>
+            
+            {{ include('medicine/_delete_form.html.twig') }}
+            
 
         {% endif %}
 

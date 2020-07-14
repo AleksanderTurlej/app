@@ -14,6 +14,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+
 
 /**
  * @Route("/medicine")
@@ -32,13 +37,13 @@ class MedicineController extends AbstractController
     public function index(Request $request, MedicineRepository $medicineRepository, PaginatorInterface $paginator): Response
     {
         $medicines = $paginator->paginate(
-            $medicineRepository->search($request),
+            $medicineRepository->search($request) ?? [],
             $request->query->getInt('page', 1),
             Medicine::LIMIT,
         );
 
         return $this->render('medicine/index.html.twig', [
-            'medicines' => $medicines,
+            'medicines' => $medicines, 'name' => $request->query->getAlnum('name')
         ]);
     }
 
@@ -56,8 +61,34 @@ class MedicineController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+                /** @var UploadedFile $brochureFile */
+                $brochureFile = $form->get('brochure')->getData();
+
+                // this condition is needed because the 'brochure' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($brochureFile) {
+                    $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+    
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $brochureFile->move(
+                            $this->getParameter('brochures_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+    
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $medicine->setBrochureFilename($newFilename);
+                }
             $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_added');
+
 
             return $this->redirectToRoute('medicine_index');
         }
@@ -75,8 +106,13 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function show(Medicine $medicine): Response
+    public function show(Medicine $medicine, Request $request): Response
     {
+        $name = $request->query->getAlnum('name');
+        if($name){
+            return $this->redirectToRoute('medicine_index', ['name'=>$name]);
+        }
+
         return $this->render('medicine/show.html.twig', [
             'medicine' => $medicine,
         ]);
