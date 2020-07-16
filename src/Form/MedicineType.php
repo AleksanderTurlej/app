@@ -95,8 +95,8 @@ class MedicineType extends AbstractType
                     'label' => 'label_description.name',
                 ]
             )
-            ->add('brochure', FileType::class, [
-                'label' => 'Brochure (Jpg file)',
+            ->add('file', FileType::class, [
+                'label' => 'File (Jpg file)',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

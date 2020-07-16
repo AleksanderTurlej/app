@@ -127,6 +127,11 @@ class Medicine extends AbstractEntity
     private $favourites;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $uploadFile;
+
+    /**
      * __construct.
      */
     public function __construct()
@@ -137,19 +142,14 @@ class Medicine extends AbstractEntity
         $this->favourites = new ArrayCollection();
     }
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $brochureFilename;
-
-    public function getBrochureFilename()
+    public function getUploadFile()
     {
-        return $this->brochureFilename;
+        return $this->uploadFile;
     }
 
-    public function setBrochureFilename($brochureFilename)
+    public function setUploadFile($uploadFile)
     {
-        $this->brochureFilename = $brochureFilename;
+        $this->uploadFile = $uploadFile;
 
         return $this;
     }

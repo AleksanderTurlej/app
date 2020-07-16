@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use \Transliterator;
+use Gedmo\Sluggable\Util\Urlizer;
 
 /**
  * @Route("/medicine")
@@ -61,33 +61,20 @@ class MedicineController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $brochureFile */
-            $brochureFile = $form->get('brochure')->getData();
+            $uploadedFile = $form->get('file')->getData();
 
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if ($brochureFile) {
-                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+            if ($uploadedFile) {
+                $destination = $this->getParameter('upload_file');
 
-                // $transliterator = Transliterator::createFromRules('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', Transliterator::FORWARD);
-                // $safeFilename = $transliterator->transliterate($$originalFilename);
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 
-                // // this is needed to safely include the file name as part of the URL
-                // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                // $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
 
-                // Move the file to the directory where brochures are stored
-                try {
-                    $brochureFile->move(
-                        $this->getParameter('brochures_directory')
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $medicine->setBrochureFilename($originalFilename);
+                $medicine->setUploadFile($newFilename);
             }
             $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_added');
