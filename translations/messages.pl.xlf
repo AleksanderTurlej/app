@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="E6jqkgf" resname="action_create_new">
         <source>action_create_new</source>
-        <target>Stwóż nowy</target>
+        <target>Dodaj nowy rekord</target>
       </trans-unit>
       <trans-unit id="TAVZ4ij" resname="title_medicine_edit">
         <source>title_medicine_edit</source>
@@ -107,7 +107,7 @@
       </trans-unit>
       <trans-unit id="i9bntsE" resname="label_create_new_medicine">
         <source>label_create_new_medicine</source>
-        <target>Stwórz nowy lek</target>
+        <target>Dodaj nowy lek</target>
       </trans-unit>
       <trans-unit id="XL6Mb3T" resname="action_back_to_list">
         <source>action_back_to_list</source>
@@ -215,7 +215,7 @@
       </trans-unit>
       <trans-unit id="c.436ZP" resname="title_favourites_new">
         <source>title_favourites_new</source>
-        <target>Nowe ulubione</target>
+        <target>Dodaj do ulubionych</target>
       </trans-unit>
       <trans-unit id="KCrZZ20" resname="label_save">
         <source>label_save</source>
@@ -448,7 +448,7 @@
       </trans-unit>
       <trans-unit id="enter medicine" resname="enter medicine">
           <source> enter medicine </source>
-          <target>Wprowadź substancję</target>
+          <target>Wprowadź nazwę leku</target>
       </trans-unit>
       <trans-unit id="password" resname="password">
           <source> password </source>
@@ -460,7 +460,7 @@
       </trans-unit>
       <trans-unit id="is_admin" resname="is_admin">
           <source> is_admin </source>
-          <target>Admin</target>
+          <target>Uprawnienia Administratora</target>
       </trans-unit>
       <trans-unit id="title_log_in!" resname="title_log_in!">
           <source> title_log_in! </source>

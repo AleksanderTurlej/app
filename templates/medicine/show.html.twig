@@ -29,10 +29,10 @@
 <div id="sekcja_leku" class="row">
 
     <div id="zdj_lek" class="fixed col-6">
-        <img src="/uploads/{{ medicine.uploadFile }}" />
         <br><br>
         {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-             <button class="btn">
+            
+            <button class="btn">
                 <a href="{{ path('medicine_edit', {'id': medicine.id}) }}">
                 {{'action_edit'|trans}} 
                 </a>
@@ -44,9 +44,9 @@
         {% endif %}
 
         <h1 class="d-flex justify-content-center align-items-center">{{ medicine.name }}</h1>
-        <a href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a><br />
-        <a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_comment'|trans}}</a><br /> <br /> <br />
-    
+        <a class="d-flex justify-content-center align-items-center" href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a><br />
+
+        <img class="d-flex justify-content-center align-items-center" alt="centered image"  src="/uploads/{{ medicine.uploadFile }}" />    
 
     </div>
   
@@ -167,12 +167,17 @@
                 <tr>
                     <td>
                         <h3>{{'label_opinie'|trans}}:</h3>
+
                         <p>{% for opinion in medicine.opinions %}</p>
                         <p>{{'label_user'|trans}}: {{ opinion.user.nick }}</p>
                         <p>{{'label_rating'|trans}}: {{ opinion.rating }}</p>
                         <p> {{ opinion.content }}</p>
                         <hr>
+                                                <p><a href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_comment'|trans}}</a></p>
+
                         {% endfor %}
+                    </td>
+
                 </tr>
                 
             </tbody>

@@ -53,6 +53,8 @@ class MedicineRepository extends ServiceEntityRepository
         if ($name) {
             $builder
                 ->andWhere('m.name LIKE :string')
+                ->orWhere('d.name LIKE :string')
+
                 ->setParameter('string', '%'.$name.'%', PDO::PARAM_STR);
 
             return $builder

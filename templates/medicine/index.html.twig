@@ -41,6 +41,10 @@
                             <p>
                             <a class="d-flex justify-content-center" href="{{ path('medicine_show', {'id': medicine.id}) }}">{{ medicine.name }}</a>
                             <a class="d-flex justify-content-center" href="{{ path('favourites_new', {'id': medicine.id}) }}"><i class="fa fa-fw fa-heart"></i></a>
+                            <a class="d-flex justify-content-center" href="{{ path('medicine_show', {'id': medicine.id}) }}"><img class="d-flex justify-content-center align-items-center" alt="centered image"  src="/uploads/{{ medicine.uploadFile }}" /></a>
+
+                            
+
                             </p>
                             <p>
                             <a class="d-flex justify-content-center" href="{{ path('opinion_new', {'id': medicine.id}) }}">{{'action_add_opinion'|trans}}</a>

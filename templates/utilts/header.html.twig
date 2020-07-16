@@ -3,9 +3,23 @@
         <nav class="navbar">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="{{ path('app_login') }}">Zaloguj się</a>
-            <a href="{{ path('user_new') }}">Zarejestruj się</a>
-            <a href="#">Kontakt</a>
+            
+                {% if app.user is defined and not app.user%}
+
+                    <span>
+                        <a href="{{ path('app_login') }}">
+                            {{ 'action_login'|trans }}
+                        </a>
+                    </span>
+                    <span>    
+                        <a href="{{ path('user_new') }}">
+                            {{ 'action_register'|trans }}
+                        </a>
+                    </span>
+
+                {% endif %}
+
+            {# <a href="#">Kontakt</a> #}
             {% if app.user is defined and is_granted('ROLE_USER') %}
                 <a href="{{ path('favourites_index') }}">{{'label_favourites'|trans}}</a>
                 <a href="{{ path('opinion_index') }}">{{'label_opinions'|trans}}</a>
@@ -14,6 +28,8 @@
 
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('user_index') }}">{{'label_users'|trans}}</a>
+                <a class="nav-link" href="{{ path('substance_index') }}">{{'label_substances'|trans}} <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('disease_index') }}">{{'label_diseases'|trans}} <span class="sr-only">(current)</span></a>
             {% endif %}
 
         </div>

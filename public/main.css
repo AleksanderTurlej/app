@@ -154,6 +154,13 @@ tr a:hover {
   color: #636363;
 }
 
+#zdj_lek img {
+  align-items: center;
+  margin: 0 auto;
+  max-width: 400px;
+
+}
+
 .leki {
 background-color: #ffffff;
 
@@ -172,6 +179,13 @@ background-color: #ffffff;
   margin-top: 5%;
   margin-bottom: 5%;
 
+}
+
+#index_lekow img {
+  padding-top: 5%;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 200px;
 }
 
 #sekcja_leku{

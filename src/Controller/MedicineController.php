@@ -122,7 +122,23 @@ class MedicineController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form->get('file')->getData();
+
+            if ($uploadedFile) {
+                $destination = $this->getParameter('upload_file');
+
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+
+                $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+
+                $medicine->setUploadFile($newFilename);
+            }
             $persisterService->save($medicine);
+            
             $this->addFlash('success', 'medicine_successfully_edited');
 
             return $this->redirectToRoute('medicine_index');
