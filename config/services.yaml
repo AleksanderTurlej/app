@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
-    brochures_directory: '%kernel.project_dir%/uploads/brochures'
+    brochures_directory: '%kernel.project_dir%/public/uploads'
 
 
 services:
@@ -36,3 +36,6 @@ services:
         class: App\Service\PersisterService
         arguments: ['@doctrine.orm.entity_manager']
 
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%brochures_directory%'

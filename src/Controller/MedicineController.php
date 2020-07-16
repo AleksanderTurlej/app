@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Medicine;
 use App\Form\MedicineType;
 use App\Repository\MedicineRepository;
+use App\Service\FileUploader;
 use App\Service\PersisterService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +18,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 
 
@@ -54,38 +58,22 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request, PersisterService $persisterService): Response
+    public function new(Request $request, PersisterService $persisterService, FileUploader $fileUploader): Response
     {
         $medicine = new Medicine();
         $form = $this->createForm(MedicineType::class, $medicine);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-                /** @var UploadedFile $brochureFile */
-                $brochureFile = $form->get('brochure')->getData();
+            
+            /** @var UploadedFile $UploadedFile */
+            $File = $form->get('file')->getData();
+            if ($File) {
+                $FileName = $fileUploader->upload($File);
+                $medicine->setFilename($FileName);
+ }
 
-                // this condition is needed because the 'brochure' field is not required
-                // so the PDF file must be processed only when a file is uploaded
-                if ($brochureFile) {
-                    $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                    $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
-    
-                    // Move the file to the directory where brochures are stored
-                    try {
-                        $brochureFile->move(
-                            $this->getParameter('brochures_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        // ... handle exception if something happens during file upload
-                    }
-    
-                    // updates the 'brochureFilename' property to store the PDF file name
-                    // instead of its contents
-                    $medicine->setBrochureFilename($newFilename);
-                }
+
             $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_added');
 

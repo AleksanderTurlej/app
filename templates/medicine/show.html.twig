@@ -32,7 +32,7 @@
 <div id="sekcja_leku" class="row">
 
     <div id="zdj_lek" class="fixed col-6">
-        <img src="/uploads/brochures{{ medicine.brochureFilename }}" />
+        <img src="/uploads{{ medicine.Filename }}" />
         <br><br>
         {% if app.user is defined and is_granted('ROLE_ADMIN') %}
              <button class="btn">

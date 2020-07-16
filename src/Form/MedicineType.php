@@ -15,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
+
 
 
 class MedicineType extends AbstractType
@@ -95,33 +97,27 @@ class MedicineType extends AbstractType
                     'label' => 'label_description.name',
                 ]
             )
-            ->add('brochure', FileType::class, [
-                'label' => 'Brochure (Jpg file)',
-
-                // unmapped means that this field is not associated to any entity property
-                'mapped' => false,
-
-                // make it optional so you don't have to re-upload the jpg file
-                // every time you edit the Product details
-                'required' => false,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/png',
-                            'image/jpeg',
-                            'image/pjpeg',
-                            'image/jpeg',
-                            'image/pjpeg',
-                        ],
-                        'mimeTypesMessage' => 'Please upload a valid jgp document',
-                    ])
+            ->add(
+                'file',
+                FileType::class,
+                [
+                    'mapped' => false,
+                    'label' => 'label_avatar',
+                    'required' => true,
+                    'constraints' => new Image(
+                        [
+                            'maxSize' => '1024k',
+                            'mimeTypes' => [
+                                'image/png',
+                                'image/jpeg',
+                                'image/pjpeg',
+                                'image/jpeg',
+                                'image/pjpeg',
+                            ],
+                        ]
+                    ),
                 ]
-            ]
-            )
+            );
         ;
     }
     
