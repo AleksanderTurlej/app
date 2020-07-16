@@ -15,13 +15,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\Image;
-
 
 
 class MedicineType extends AbstractType
 {
-    
+
     /**
      * buildForm
      *
@@ -33,63 +31,63 @@ class MedicineType extends AbstractType
     {
         $builder
             ->add(
-                'name', 
-                TextType::class, 
+                'name',
+                TextType::class,
                 [
                     'required' => true,
-                    'label'=>'label_medicine.name', 
-                    'attr' => 
+                    'label' => 'label_medicine.name',
+                    'attr' =>
                     [
                         'placeholder' => 'enter medicine',
-                    ], 
-                ], 
-                )
+                    ],
+                ],
+            )
             ->add(
-                'price', 
-                NumberType::class, 
+                'price',
+                NumberType::class,
                 [
                     'required' => true,
-                    'label'=>'label_medicine.price'
+                    'label' => 'label_medicine.price'
                 ]
-                )
+            )
             ->add(
-                'weight', 
-                NumberType::class, 
+                'weight',
+                NumberType::class,
                 [
                     'required' => true,
-                    'label'=>'label_medicine.weight'
+                    'label' => 'label_medicine.weight'
                 ]
-                )
+            )
             ->add(
-                'isRecipeRequired', 
-                CheckboxType::class, 
+                'isRecipeRequired',
+                CheckboxType::class,
                 [
-                    'required' => true,
-                    'label'=>'label_medicine.isRecipeRequired', 
+                    'required' => false,
+                    'label' => 'label_medicine.isRecipeRequired',
                 ]
-                )
+            )
             ->add(
-                'diseases', 
-                EntityType::class, 
+                'diseases',
+                EntityType::class,
                 [
                     'required' => true,
-                    'label'=>'label_medicine.disease', 
-                    'class' => Disease::class, 
-                    'choice_label' => 'name', 
+                    'label' => 'label_medicine.disease',
+                    'class' => Disease::class,
+                    'choice_label' => 'name',
                     'multiple' => true
                 ]
-                )
+            )
             ->add(
                 'substances',
                 EntityType::class,
                 [
                     'required' => true,
-                    'label'=>'label_medicine.substances',
+                    'label' => 'label_medicine.substances',
                     'class' => Substance::class,
                     'choice_label' => 'name',
                     'multiple' => true,
                 ]
-                )
+            )
             ->add(
                 'description',
                 TextareaType::class,
@@ -97,30 +95,34 @@ class MedicineType extends AbstractType
                     'label' => 'label_description.name',
                 ]
             )
-            ->add(
-                'file',
-                FileType::class,
-                [
-                    'mapped' => false,
-                    'label' => 'label_avatar',
-                    'required' => true,
-                    'constraints' => new Image(
-                        [
-                            'maxSize' => '1024k',
-                            'mimeTypes' => [
-                                'image/png',
-                                'image/jpeg',
-                                'image/pjpeg',
-                                'image/jpeg',
-                                'image/pjpeg',
-                            ],
-                        ]
-                    ),
+            ->add('brochure', FileType::class, [
+                'label' => 'Brochure (Jpg file)',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the jpg file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/pjpeg',
+                            'image/jpeg',
+                            'image/pjpeg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid jgp document',
+                    ])
                 ]
-            );
-        ;
+            ]);
     }
-    
+
     /**
      * configureOptions
      *

@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
 <div class="row">
     <div class="col-6 col-md-4">
             <a href="{{ path('medicine_index') }}"><i class="fa fa-fw fa-arrow-left"></i> {{ 'action_back_to_list'|trans}}</a>  
@@ -17,13 +16,11 @@
                 <button id="search" class="btn btn-primary">
                     {{ 'action_search' | trans }}
                 </button>
+                </form>
                 <br>
     
     </div>
   <div class="col-6 col-md-4">
-  
-            
-
   </div>
 </div>
 
@@ -32,7 +29,7 @@
 <div id="sekcja_leku" class="row">
 
     <div id="zdj_lek" class="fixed col-6">
-        <img src="/uploads{{ medicine.Filename }}" />
+        {# <img src="/uploads/brochures{{ medicine.brochureFilename }}" /> #}
         <br><br>
         {% if app.user is defined and is_granted('ROLE_ADMIN') %}
              <button class="btn">
@@ -40,7 +37,7 @@
                 {{'action_edit'|trans}} 
                 </a>
             </button>
-            
+             
             {{ include('medicine/_delete_form.html.twig') }}
             
 

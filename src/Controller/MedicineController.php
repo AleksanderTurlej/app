@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Medicine controller.
  */
@@ -8,7 +9,6 @@ namespace App\Controller;
 use App\Entity\Medicine;
 use App\Form\MedicineType;
 use App\Repository\MedicineRepository;
-use App\Service\FileUploader;
 use App\Service\PersisterService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,11 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\String\Slugger\SluggerInterface;
-
-
-
+use \Transliterator;
 
 /**
  * @Route("/medicine")
@@ -58,22 +54,41 @@ class MedicineController extends AbstractController
      *
      * @return Response
      */
-    public function new(Request $request, PersisterService $persisterService, FileUploader $fileUploader): Response
+    public function new(Request $request, PersisterService $persisterService): Response
     {
         $medicine = new Medicine();
         $form = $this->createForm(MedicineType::class, $medicine);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            /** @var UploadedFile $UploadedFile */
-            $File = $form->get('file')->getData();
-            if ($File) {
-                $FileName = $fileUploader->upload($File);
-                $medicine->setFilename($FileName);
- }
+            /** @var UploadedFile $brochureFile */
+            $brochureFile = $form->get('brochure')->getData();
 
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
 
+                // $transliterator = Transliterator::createFromRules('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', Transliterator::FORWARD);
+                // $safeFilename = $transliterator->transliterate($$originalFilename);
+
+                // // this is needed to safely include the file name as part of the URL
+                // $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                // $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('brochures_directory')
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $medicine->setBrochureFilename($originalFilename);
+            }
             $persisterService->save($medicine);
             $this->addFlash('success', 'medicine_successfully_added');
 
@@ -97,8 +112,8 @@ class MedicineController extends AbstractController
     public function show(Medicine $medicine, Request $request): Response
     {
         $name = $request->query->getAlnum('name');
-        if($name){
-            return $this->redirectToRoute('medicine_index', ['name'=>$name]);
+        if ($name) {
+            return $this->redirectToRoute('medicine_index', ['name' => $name]);
         }
 
         return $this->render('medicine/show.html.twig', [
@@ -142,7 +157,7 @@ class MedicineController extends AbstractController
      */
     public function delete(Request $request, Medicine $medicine, PersisterService $persisterService): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$medicine->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $medicine->getId(), $request->request->get('_token'))) {
             $persisterService->remove($medicine);
             $this->addFlash('danger', 'medicine_removed');
         }

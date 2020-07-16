@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Medicine entity.
  */
@@ -73,7 +74,6 @@ class Medicine extends AbstractEntity
      * isRecipeRequired
      *
      * @Assert\Type(type="bool")
-     * @Assert\NotBlank
      *
      * @var bool
      */
@@ -109,7 +109,7 @@ class Medicine extends AbstractEntity
     private $diseases;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="medicine", fetch="EXTRA_LAZY", orphanRemoval=true)
      *
      * opinions
      *
@@ -118,27 +118,13 @@ class Medicine extends AbstractEntity
     private $opinions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="App\Entity\Favourites", mappedBy="medicine", fetch="EXTRA_LAZY", orphanRemoval=true)
      *
      * favourites
      *
      * @var ArrayCollection
      */
     private $favourites;
-
-    /**
-     * Filename.
-     *
-     * @var string
-     *
-     * @ORM\Column(
-     *     type="string",
-     *     length=191,
-     * )
-     *
-     * @Assert\Type(type="string")
-     */
-    private $filename;
 
     /**
      * __construct.
@@ -151,19 +137,21 @@ class Medicine extends AbstractEntity
         $this->favourites = new ArrayCollection();
     }
 
-    public function getFilename()
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $brochureFilename;
+
+    public function getBrochureFilename()
     {
-        return $this->filename;
+        return $this->brochureFilename;
     }
 
-    /**
-     * Setter for filename.
-     *
-     * @param string $filename Filename
-     */
-    public function setFilename(string $filename)
+    public function setBrochureFilename($brochureFilename)
     {
-        $this->filename = $filename;
+        $this->brochureFilename = $brochureFilename;
+
+        return $this;
     }
 
     /**
